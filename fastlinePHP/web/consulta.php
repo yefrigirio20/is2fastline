@@ -6,11 +6,11 @@
 <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAASSGl_izfUowx6JE1QGdX_BQ3N8-5BmYkxEbTWz8WOJAHMTKz6BQnR_O-DPINGU9gCkvOiH0_5HeJ9w" type="text/javascript"></script>
 </head>
 <body>
-<?= 
+  <?php 
 echo("La primera prueba si se puede usar google earth en nuestro proyecto\n");
-echo("Se muestra una consulta de los limites de selva alegre- Arequipa :)");
+echo("Se muestra una consulta de los limites de jacobo Hunter- Arequipa :)");
 echo("archivo KML generado por Huachani Villas, Raul");
-    
+    ?>
     
 
     
@@ -37,7 +37,7 @@ if (GBrowserIsCompatible()) {
       map.addMapType(G_SATELLITE_3D_MAP);
       map.addControl(new GLargeMapControl());
       map.addControl(new GMapTypeControl());
-      map.setCenter(new GLatLng(-15.685368,-72.298941),8);
+      map.setCenter(new GLatLng(-16.397539,-71.52274300000001),13);
     
       // Set up three markers with info windows 
     
@@ -45,7 +45,7 @@ if (GBrowserIsCompatible()) {
       var marker = createMarker(point,'<div style="width:240px">Some stuff to display in the First Info Window. With a <a href="http://www.econym.demon.co.uk">Link<\/a> to my home page<\/div>')
       map.addOverlay(marker);
 
-      var point = new GLatLng(-15.685368,-70.298941);
+      var point = new GLatLng(-16.485368,-71.798941);
       var marker = createMarker(point,'Some stuff to display in the<br>Second Info Window')
       map.addOverlay(marker);
 
