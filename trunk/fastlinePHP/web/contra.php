@@ -14,7 +14,7 @@ window.history.back();
 </script>
 </head>
 <?php
-$c="itachi";
+$c="fastline";
 if($c==$contrasena)
 {echo "<center><BR><BR><BR><img src='../imagenes/feliz.jpg' width='112' height='107'>Contraseña correcta<br></center>";
  echo "<center><input name=back type=button value=Ingresar onClick=abrir(); ></center>";

@@ -6,6 +6,15 @@
 <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAASSGl_izfUowx6JE1QGdX_BQ3N8-5BmYkxEbTWz8WOJAHMTKz6BQnR_O-DPINGU9gCkvOiH0_5HeJ9w" type="text/javascript"></script>
 </head>
 <body>
+<?= 
+echo("La primera prueba si se puede usar google earth en nuestro proyecto\n");
+echo("Se muestra una consulta de los limites de selva alegre- Arequipa :)");
+echo("archivo KML generado por Huachani Villas, Raul");
+    
+    
+
+    
+
 <div id="map" style="width: 500px; height: 500px"></div>
 <script type="text/javascript">
 //< ![CDATA[
