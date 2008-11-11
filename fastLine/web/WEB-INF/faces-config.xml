@@ -26,4 +26,28 @@
         <managed-bean-class>fastline.ApplicationBean1</managed-bean-class>
         <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>reservaPasajes</managed-bean-name>
+        <managed-bean-class>fastline.reservaPasajes</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>LoginIncorrecto</managed-bean-name>
+        <managed-bean-class>fastline.LoginIncorrecto</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/Page1.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/reservaPasajes.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/LoginIncorrecto.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Page1.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
