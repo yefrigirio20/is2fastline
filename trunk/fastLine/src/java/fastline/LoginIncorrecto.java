@@ -1,7 +1,7 @@
 /*
- * Page1.java
+ * LoginIncorrecto.java
  *
- * Created on 04/11/2008, 11:31:00 PM
+ * Created on 10-nov-2008, 17:47:55
  */
  
 package fastline;
@@ -16,9 +16,9 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @author itachi
+ * @author Huachani
  */
-public class Page1 extends AbstractPageBean {
+public class LoginIncorrecto extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -34,7 +34,7 @@ public class Page1 extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Page1() {
+    public LoginIncorrecto() {
     }
 
     /**
@@ -63,7 +63,7 @@ public class Page1 extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Page1 Initialization Failure", e);
+            log("LoginIncorrecto Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -107,14 +107,14 @@ public class Page1 extends AbstractPageBean {
     @Override
     public void destroy() {
     }
-    
+
     /**
      * <p>Return a reference to the scoped data bean.</p>
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1() {
-        return (SessionBean1) getBean("SessionBean1");
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
     /**
@@ -131,15 +131,15 @@ public class Page1 extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
     }
 
-    public String button1_action() {
+    public String hyperlink1_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case1";
     }
-
+    
 }
 
