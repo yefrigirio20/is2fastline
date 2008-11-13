@@ -42,6 +42,10 @@
             <from-outcome>case1</from-outcome>
             <to-view-id>/reservaPasajes.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/LoginIncorrecto.jsp</from-view-id>
@@ -50,4 +54,9 @@
             <to-view-id>/Page1.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>registrarNuevoUsuario</managed-bean-name>
+        <managed-bean-class>fastline.registrarNuevoUsuario</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
