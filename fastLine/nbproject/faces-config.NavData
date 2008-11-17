@@ -2,11 +2,17 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="redirect.jsp" x="150" y="300" zoom="true"/>
-        <Node id="reservaPasajes.jsp" x="291" y="120" zoom="true"/>
-        <Node id="LoginIncorrecto.jsp" x="67" y="199" zoom="false"/>
-        <Node id="Page1.jsp" x="42" y="30" zoom="false"/>
-        <Node id="welcomeJSF.jsp" x="650" y="150" zoom="true"/>
+        <Node id="gestionarRutas.jsp" x="400" y="340" zoom="false"/>
+        <Node id="registrarNuevoUsuario.jsp" x="65" y="473" zoom="false"/>
+        <Node id="reservaPasajes.jsp" x="267" y="13" zoom="false"/>
+        <Node id="redirect.jsp" x="715" y="36" zoom="false"/>
+        <Node id="LogIn.jsp" x="12" y="298" zoom="false"/>
+        <Node id="LoginIncorrecto.jsp" x="409" y="498" zoom="false"/>
+        <Node id="FastLine.jsp" x="35" y="35" zoom="false"/>
+        <Node id="Encomiendas.jsp" x="685" y="283" zoom="false"/>
+        <Node id="Administracion.jsp" x="325" y="149" zoom="false"/>
+        <Node id="welcomeJSF.jsp" x="714" y="7" zoom="false"/>
+        <Node id="BusesyChoferes.jsp" x="654" y="77" zoom="false"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

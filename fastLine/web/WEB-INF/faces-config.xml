@@ -12,11 +12,6 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
-        <managed-bean-name>Page1</managed-bean-name>
-        <managed-bean-class>fastline.Page1</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
         <managed-bean-name>RequestBean1</managed-bean-name>
         <managed-bean-class>fastline.RequestBean1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -36,27 +31,131 @@
         <managed-bean-class>fastline.LoginIncorrecto</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
-    <navigation-rule>
-        <from-view-id>/Page1.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>case1</from-outcome>
-            <to-view-id>/reservaPasajes.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>case2</from-outcome>
-            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/LoginIncorrecto.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>case1</from-outcome>
-            <to-view-id>/Page1.jsp</to-view-id>
-        </navigation-case>
-    </navigation-rule>
     <managed-bean>
         <managed-bean-name>registrarNuevoUsuario</managed-bean-name>
         <managed-bean-class>fastline.registrarNuevoUsuario</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>gestionarRutas</managed-bean-name>
+        <managed-bean-class>fastline.gestionarRutas</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>FastLine</managed-bean-name>
+        <managed-bean-class>fastline.FastLine</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>LogIn</managed-bean-name>
+        <managed-bean-class>fastline.LogIn</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/LogIn.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Administracion</managed-bean-name>
+        <managed-bean-class>fastline.Administracion</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/LoginIncorrecto.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/LogIn.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Administracion.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/BusesyChoferes.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/Encomiendas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case4</from-outcome>
+            <to-view-id>/gestionarRutas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>BusesyChoferes</managed-bean-name>
+        <managed-bean-class>fastline.BusesyChoferes</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>Encomiendas</managed-bean-name>
+        <managed-bean-class>fastline.Encomiendas</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/FastLine.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/LogIn.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/reservaPasajes.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Encomiendas.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/gestionarRutas.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/registrarNuevoUsuario.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/LogIn.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/BusesyChoferes.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -1,7 +1,7 @@
 /*
- * Page1.java
+ * Administracion.java
  *
- * Created on 04/11/2008, 11:31:00 PM
+ * Created on 16-nov-2008, 18:01:43
  */
  
 package fastline;
@@ -16,9 +16,9 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @author itachi
+ * @author Huachani
  */
-public class Page1 extends AbstractPageBean {
+public class Administracion extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -34,7 +34,7 @@ public class Page1 extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Page1() {
+    public Administracion() {
     }
 
     /**
@@ -63,7 +63,7 @@ public class Page1 extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Page1 Initialization Failure", e);
+            log("Administracion Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -107,7 +107,7 @@ public class Page1 extends AbstractPageBean {
     @Override
     public void destroy() {
     }
-    
+
     /**
      * <p>Return a reference to the scoped data bean.</p>
      *
@@ -122,8 +122,8 @@ public class Page1 extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1() {
-        return (RequestBean1) getBean("RequestBean1");
+    protected ApplicationBean1 getApplicationBean1() {
+        return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
     /**
@@ -131,21 +131,45 @@ public class Page1 extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1() {
-        return (ApplicationBean1) getBean("ApplicationBean1");
+    protected RequestBean1 getRequestBean1() {
+        return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String login_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case1";
-    }
-
-    public String nuevoUsuario_action() {
+    public String busesYChoferes_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case2";
     }
 
+    public String rutasYSalidas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case4";
+    }
+
+    public String encomiendas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case3";
+    }
+
+    public String reservacionesCounter_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String pagoBoletos_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String home_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case1";
+    }
+    
 }
 
