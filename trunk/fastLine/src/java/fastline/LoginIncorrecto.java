@@ -135,10 +135,16 @@ public class LoginIncorrecto extends AbstractPageBean {
         return (SessionBean1) getBean("SessionBean1");
     }
 
-    public String hyperlink1_action() {
+    public String logIn_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case1";
+    }
+
+    public String home_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case2";
     }
     
 }
