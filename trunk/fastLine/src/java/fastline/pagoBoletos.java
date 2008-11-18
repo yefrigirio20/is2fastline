@@ -1,12 +1,13 @@
 /*
- * Administracion.java
+ * pagoBoletos.java
  *
- * Created on 16-nov-2008, 18:01:43
+ * Created on 17-nov-2008, 19:15:29
  */
  
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 
 /**
@@ -18,7 +19,7 @@ import javax.faces.FacesException;
  *
  * @author Huachani
  */
-public class Administracion extends AbstractPageBean {
+public class pagoBoletos extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -28,13 +29,40 @@ public class Administracion extends AbstractPageBean {
      */
     private void _init() throws Exception {
     }
+    private SingleSelectOptionsList rutaDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getRutaDefaultOptions() {
+        return rutaDefaultOptions;
+    }
+
+    public void setRutaDefaultOptions(SingleSelectOptionsList ssol) {
+        this.rutaDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList horariosDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getHorariosDefaultOptions() {
+        return horariosDefaultOptions;
+    }
+
+    public void setHorariosDefaultOptions(SingleSelectOptionsList ssol) {
+        this.horariosDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList horarios1DefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getHorarios1DefaultOptions() {
+        return horarios1DefaultOptions;
+    }
+
+    public void setHorarios1DefaultOptions(SingleSelectOptionsList ssol) {
+        this.horarios1DefaultOptions = ssol;
+    }
 
     // </editor-fold>
 
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public Administracion() {
+    public pagoBoletos() {
     }
 
     /**
@@ -63,7 +91,7 @@ public class Administracion extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("Administracion Initialization Failure", e);
+            log("pagoBoletos Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -135,40 +163,22 @@ public class Administracion extends AbstractPageBean {
         return (RequestBean1) getBean("RequestBean1");
     }
 
-    public String busesYChoferes_action() {
+    public String regresar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case2";
-    }
-
-    public String rutasYSalidas_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case4";
-    }
-
-    public String encomiendas_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case3";
-    }
-
-    public String reservacionesCounter_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String pagoBoletos_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case5";
+        return "case1";
     }
 
     public String home_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case1";
+        return "case2";
+    }
+
+    public String regEncEntregada_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
     }
     
 }

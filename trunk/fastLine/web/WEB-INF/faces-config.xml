@@ -96,6 +96,10 @@
             <from-outcome>case1</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case5</from-outcome>
+            <to-view-id>/pagoBoletos.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>BusesyChoferes</managed-bean-name>
@@ -178,6 +182,22 @@
         <from-view-id>/reservaPasajes.jsp</from-view-id>
         <navigation-case>
             <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>pagoBoletos</managed-bean-name>
+        <managed-bean-class>fastline.pagoBoletos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/pagoBoletos.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
