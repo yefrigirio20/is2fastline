@@ -33,6 +33,7 @@ public class Encomiendas extends AbstractPageBean {
         destinoEncomiendaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
         categoriaEncDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "--Seleccione--"), new com.sun.webui.jsf.model.Option("", "Sobre"), new com.sun.webui.jsf.model.Option("", "Paquete")});
         tipoPagoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Cancela el que envía"), new com.sun.webui.jsf.model.Option("", "Cancela el que recibe"),new com.sun.webui.jsf.model.Option("", "Quien envía cancela una fracción")});
+        dropDown2DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Esperando Embarque"), new com.sun.webui.jsf.model.Option("", "Embarcado"), new com.sun.webui.jsf.model.Option("", "Esperando Entrega"), new com.sun.webui.jsf.model.Option("", "Entregado")});
         
     }
     private SingleSelectOptionsList origenEncomiendaDefaultOptions = new SingleSelectOptionsList();
@@ -79,6 +80,15 @@ public class Encomiendas extends AbstractPageBean {
 
     public void setTipoPagoDefaultOptions(SingleSelectOptionsList ssol) {
         this.tipoPagoDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList dropDown2DefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getDropDown2DefaultOptions() {
+        return dropDown2DefaultOptions;
+    }
+
+    public void setDropDown2DefaultOptions(SingleSelectOptionsList ssol) {
+        this.dropDown2DefaultOptions = ssol;
     }
 
     // </editor-fold>
@@ -202,13 +212,31 @@ public class Encomiendas extends AbstractPageBean {
     public String regresar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case1";
+        return "case4";
     }
 
     public String home_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case2";
+        return "case3";
+    }
+
+    public String buscarEncomienda1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String buscarEncomienda_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String regEncEntregada_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
     }
     
 }

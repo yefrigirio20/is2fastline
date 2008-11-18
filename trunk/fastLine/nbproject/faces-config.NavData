@@ -4,8 +4,8 @@
     <Scope Scope="Project">
         <Node id="gestionarRutas.jsp" x="400" y="340" zoom="false"/>
         <Node id="registrarNuevoUsuario.jsp" x="65" y="473" zoom="false"/>
-        <Node id="reservaPasajes.jsp" x="267" y="13" zoom="false"/>
         <Node id="redirect.jsp" x="715" y="36" zoom="false"/>
+        <Node id="reservaPasajes.jsp" x="267" y="13" zoom="false"/>
         <Node id="LogIn.jsp" x="12" y="298" zoom="false"/>
         <Node id="LoginIncorrecto.jsp" x="409" y="498" zoom="false"/>
         <Node id="FastLine.jsp" x="35" y="35" zoom="false"/>

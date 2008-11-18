@@ -26,7 +26,8 @@
                         <webuijsf:radioButton id="radioButton1" label="Ida y vuelta" name="radioButton-group-form1" style="left: 48px; top: 264px; position: absolute"/>
                         <webuijsf:radioButton id="radioButton2" label="Sólo ida" name="radioButton-group-form1" style="left: 168px; top: 264px; position: absolute"/>
                         <webuijsf:label id="label3" style="left: 72px; top: 312px; position: absolute; text-align: right; width: 70px" text="Fecha:"/>
-                        <webuijsf:button id="reservar" style="height: 24px; left: 47px; top: 528px; position: absolute; width: 72px" text="Reservar"/>
+                        <webuijsf:button actionExpression="#{reservaPasajes.reservar_action}" id="reservar"
+                            style="height: 24px; left: 47px; top: 528px; position: absolute; width: 72px" text="Reservar"/>
                         <webuijsf:image height="192" id="image1" style="left: 408px; top: 192px; position: absolute" url="/resources/busAkat.jpg" width="288"/>
                         <webuijsf:radioButtonGroup id="radioButtonGroup1" items="#{reservaPasajes.radioButtonGroup1DefaultOptions.options}" style="border-width: 1px; border-style: solid; border-color: rgb(0, 102, 102) rgb(0, 102, 102) rgb(0, 102, 102) rgb(0, 102, 102); left: 48px; top: 432px; position: absolute"/>
                         <webuijsf:label id="ciudadOrigen1"
