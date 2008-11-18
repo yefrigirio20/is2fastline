@@ -23,10 +23,8 @@
                             style="left: 24px; top: 120px; position: absolute" text="Rutas y Salidas"/>
                         <webuijsf:hyperlink actionExpression="#{Administracion.encomiendas_action}" id="encomiendas"
                             style="left: 24px; top: 144px; position: absolute" text="Encomiendas"/>
-                        <webuijsf:hyperlink actionExpression="#{Administracion.reservacionesCounter_action}" id="reservacionesCounter"
-                            style="left: 24px; top: 168px; position: absolute" text="Reservacion de Boletos"/>
                         <webuijsf:hyperlink actionExpression="#{Administracion.pagoBoletos_action}" id="pagoBoletos"
-                            style="left: 24px; top: 192px; position: absolute" text="Pago de Boletos"/>
+                            style="left: 24px; top: 168px; position: absolute" text="Pago de Boletos"/>
                         <webuijsf:image height="72" id="image1" style="left: 0px; top: 0px; position: absolute" url="/resources/utilities.png" width="72"/>
                         <webuijsf:hyperlink actionExpression="#{Administracion.home_action}" id="home"
                             style="height: 24px; left: 48px; top: 264px; position: absolute" text="Home"/>
