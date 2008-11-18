@@ -33,6 +33,21 @@ public class gestionarRutas extends AbstractPageBean {
         regionOrigen1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
         regionDestino1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
         regionOrigen2DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Origen 1 - Destino 1"), new com.sun.webui.jsf.model.Option("", "Origen 2 - Destino 2"), new com.sun.webui.jsf.model.Option("", "Origen 3 - Destino 3")});
+        
+        com.sun.webui.jsf.model.Option[] horas=new com.sun.webui.jsf.model.Option[24];        
+        for(int h=0;h<24;h++){            
+            horas[h]=new com.sun.webui.jsf.model.Option("",""+h);
+        }
+        horaDefaultOptions.setOptions(horas);
+        
+        com.sun.webui.jsf.model.Option[] minutos=new com.sun.webui.jsf.model.Option[6];
+        int min=0;
+        for(int i=0;i<6;i++){             
+            minutos[i]=new com.sun.webui.jsf.model.Option("",""+min);
+            min+=10;
+        }
+        minutosDefaultOptions.setOptions(minutos);
+        
     }
     private SingleSelectOptionsList regionOrigen1DefaultOptions = new SingleSelectOptionsList();
 
@@ -96,6 +111,24 @@ public class gestionarRutas extends AbstractPageBean {
 
     public void setChofer1NuevaSalidaDefaultOptions(SingleSelectOptionsList ssol) {
         this.chofer1NuevaSalidaDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList horaDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getHoraDefaultOptions() {
+        return horaDefaultOptions;
+    }
+
+    public void setHoraDefaultOptions(SingleSelectOptionsList ssol) {
+        this.horaDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList minutosDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getMinutosDefaultOptions() {
+        return minutosDefaultOptions;
+    }
+
+    public void setMinutosDefaultOptions(SingleSelectOptionsList ssol) {
+        this.minutosDefaultOptions = ssol;
     }
 
     // </editor-fold>

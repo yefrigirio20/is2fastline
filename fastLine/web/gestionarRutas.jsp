@@ -67,6 +67,10 @@
                         <webuijsf:image height="48" id="image8" style="left: 24px; top: 288px; position: absolute" url="/resources/db_remove.png" width="48"/>
                         <webuijsf:image height="24" id="image9" style="left: 312px; top: 336px; position: absolute" url="/resources/button_cancel.png" width="24"/>
                         <webuijsf:image height="48" id="image10" style="left: 24px; top: 408px; position: absolute" url="/resources/db_add.png" width="48"/>
+                        <webuijsf:staticText id="staticText1" style="left: 168px; top: 576px; position: absolute" text="hrs"/>
+                        <webuijsf:dropDown id="hora" items="#{gestionarRutas.horaDefaultOptions.options}" style="left: 120px; top: 576px; position: absolute"/>
+                        <webuijsf:dropDown id="minutos" items="#{gestionarRutas.minutosDefaultOptions.options}" style="left: 192px; top: 576px; position: absolute"/>
+                        <webuijsf:staticText id="staticText2" style="left: 240px; top: 576px; position: absolute" text="min"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

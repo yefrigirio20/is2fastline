@@ -27,7 +27,7 @@
                         <webuijsf:hyperlink actionExpression="#{LogIn.nuevoUsuario_action}" id="nuevoUsuario"
                             style="position: absolute; left: 168px; top: 192px" text="aqui"/>
                         <webuijsf:image height="72" id="image1" style="left: 0px; top: 0px; position: absolute" url="/resources/Community%20Help.png" width="72"/>
-                        <webuijsf:hyperlink id="home1" style="height: 24px; left: 48px; top: 240px; position: absolute" text="Home"/>
+                        <webuijsf:hyperlink actionExpression="#{LogIn.home1_action}" id="home1" style="height: 24px; left: 48px; top: 240px; position: absolute" text="Home"/>
                         <webuijsf:image height="24" id="image3" style="left: 24px; top: 240px; position: absolute" url="/resources/folder_home.png" width="24"/>
                     </webuijsf:form>
                 </webuijsf:body>

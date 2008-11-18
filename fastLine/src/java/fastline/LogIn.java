@@ -146,6 +146,12 @@ public class LogIn extends AbstractPageBean {
         // case name where null will return to the same page.
         return "case1";
     }
+
+    public String home1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case2";
+    }
     
 }
 

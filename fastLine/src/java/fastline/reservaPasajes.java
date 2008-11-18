@@ -185,6 +185,12 @@ public class reservaPasajes extends AbstractPageBean {
     public String home_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        return "case1";
+    }
+
+    public String reservar_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
         return null;
     }
     
