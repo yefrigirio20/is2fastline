@@ -4,7 +4,8 @@
     Created on : 10-nov-2008, 17:42:37
     Author     : Huachani
 -->
-<jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+<jsp:root version="2.1" xmlns:a="http://jmaki/v1.0/jsf" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"/>
     <f:view>
         <webuijsf:page id="page1">
@@ -28,7 +29,6 @@
                         <webuijsf:label id="label3" style="left: 72px; top: 312px; position: absolute; text-align: right; width: 70px" text="Fecha:"/>
                         <webuijsf:button actionExpression="#{reservaPasajes.reservar_action}" id="reservar"
                             style="height: 24px; left: 47px; top: 528px; position: absolute; width: 72px" text="Reservar"/>
-                        <webuijsf:image height="192" id="image1" style="left: 408px; top: 192px; position: absolute" url="/resources/busAkat.jpg" width="288"/>
                         <webuijsf:radioButtonGroup id="radioButtonGroup1" items="#{reservaPasajes.radioButtonGroup1DefaultOptions.options}" style="border-width: 1px; border-style: solid; border-color: rgb(0, 102, 102) rgb(0, 102, 102) rgb(0, 102, 102) rgb(0, 102, 102); left: 48px; top: 432px; position: absolute"/>
                         <webuijsf:label id="ciudadOrigen1"
                             style="border-width: 2px; border-color: rgb(153, 153, 255) rgb(153, 153, 255) rgb(153, 153, 255) rgb(153, 153, 255); left: 48px; top: 408px; position: absolute" text="Preferencias"/>
@@ -45,6 +45,9 @@
                         <webuijsf:label id="label5" style="height: 22px; left: 0px; top: 336px; position: absolute; text-align: right; width: 142px" text="Precio del Boleto:"/>
                         <webuijsf:textField id="precioBoleto" readOnly="true" style="border: 1px solid black; left: 144px; top: 336px; position: absolute"/>
                         <webuijsf:calendar id="calendar1" readOnly="true" style="left: 144px; top: 312px; position: absolute"/>
+                        <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 430px; -rave-layout: grid">
+                            <a:widget args="{centerLat:37.4041960114344, centerLon:-122.008194923401}" name="google.map"/>
+                        </jsfExt:ajaxZone>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

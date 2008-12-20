@@ -6,6 +6,7 @@
  
 package fastline;
 
+import com.sun.faces.extensions.avatar.components.AjaxZone;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
 
