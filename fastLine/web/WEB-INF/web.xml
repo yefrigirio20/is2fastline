@@ -16,6 +16,11 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
     </context-param>
+    <context-param>
+        <description>Switch off caching. You can remove this parameter or comment it out when this app goes into production.</description>
+        <param-name>jmaki-usecache</param-name>
+        <param-value>false</param-value>
+    </context-param>
     <filter>
         <filter-name>UploadFilter</filter-name>
         <filter-class>com.sun.webui.jsf.util.UploadFilter</filter-class>
@@ -67,6 +72,10 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>XmlHttpProxy</servlet-name>
+        <servlet-class>jmaki.xhp.XmlHttpProxyServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -82,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>XmlHttpProxy</servlet-name>
+        <url-pattern>/xhp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
