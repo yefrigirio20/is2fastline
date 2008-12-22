@@ -125,6 +125,10 @@
             <from-outcome>case3</from-outcome>
             <to-view-id>/reservaPasajes.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case4</from-outcome>
+            <to-view-id>/QuienesSomos.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/Encomiendas.jsp</from-view-id>
@@ -201,4 +205,9 @@
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>QuienesSomos</managed-bean-name>
+        <managed-bean-class>fastline.QuienesSomos</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

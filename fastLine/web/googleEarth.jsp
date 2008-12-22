@@ -12,10 +12,7 @@
             
             <div id="header">
                 <div id="banner">Application Name
-               <a:widget  name="google.map"
-         args="{ centerLat : 37.4041960114344, 
-                 centerLon : -122.008194923401 }" />
-
+               
                 </div>
                 
                 <div id="subheader">
@@ -40,9 +37,10 @@
 
                 <div id="content" style="height:400px">
                     
-                    Main Content Area
-                    
-                </div> <!-- content -->
+                  <a:widget name="google.map"
+ args="{centerLat:-9.18887, zoom:13, mapType:'REGULAR', centerLon:-74.443359}"/>
+                                   
+</div> <!-- content -->
         
             </div> <!-- main -->
         </div> <!-- outerborder -->

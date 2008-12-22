@@ -45,8 +45,8 @@
                         <webuijsf:label id="label5" style="height: 22px; left: 0px; top: 336px; position: absolute; text-align: right; width: 142px" text="Precio del Boleto:"/>
                         <webuijsf:textField id="precioBoleto" readOnly="true" style="border: 1px solid black; left: 144px; top: 336px; position: absolute"/>
                         <webuijsf:calendar id="calendar1" readOnly="true" style="left: 144px; top: 312px; position: absolute"/>
-                        <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 430px; -rave-layout: grid">
-                            <a:widget args="{centerLat:37.4041960114344, centerLon:-122.008194923401}" name="google.map"/>
+                        <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 526px; -rave-layout: grid">
+                            <a:widget name="google.map" args="{centerLat:-9.18887, zoom:5, mapType:'REGULAR', centerLon:-74.443359}"/>
                         </jsfExt:ajaxZone>
                     </webuijsf:form>
                 </webuijsf:body>

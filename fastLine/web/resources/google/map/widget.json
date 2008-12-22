@@ -31,27 +31,10 @@
         },
  "apikeys" : [
    {"id": "google", "keys": [
-                    {"url": "http://localhost:3000/",
-                     "key": "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTJQa0g3IQ9GZqIMmInSLzwtGDKaBTBJNVRUL7-ClkkvrYjRgYCxRzgfg"
-                     },        
-                    {"url": "http://localhost/",
-                     "key": "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRvP3_IZHyjXX94-rCTiuxmYeGQ9g"
-                     },   
-                    {"url": "http://localhost:8080/",
-                     "key": "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTwM0brOpm-All5BF6PoaKBxRWWERSE9HbFrfC3qz1xdiSml249wpOibA"
-                     },
-                    {"url" : "http://localhost:8888/",
-                    "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTb-vLQlFZmc2N8bgWI8YDPp5FEVBRvQXpq7gkjNd3TJLZPPh3tV7BD7A"
-                    },
-                    {"url" : "http://localhost:8084/",
-                    "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTFRfqDGOwfXAlOK-54sJyR4NNS5RTlVk2wm8p_8xaiZbGfRrggljudNw"
-                    },
-                    {"url" : "http://127.0.0.1/",
-                    "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBRi_j0U6kJrkFvY4-OX2XYmEAa76BQy1Kzr6fIOg47q143rky3NvV22NA"
-                    },
-                    {"url" : "http://jmaki.com/jmaki/cl-mashup/",
-                    "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBRo0HO-KLrzLZTqz6TJKgsZxFOWmhRA5usD8qGp3gftsu_6QWkw8iB8jg"
-                    }    
+                    {"url" : "http://madara.s155.eatj.com/",
+                    "key" : "ABQIAAAASSGl_izfUowx6JE1QGdX_BTPhduOzcw-seCfHt5Mn5IYfzaWiBTe33oTIlb7fNJU_6rsBA7dzyE8Gw"
+                    }
+                    
                    
               ]
          }     

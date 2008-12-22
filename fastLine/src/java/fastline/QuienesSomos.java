@@ -1,12 +1,11 @@
 /*
- * FastLine.java
+ * QuienesSomos.java
  *
- * Created on 16-nov-2008, 17:24:25
+ * Created on 21/12/2008, 07:28:13 PM
  */
  
 package fastline;
 
-import com.sun.faces.extensions.avatar.components.AjaxZone;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
 
@@ -17,9 +16,9 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @author Huachani
+ * @author itachi
  */
-public class FastLine extends AbstractPageBean {
+public class QuienesSomos extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -35,7 +34,7 @@ public class FastLine extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public FastLine() {
+    public QuienesSomos() {
     }
 
     /**
@@ -64,7 +63,7 @@ public class FastLine extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("FastLine Initialization Failure", e);
+            log("QuienesSomos Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -134,30 +133,6 @@ public class FastLine extends AbstractPageBean {
      */
     protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
-    }
-
-    public String login_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case2";
-    }
-
-    public String administracion_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case1";
-    }
-
-    public String quienSomos_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case4";
-    }
-
-    public String reservarPasajes_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "case3";
     }
     
 }
