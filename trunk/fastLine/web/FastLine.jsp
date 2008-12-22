@@ -31,6 +31,8 @@
                         <webuijsf:image height="24" id="image3" style="left: 552px; top: 96px; position: absolute" url="/resources/Community%20Help.png" width="24"/>
                         <webuijsf:image height="24" id="image4" style="left: 552px; top: 120px; position: absolute" url="/resources/lassists.png" width="24"/>
                         <webuijsf:image height="24" id="image5" style="left: 24px; top: 72px; position: absolute" url="/resources/xeyes.png" width="24"/>
+                        <webuijsf:image height="264" id="image6" style="left: 24px; top: 456px; position: absolute" url="/resources/bitybyte48.png" width="792"/>
+                        <webuijsf:textArea id="textArea1" style="left: 672px; top: 768px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
