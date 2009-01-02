@@ -6,9 +6,15 @@
  
 package fastline;
 
-import com.sun.faces.extensions.avatar.components.AjaxZone;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Label;
+import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.event.ValueChangeEvent;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -28,6 +34,78 @@ public class FastLine extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+    }
+    private TextField userName1 = new TextField();
+
+    public TextField getUserName1() {
+        return userName1;
+    }
+
+    public void setUserName1(TextField tf) {
+        this.userName1 = tf;
+    }
+    private PasswordField pass1 = new PasswordField();
+
+    public PasswordField getPass1() {
+        return pass1;
+    }
+
+    public void setPass1(PasswordField pf) {
+        this.pass1 = pf;
+    }
+    private StaticText error = new StaticText();
+
+    public StaticText getError() {
+        return error;
+    }
+
+    public void setError(StaticText st) {
+        this.error = st;
+    }
+    private Button iniciarSesion = new Button();
+
+    public Button getIniciarSesion() {
+        return iniciarSesion;
+    }
+
+    public void setIniciarSesion(Button b) {
+        this.iniciarSesion = b;
+    }
+    private StaticText mensajelogginLabel = new StaticText();
+
+    public StaticText getMensajelogginLabel() {
+        return mensajelogginLabel;
+    }
+
+    public void setMensajelogginLabel(StaticText st) {
+        this.mensajelogginLabel = st;
+    }
+    private Label userLabel = new Label();
+
+    public Label getUserLabel() {
+        return userLabel;
+    }
+
+    public void setUserLabel(Label l) {
+        this.userLabel = l;
+    }
+    private Label passLabel = new Label();
+
+    public Label getPassLabel() {
+        return passLabel;
+    }
+
+    public void setPassLabel(Label l) {
+        this.passLabel = l;
+    }
+    private StaticText userAccount = new StaticText();
+
+    public StaticText getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(StaticText st) {
+        this.userAccount = st;
     }
 
     // </editor-fold>
@@ -158,6 +236,55 @@ public class FastLine extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case3";
+    }
+
+    public String iniciarSesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        if(userName1.getText()==null || pass1.getText()==null )
+            error.setText("Ambos campos son requeridos");
+        else
+        {
+        String usuario=userName1.getText().toString();
+        String pass=pass1.getText().toString();
+        if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
+        { error.setVisible(false);
+            mensajelogginLabel.setVisible(false);
+            userLabel.setVisible(false);
+            passLabel.setVisible(false);
+            userName1.setVisible(false);
+            pass1.setVisible(false);
+            iniciarSesion.setVisible(false);
+            userAccount.setText("Bienvenido "+ usuario+"@akatsuki.com" );
+            userAccount.setVisible(true); 
+        }   
+        else
+            error.setText("El nombre de usuario y password son incorrectos");
+        }
+        
+        //if(usuario.length()==0 && pass.length()==0)
+            
+        
+        
+        
+        //error.setText("errorrr");
+        //System.out.print(userName1.getText());
+        //error.setText(userName1.getText());
+         
+        return null;
+    }
+
+    public String nuevoUsuario_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public void userName1_processValueChange(ValueChangeEvent event) {
+       /* error.setText(userName1.getText());
+        System.out.print("sfsdf"); 
+        System.out.print(userName1.getText());
+        editor.setValue("fdsf");*/
     }
     
 }
