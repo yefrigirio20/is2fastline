@@ -210,4 +210,9 @@
         <managed-bean-class>fastline.QuienesSomos</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>FragmentoFastLine</managed-bean-name>
+        <managed-bean-class>fastline.FragmentoFastLine</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
