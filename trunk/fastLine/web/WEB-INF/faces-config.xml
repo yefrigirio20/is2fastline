@@ -129,6 +129,14 @@
             <from-outcome>case4</from-outcome>
             <to-view-id>/QuienesSomos.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case5</from-outcome>
+            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case6</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/Encomiendas.jsp</from-view-id>

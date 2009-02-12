@@ -6,14 +6,17 @@
  
 package fastline;
 
+
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Hyperlink;
+import com.sun.webui.jsf.component.ImageComponent;
 import com.sun.webui.jsf.component.Label;
 import com.sun.webui.jsf.component.PasswordField;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextField;
+import conexionJDBC.Conector;
 import javax.faces.FacesException;
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.event.ValueChangeEvent;
 
 /**
@@ -106,6 +109,42 @@ public class FastLine extends AbstractPageBean {
 
     public void setUserAccount(StaticText st) {
         this.userAccount = st;
+    }
+    private Hyperlink reservarPasajes = new Hyperlink();
+
+    public Hyperlink getReservarPasajes() {
+        return reservarPasajes;
+    }
+
+    public void setReservarPasajes(Hyperlink h) {
+        this.reservarPasajes = h;
+    }
+    private ImageComponent imageReservar = new ImageComponent();
+
+    public ImageComponent getImageReservar() {
+        return imageReservar;
+    }
+
+    public void setImageReservar(ImageComponent ic) {
+        this.imageReservar = ic;
+    }
+    private Hyperlink nuevoUsuarioAqui = new Hyperlink();
+
+    public Hyperlink getNuevoUsuarioAqui() {
+        return nuevoUsuarioAqui;
+    }
+
+    public void setNuevoUsuarioAqui(Hyperlink h) {
+        this.nuevoUsuarioAqui = h;
+    }
+    private StaticText registrarseClick = new StaticText();
+
+    public StaticText getRegistrarseClick() {
+        return registrarseClick;
+    }
+
+    public void setRegistrarseClick(StaticText st) {
+        this.registrarseClick = st;
     }
 
     // </editor-fold>
@@ -247,6 +286,11 @@ public class FastLine extends AbstractPageBean {
         {
         String usuario=userName1.getText().toString();
         String pass=pass1.getText().toString();
+
+        Conector Con=new Conector("loscalhost","5432","FastLine","postgres","postgres");
+        Con.consultar("select pass from Usuarios where NomUsu='"+usuario+"'" );
+
+
         if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
         { error.setVisible(false);
             mensajelogginLabel.setVisible(false);
@@ -255,8 +299,13 @@ public class FastLine extends AbstractPageBean {
             userName1.setVisible(false);
             pass1.setVisible(false);
             iniciarSesion.setVisible(false);
+            nuevoUsuarioAqui.setVisible(false);
+            registrarseClick.setVisible(false);
+            userAccount.setVisible(true);
+            reservarPasajes.setVisible(true);
+            imageReservar.setVisible(true);
             userAccount.setText("Bienvenido "+ usuario+"@akatsuki.com" );
-            userAccount.setVisible(true); 
+            
         }   
         else
             error.setText("El nombre de usuario y password son incorrectos");
@@ -271,13 +320,13 @@ public class FastLine extends AbstractPageBean {
         //System.out.print(userName1.getText());
         //error.setText(userName1.getText());
          
-        return null;
+        return "case6";
     }
 
     public String nuevoUsuario_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return null;
+        return "case5";
     }
 
     public void userName1_processValueChange(ValueChangeEvent event) {

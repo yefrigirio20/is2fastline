@@ -7,52 +7,61 @@
             <name>fastLine</name>
             <minimum-ant-version>1.6</minimum-ant-version>
             <web-module-libraries>
-                <library files="6">
+                <library>
                     <file>${libs.jsf12.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="2">
+                <library>
                     <file>${libs.jstl11.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="4">
+                <library>
                     <file>${libs.jsf12-support.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="5">
+                <library>
                     <file>${libs.woodstock-components.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="1">
+                <library>
                     <file>${libs.woodstock-theme-default.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="1">
-                    <file>${file.reference.webui-jsf_es.jar}</file>
-                </library>
-                <library files="1">
-                    <file>${file.reference.webui-jsf-suntheme_es.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library files="1">
+                <library>
                     <file>${libs.spring-webmvc.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="2">
+                <library>
                     <file>${libs.spring-framework.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="3">
-                    <file>${libs.jmakilibrary.classpath}</file>
+                <library>
+                    <file>${libs.dynamicfaces_3627099800228261111.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library files="5">
-                    <file>${libs.dynamicfaces_32922.classpath}</file>
+                <library>
+                    <file>${file.reference.postgis_1.1.7.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library>
+                    <file>${file.reference.postgresql-8.2-506.jdbc2.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library>
+                    <file>${file.reference.postgresql-8.2-506.jdbc2ee.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library>
+                    <file>${file.reference.postgresql-8.2-506.jdbc3.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library>
+                    <file>${file.reference.postgresql-8.2-506.jdbc4.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries>
-                <library files="1">
+                <library>
                     <file>${libs.exceptionhandler-runtime.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
