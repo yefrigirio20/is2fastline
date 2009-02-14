@@ -19,6 +19,11 @@ import org.postgresql.util.PSQLException;
  */
 public class Conector {
     private String URL;
+    private String host;
+    private String Puerto;
+    private String Base;
+    private String Usuario;
+    private String PassWord;
     private Connection Conexion;
     private Statement statement;
     public ResultSet Result;
@@ -26,15 +31,20 @@ public class Conector {
     public int Est;
     
     /** Creates a new instance of Conector */
-    public Conector(String host,String Puerto,String Base,String Usuario,String PassWord) {        
-        URL="jdbc:postgresql://"+host+":"+Puerto+"/"+Base;
-        IniciarConexion(URL,Usuario,PassWord);
+    public Conector(){
+        host="localhost";
+        Puerto="5432";
+        Base="FastLine";
+        Usuario="postgres";
+        PassWord="postgres";
+        URL="jdbc:postgresql://"+host+":"+Puerto+"/"+Base;        
     }
     
-    private void IniciarConexion(String RutaConex,String Usuario,String PassWord){
+    public void IniciarConexion(){
+
         try{
             Class.forName("org.postgresql.Driver");
-            Conexion = DriverManager.getConnection(RutaConex,Usuario,PassWord);
+            Conexion = DriverManager.getConnection(URL,Usuario,PassWord);
             statement=Conexion.createStatement();
             Estado="Conexion Exitosa";
         }
@@ -74,6 +84,22 @@ public class Conector {
             Result=null;
             Estado="No se pudo obtener Data";
         }
+    }
+
+    public boolean esUsuario(String usuario,String password){
+        String tmppass="po";
+        Estado="entro a la funcion";
+        try{
+            consultar("select pass from usuarios where idnomusu='"+usuario+"'");
+            tmppass=Result.getString("pass").toString();
+            System.out.println("clave:"+tmppass);
+         }
+        catch(Exception e){
+            Result=null;
+            Estado="No se pudo realizar la consulta";
+            System.out.println("clave:"+tmppass);
+        }
+        return (tmppass==password);
     }
     
     public void consultar(String Consulta){
