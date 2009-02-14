@@ -23,8 +23,8 @@
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 144px; position: absolute; width: 142px" text="Agregar Nuevo Bus"/>
                         <webuijsf:label id="label3" style="left: 48px; top: 192px; position: absolute; text-align: right; width: 72px" text="Matrícula:"/>
                         <webuijsf:label id="label4" style="left: 48px; top: 216px; position: absolute; text-align: right; width: 72px" text="Capacidad:"/>
-                        <webuijsf:textField id="matricula" style="left: 120px; top: 192px; position: absolute"/>
-                        <webuijsf:textField id="capacidad" style="left: 120px; top: 216px; position: absolute"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.matricula}" id="matricula" style="left: 120px; top: 192px; position: absolute"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.capacidad}" id="capacidad" style="left: 120px; top: 216px; position: absolute"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.agregarBus_action}" id="agregarBus"
                             style="height: 24px; left: 167px; top: 240px; position: absolute; width: 72px" text="Agregar Bus"/>
                         <webuijsf:pageSeparator id="pageSeparator1" style="left: 0px; top: 264px; position: absolute; width: 720px"/>
@@ -49,7 +49,7 @@
                         <webuijsf:staticText id="staticText3" style="left: 336px; top: 552px; position: absolute" text="Año"/>
                         <webuijsf:dropDown id="mes" items="#{BusesyChoferes.mesDefaultOptions.options}" style="position: absolute; left: 240px; top: 552px"/>
                         <webuijsf:dropDown id="año" items="#{BusesyChoferes.añoDefaultOptions.options}" style="left: 360px; top: 552px; position: absolute"/>
-                        <webuijsf:textField id="apellPaterno" style="left: 144px; top: 480px; position: absolute"/>
+                        <webuijsf:textField id="apellPaterno" style="left: 144px; top: 480px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.apellPaterno_processValueChange}"/>
                         <webuijsf:textField id="apellMaterno" style="left: 144px; top: 504px; position: absolute"/>
                         <webuijsf:textField id="nombres" style="position: absolute; left: 144px; top: 528px"/>
                         <webuijsf:textField id="DNI" style="left: 144px; top: 576px; position: absolute"/>
