@@ -36,27 +36,23 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${libs.dynamicfaces_3627099800228261111.classpath}</file>
+                    <file>${file.reference.postgis_1.1.7.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${file.reference.postgis_1.1.7.jar}</file>
+                    <file>${file.reference.postgresql-8.2-506.jdbc2.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${file.reference.postgresql-8.2-506.jdbc2.jar}</file>
+                    <file>${file.reference.postgresql-8.2-506.jdbc2ee.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${file.reference.postgresql-8.2-506.jdbc2ee.jar}</file>
+                    <file>${file.reference.postgresql-8.2-506.jdbc3.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${file.reference.postgresql-8.2-506.jdbc3.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library>
-                    <file>${file.reference.postgresql-8.2-506.jdbc4.jar}</file>
+                    <file>${file.reference.postgresql-8.2-506.jdbc4.jar-1}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

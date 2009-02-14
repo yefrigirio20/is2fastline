@@ -278,21 +278,34 @@ public class FastLine extends AbstractPageBean {
     }
 
     public String iniciarSesion_action() {
+        
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        if(userName1.getText()==null || pass1.getText()==null )
+       if(userName1.getText()==null || pass1.getText()==null )
             error.setText("Ambos campos son requeridos");
         else
         {
         String usuario=userName1.getText().toString();
         String pass=pass1.getText().toString();
 
-        Conector Con=new Conector("loscalhost","5432","FastLine","postgres","postgres");
-        Con.consultar("select pass from Usuarios where NomUsu='"+usuario+"'" );
+        Conector Con=new Conector();
+        Con.IniciarConexion();        
+        Con.consultar("select pass from usuarios where idnomusu='"+usuario+"'");
 
+        boolean esUsuario=false;
+        try{
+            Con.getResultSet().next();
+            if(pass.compareTo(Con.getResultSet().getString("pass"))==0)
+                esUsuario=true;
+        }
+        catch (Exception e) {
+            error.setText("No se pudo hacer la consulta");
+        }
+        
 
-        if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
-        { error.setVisible(false);
+        //if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
+        if(esUsuario)
+        {   error.setVisible(false);
             mensajelogginLabel.setVisible(false);
             userLabel.setVisible(false);
             passLabel.setVisible(false);
@@ -308,7 +321,8 @@ public class FastLine extends AbstractPageBean {
             
         }   
         else
-            error.setText("El nombre de usuario y password son incorrectos");
+            //error.setText("El nombre de usuario y password son incorrectos");
+             error.setText(Con.Estado);
         }
         
         //if(usuario.length()==0 && pass.length()==0)
