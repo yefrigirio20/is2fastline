@@ -290,7 +290,7 @@ public class FastLine extends AbstractPageBean {
 
         Conector Con=new Conector();
         Con.IniciarConexion();        
-        Con.consultar("select pass from usuarios where idnomusu='"+usuario+"'");
+        /*Con.consultar("select pass from usuarios where idnomusu='"+usuario+"'");
 
         boolean esUsuario=false;
         try{
@@ -301,10 +301,10 @@ public class FastLine extends AbstractPageBean {
         catch (Exception e) {
             error.setText("No se pudo hacer la consulta");
         }
-        
+        */
 
         //if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
-        if(esUsuario)
+        if(Con.esUsuario(usuario,pass))
         {   error.setVisible(false);
             mensajelogginLabel.setVisible(false);
             userLabel.setVisible(false);
@@ -321,8 +321,7 @@ public class FastLine extends AbstractPageBean {
             
         }   
         else
-            //error.setText("El nombre de usuario y password son incorrectos");
-             error.setText(Con.Estado);
+           error.setText("El nombre de usuario y/o password son incorrectos");
         }
         
         //if(usuario.length()==0 && pass.length()==0)

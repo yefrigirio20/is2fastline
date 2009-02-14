@@ -86,20 +86,18 @@ public class Conector {
         }
     }
 
-    public boolean esUsuario(String usuario,String password){
-        String tmppass="po";
-        Estado="entro a la funcion";
+    public boolean esUsuario(String usuario,String password){        
+        consultar("select pass from usuarios where idnomusu='"+usuario+"'");
+        boolean esUsuario=false;
         try{
-            consultar("select pass from usuarios where idnomusu='"+usuario+"'");
-            tmppass=Result.getString("pass").toString();
-            System.out.println("clave:"+tmppass);
-         }
-        catch(Exception e){
-            Result=null;
-            Estado="No se pudo realizar la consulta";
-            System.out.println("clave:"+tmppass);
+            getResultSet().next();
+            if(password.compareTo(getResultSet().getString("pass"))==0)
+                esUsuario=true;
         }
-        return (tmppass==password);
+        catch (Exception e) {
+            Estado="No se pudo hacer la consulta";
+        }
+        return esUsuario;
     }
     
     public void consultar(String Consulta){
