@@ -2,7 +2,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      
-        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAASSGl_izfUowx6JE1QGdX_BRxmEMFNWkFyOXteSm4R2a8j6JoEBQekgoAuSKncG3CU2gczYsRhOhJCw" type="text/javascript"></script>
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAASSGl_izfUowx6JE1QGdX_BTe4ewfFQqOGYDvlcTNK7xo55wNrBTL_bnksi22PUVz3xt1b8nIO55Swg" type="text/javascript"></script>
 
  
         </head>
@@ -28,7 +28,12 @@
                         
                     var side_bar_html = "";
                     var gmarkers = [];
-
+                    var baseIcon = new GIcon();
+                        baseIcon.iconSize=new GSize(32,32);
+                        baseIcon.shadowSize=new GSize(56,32);
+                        baseIcon.iconAnchor=new GPoint(16,32);
+                        baseIcon.infoWindowAnchor=new GPoint(16,0);
+                    var casa = new GIcon(baseIcon, "http://img155.imageshack.us/img155/2707/1animated38em4.gif", null, null);
                     function createMarker(point,name,html) {
                         var marker = new GMarker(point);
                         GEvent.addListener(marker, "click", function() {
@@ -86,7 +91,7 @@
                             out.print(comi+departamentos[cont]+comi+",");
                             //out.print(" 'Oficina principal FastLine Arequipa <img src=");
                             //out.print(comi+"images/aqp.jpeg"+comi+"width=150 height=100> ');");
-                           out.println(" 'Bienvenido a "+departamentos[cont]+" FastLine <img src="+comi+"departamentosImages/"+departamentos[cont]+".jpeg"+comi+" width=150 height=100> ');");
+                           out.println(" 'Bienvenido a "+departamentos[cont]+" FastLine <img src="+comi+"departamentosImages/"+departamentos[cont]+".jpeg"+comi+" width=150 height=100>');");
                             //out.println(depInfo[0]);
                             out.println("map2r.addOverlay(marker);");
                       }
