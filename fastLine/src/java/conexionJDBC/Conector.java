@@ -107,7 +107,7 @@ public class Conector {
             statement.executeUpdate(insert);
         }
         catch (Exception e) {
-            Estado="No se pudo isnertar el dato";
+            Estado="No se pudo insertar el dato";
         }
 
     }

@@ -6,7 +6,6 @@
 -->
 <div style="-rave-layout: grid; width: 400px; height: 200px" xmlns:f="http://java.sun.com/jsf/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <f:subview id="FragmentoFastLine">
-        
-        
+        <jsp:include page="FragmentoFastLineGoogle.jsp"></jsp:include>
     </f:subview>
 </div>

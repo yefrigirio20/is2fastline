@@ -510,10 +510,11 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc2ee.jar}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.postgresql-8.2-506.jdbc2ee.jar" todir="${dist.ear.dir}"/>
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc3.jar}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.postgresql-8.2-506.jdbc3.jar" todir="${dist.ear.dir}"/>
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc4.jar}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.file.reference.postgresql-8.2-506.jdbc4.jar" todir="${dist.ear.dir}"/>
+        <copyfiles files="${libs.dynamicfaces_23322.classpath}" iftldtodir="${build.web.dir}/WEB-INF" manifestproperty="manifest.libs.dynamicfaces_23322.classpath" todir="${dist.ear.dir}"/>
         <copyfiles files="${libs.exceptionhandler-runtime.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${manifest.libs.jsf12.classpath} ${manifest.libs.jstl11.classpath} ${manifest.libs.jsf12-support.classpath} ${manifest.libs.woodstock-components.classpath} ${manifest.libs.woodstock-theme-default.classpath} ${manifest.libs.spring-webmvc.classpath} ${manifest.libs.spring-framework.classpath} ${manifest.file.reference.postgis_1.1.7.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc2.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc2ee.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc3.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc4.jar} "/>
+            <attribute name="Class-Path" value="${manifest.libs.jsf12.classpath} ${manifest.libs.jstl11.classpath} ${manifest.libs.jsf12-support.classpath} ${manifest.libs.woodstock-components.classpath} ${manifest.libs.woodstock-theme-default.classpath} ${manifest.libs.spring-webmvc.classpath} ${manifest.libs.spring-framework.classpath} ${manifest.file.reference.postgis_1.1.7.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc2.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc2ee.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc3.jar} ${manifest.file.reference.postgresql-8.2-506.jdbc4.jar} ${manifest.libs.dynamicfaces_23322.classpath} "/>
         </manifest>
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
@@ -529,6 +530,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc2ee.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc3.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.postgresql-8.2-506.jdbc4.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${libs.dynamicfaces_23322.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${libs.exceptionhandler-runtime.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">

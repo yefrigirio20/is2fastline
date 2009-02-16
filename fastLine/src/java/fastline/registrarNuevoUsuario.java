@@ -12,6 +12,8 @@ import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import conexionJDBC.Conector;
 import javax.faces.FacesException;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 /**
@@ -187,6 +189,15 @@ public class registrarNuevoUsuario extends AbstractPageBean {
     public void setConfirmPass(TextField tf) {
         this.confirmPass = tf;
     }
+    private TextField prueba = new TextField();
+
+    public TextField getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(TextField tf) {
+        this.prueba = tf;
+    }
 
     // </editor-fold>
 
@@ -340,6 +351,19 @@ public class registrarNuevoUsuario extends AbstractPageBean {
         // case name where null will return to the same page.
         return "case2";
     }
+
+    public void mes_processValueChange(ValueChangeEvent event) {
+        int nromes=Integer.parseInt(mes.getValue().toString());
+        if(nromes==1||nromes==3||nromes==5||nromes==7||nromes==8||nromes==9||nromes==10)
+            poblarComboDias(31);
+        else if(nromes==2)
+            poblarComboDias(28);
+        else
+            poblarComboDias(30);       
+
+    }
+
+    
     
 }
 
