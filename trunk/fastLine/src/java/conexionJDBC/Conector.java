@@ -99,7 +99,19 @@ public class Conector {
         }
         return esUsuario;
     }
-    
+
+    public void insertarNuevoUsuario(String idNomUsu,String passUsu,String apelPatUsu,String apelMatUsu,String nombresUsu,String fecNac,String dniUsu,String emailUsu){
+        String insert="insert into usuarios values('"+idNomUsu+"','"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
+        try{
+            //statement=Conexion.prepareStatement(insert);
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo isnertar el dato";
+        }
+
+    }
+
     public void consultar(String Consulta){
         try{
             Result=statement.executeQuery(Consulta);

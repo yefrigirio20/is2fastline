@@ -7,7 +7,10 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
+import conexionJDBC.Conector;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -29,14 +32,39 @@ public class registrarNuevoUsuario extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        diaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "1"), new com.sun.webui.jsf.model.Option("", "2"), new com.sun.webui.jsf.model.Option("", "3"), new com.sun.webui.jsf.model.Option("", "4"), new com.sun.webui.jsf.model.Option("", "5"), new com.sun.webui.jsf.model.Option("", "6"), new com.sun.webui.jsf.model.Option("", "7"), new com.sun.webui.jsf.model.Option("", "8"), new com.sun.webui.jsf.model.Option("", "9"), new com.sun.webui.jsf.model.Option("", "10"), new com.sun.webui.jsf.model.Option("", "11"), new com.sun.webui.jsf.model.Option("", "12"), new com.sun.webui.jsf.model.Option("", "13"), new com.sun.webui.jsf.model.Option("", "14"), new com.sun.webui.jsf.model.Option("", "15"), new com.sun.webui.jsf.model.Option("", "16"), new com.sun.webui.jsf.model.Option("", "17"), new com.sun.webui.jsf.model.Option("", "18"), new com.sun.webui.jsf.model.Option("", "19"), new com.sun.webui.jsf.model.Option("", "20"), new com.sun.webui.jsf.model.Option("", "21"), new com.sun.webui.jsf.model.Option("", "22"), new com.sun.webui.jsf.model.Option("", "23"), new com.sun.webui.jsf.model.Option("", "24"), new com.sun.webui.jsf.model.Option("", "25"), new com.sun.webui.jsf.model.Option("", "26"), new com.sun.webui.jsf.model.Option("", "27"), new com.sun.webui.jsf.model.Option("", "28"), new com.sun.webui.jsf.model.Option("", "29"), new com.sun.webui.jsf.model.Option("", "30"), new com.sun.webui.jsf.model.Option("", "31")});
-        mesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("item1", "Enero"), new com.sun.webui.jsf.model.Option("item2", "Febrero"), new com.sun.webui.jsf.model.Option("item3", "Marzo"), new com.sun.webui.jsf.model.Option("value", "Abril"), new com.sun.webui.jsf.model.Option("value", "Mayo"), new com.sun.webui.jsf.model.Option("value", "Junio"), new com.sun.webui.jsf.model.Option("value", "Julio"), new com.sun.webui.jsf.model.Option("value", "Agosto"), new com.sun.webui.jsf.model.Option("value", "Septiembre"), new com.sun.webui.jsf.model.Option("value", "Octubre"), new com.sun.webui.jsf.model.Option("value", "Noviembre"), new com.sun.webui.jsf.model.Option("value", "Diciembre")});
-        añoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("item1", "1981"), new com.sun.webui.jsf.model.Option("item2", "1982"), new com.sun.webui.jsf.model.Option("item3", "1983"), new com.sun.webui.jsf.model.Option("value", "1984"), new com.sun.webui.jsf.model.Option("value", "1985"), new com.sun.webui.jsf.model.Option("value", "1986"), new com.sun.webui.jsf.model.Option("value", "1987"), new com.sun.webui.jsf.model.Option("value", "1988"), new com.sun.webui.jsf.model.Option("value", "1989"), new com.sun.webui.jsf.model.Option("value", "1990"), new com.sun.webui.jsf.model.Option("value", "1991"), new com.sun.webui.jsf.model.Option("value", "1992"), new com.sun.webui.jsf.model.Option("value", "1993"), new com.sun.webui.jsf.model.Option("value", "1994"), new com.sun.webui.jsf.model.Option("value", "1995"), new com.sun.webui.jsf.model.Option("value", "1996"), new com.sun.webui.jsf.model.Option("value", "1997"), new com.sun.webui.jsf.model.Option("value", "1998"), new com.sun.webui.jsf.model.Option("value", "1999"), new com.sun.webui.jsf.model.Option("value", "2000"), new com.sun.webui.jsf.model.Option("value", "2001"), new com.sun.webui.jsf.model.Option("value", "2002"), new com.sun.webui.jsf.model.Option("value", "2003"), new com.sun.webui.jsf.model.Option("value", "2004"), new com.sun.webui.jsf.model.Option("value", "2005")});
+        //diaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "1"), new com.sun.webui.jsf.model.Option("", "2"), new com.sun.webui.jsf.model.Option("", "3"), new com.sun.webui.jsf.model.Option("", "4"), new com.sun.webui.jsf.model.Option("", "5"), new com.sun.webui.jsf.model.Option("", "6"), new com.sun.webui.jsf.model.Option("", "7"), new com.sun.webui.jsf.model.Option("", "8"), new com.sun.webui.jsf.model.Option("", "9"), new com.sun.webui.jsf.model.Option("", "10"), new com.sun.webui.jsf.model.Option("", "11"), new com.sun.webui.jsf.model.Option("", "12"), new com.sun.webui.jsf.model.Option("", "13"), new com.sun.webui.jsf.model.Option("", "14"), new com.sun.webui.jsf.model.Option("", "15"), new com.sun.webui.jsf.model.Option("", "16"), new com.sun.webui.jsf.model.Option("", "17"), new com.sun.webui.jsf.model.Option("", "18"), new com.sun.webui.jsf.model.Option("", "19"), new com.sun.webui.jsf.model.Option("", "20"), new com.sun.webui.jsf.model.Option("", "21"), new com.sun.webui.jsf.model.Option("", "22"), new com.sun.webui.jsf.model.Option("", "23"), new com.sun.webui.jsf.model.Option("", "24"), new com.sun.webui.jsf.model.Option("", "25"), new com.sun.webui.jsf.model.Option("", "26"), new com.sun.webui.jsf.model.Option("", "27"), new com.sun.webui.jsf.model.Option("", "28"), new com.sun.webui.jsf.model.Option("", "29"), new com.sun.webui.jsf.model.Option("", "30"), new com.sun.webui.jsf.model.Option("", "31")});
+        mesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("1", "Enero"), new com.sun.webui.jsf.model.Option("2", "Febrero"), new com.sun.webui.jsf.model.Option("3", "Marzo"), new com.sun.webui.jsf.model.Option("4", "Abril"), new com.sun.webui.jsf.model.Option("5", "Mayo"), new com.sun.webui.jsf.model.Option("6", "Junio"), new com.sun.webui.jsf.model.Option("7", "Julio"), new com.sun.webui.jsf.model.Option("8", "Agosto"), new com.sun.webui.jsf.model.Option("9", "Septiembre"), new com.sun.webui.jsf.model.Option("10", "Octubre"), new com.sun.webui.jsf.model.Option("11", "Noviembre"), new com.sun.webui.jsf.model.Option("12", "Diciembre")});
+        //añoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("item1", "1981"), new com.sun.webui.jsf.model.Option("item2", "1982"), new com.sun.webui.jsf.model.Option("item3", "1983"), new com.sun.webui.jsf.model.Option("value", "1984"), new com.sun.webui.jsf.model.Option("value", "1985"), new com.sun.webui.jsf.model.Option("value", "1986"), new com.sun.webui.jsf.model.Option("value", "1987"), new com.sun.webui.jsf.model.Option("value", "1988"), new com.sun.webui.jsf.model.Option("value", "1989"), new com.sun.webui.jsf.model.Option("value", "1990"), new com.sun.webui.jsf.model.Option("value", "1991"), new com.sun.webui.jsf.model.Option("value", "1992"), new com.sun.webui.jsf.model.Option("value", "1993"), new com.sun.webui.jsf.model.Option("value", "1994"), new com.sun.webui.jsf.model.Option("value", "1995"), new com.sun.webui.jsf.model.Option("value", "1996"), new com.sun.webui.jsf.model.Option("value", "1997"), new com.sun.webui.jsf.model.Option("value", "1998"), new com.sun.webui.jsf.model.Option("value", "1999"), new com.sun.webui.jsf.model.Option("value", "2000"), new com.sun.webui.jsf.model.Option("value", "2001"), new com.sun.webui.jsf.model.Option("value", "2002"), new com.sun.webui.jsf.model.Option("value", "2003"), new com.sun.webui.jsf.model.Option("value", "2004"), new com.sun.webui.jsf.model.Option("value", "2005")});
+
+        this.poblarComboDias(30);
+        this.poblarComboAños(1950,2000);
+
     }
     private SingleSelectOptionsList diaDefaultOptions = new SingleSelectOptionsList();
 
     public SingleSelectOptionsList getDiaDefaultOptions() {
         return diaDefaultOptions;
+    }
+
+    public void poblarComboAños(int inicio,int fin){
+
+        com.sun.webui.jsf.model.Option[] años=new com.sun.webui.jsf.model.Option[fin-inicio+1];
+        int i=0;
+        for(int a=inicio;a<=fin;a++){
+            años[i]=new com.sun.webui.jsf.model.Option(""+a,""+a);
+            i++;
+        }
+        añoDefaultOptions.setOptions(años);
+    }
+    public void poblarComboDias(int numDias){
+
+        com.sun.webui.jsf.model.Option[] dias=new com.sun.webui.jsf.model.Option[numDias];
+
+        for(int d=0;d<numDias;d++){
+            dias[d]=new com.sun.webui.jsf.model.Option(""+(d+1),""+(d+1));
+
+        }
+        diaDefaultOptions.setOptions(dias);
     }
 
     public void setDiaDefaultOptions(SingleSelectOptionsList ssol) {
@@ -59,6 +87,105 @@ public class registrarNuevoUsuario extends AbstractPageBean {
 
     public void setMesDefaultOptions(SingleSelectOptionsList ssol) {
         this.mesDefaultOptions = ssol;
+    }
+    private TextField apellPaterno = new TextField();
+
+    public TextField getApellPaterno() {
+        return apellPaterno;
+    }
+
+    public void setApellPaterno(TextField tf) {
+        this.apellPaterno = tf;
+    }
+    private TextField apellMaterno = new TextField();
+
+    public TextField getApellMaterno() {
+        return apellMaterno;
+    }
+
+    public void setApellMaterno(TextField tf) {
+        this.apellMaterno = tf;
+    }
+    private TextField nombres = new TextField();
+
+    public TextField getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(TextField tf) {
+        this.nombres = tf;
+    }
+    private DropDown mes = new DropDown();
+
+    public DropDown getMes() {
+        return mes;
+    }
+
+    public void setMes(DropDown dd) {
+        this.mes = dd;
+    }
+    private DropDown dia = new DropDown();
+
+    public DropDown getDia() {
+        return dia;
+    }
+
+    public void setDia(DropDown dd) {
+        this.dia = dd;
+    }
+    private DropDown año = new DropDown();
+
+    public DropDown getAño() {
+        return año;
+    }
+
+    public void setAño(DropDown dd) {
+        this.año = dd;
+    }
+    private TextField DNI = new TextField();
+
+    public TextField getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(TextField tf) {
+        this.DNI = tf;
+    }
+    private TextField email = new TextField();
+
+    public TextField getEmail() {
+        return email;
+    }
+
+    public void setEmail(TextField tf) {
+        this.email = tf;
+    }
+    private TextField userName = new TextField();
+
+    public TextField getUserName() {
+        return userName;
+    }
+
+    public void setUserName(TextField tf) {
+        this.userName = tf;
+    }
+    private TextField pass = new TextField();
+
+    public TextField getPass() {
+        return pass;
+    }
+
+    public void setPass(TextField tf) {
+        this.pass = tf;
+    }
+    private TextField confirmPass = new TextField();
+
+    public TextField getConfirmPass() {
+        return confirmPass;
+    }
+
+    public void setConfirmPass(TextField tf) {
+        this.confirmPass = tf;
     }
 
     // </editor-fold>
@@ -182,6 +309,23 @@ public class registrarNuevoUsuario extends AbstractPageBean {
     public String crearCuenta_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        String apelPatUsu=apellPaterno.getText().toString();
+        String apelMatUsu=apellMaterno.getText().toString();
+        String dniUsu=DNI.getText().toString();
+        String nombresUsu=nombres.getText().toString();
+        String emailUsu=email.getText().toString();
+        String idNomUsu=userName.getText().toString();
+        String passUsu=pass.getText().toString();
+        String diaNacUsu=dia.getValue().toString();
+        String mesNacUsu=mes.getValue().toString();
+        String añoNacUsu=año.getValue().toString();
+        String fecNacUsu=mesNacUsu+"/"+diaNacUsu+"/"+añoNacUsu;
+        Conector Con=new Conector();
+        Con.IniciarConexion();
+        email.setText("punto1");
+        Con.insertarNuevoUsuario(idNomUsu, passUsu, apelPatUsu, apelMatUsu, nombresUsu, fecNacUsu, dniUsu, emailUsu);
+        email.setText(fecNacUsu);
+
         return null;
     }
 
