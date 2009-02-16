@@ -4,13 +4,15 @@
     Created on : 12-nov-2008, 20:27:08
     Author     : Huachani
 -->
-<jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
+<jsp:root version="2.1" xmlns:df="http://java.sun.com/jsf/dynamicfaces" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"/>
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
                 <webuijsf:head id="head1" title="FastLine - Registro de Nuevo Usuario">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <df:ajaxTransaction id="ajaxTransaction1" inputs="page1:html1:body1:form1:mes" render="page1:html1:body1:form1:zona1:prueba"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="background-color: rgb(139, 175, 228); -rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -27,7 +29,8 @@
                             onChange="" style="left: 336px; top: 288px; position: absolute" valueChangeListenerExpression="#{registrarNuevoUsuario.dropDown2_processValueChange}"/>
                         <webuijsf:dropDown binding="#{registrarNuevoUsuario.año}" id="año" items="#{registrarNuevoUsuario.añoDefaultOptions.options}"
                             style="left: 408px; top: 288px; position: absolute" valueChangeListenerExpression="#{registrarNuevoUsuario.dropDown3_processValueChange}"/>
-                        <webuijsf:dropDown binding="#{registrarNuevoUsuario.mes}" id="mes" items="#{registrarNuevoUsuario.mesDefaultOptions.options}" style="left: 216px; top: 288px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{registrarNuevoUsuario.mes}" id="mes" items="#{registrarNuevoUsuario.mesDefaultOptions.options}"
+                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'mes');" style="left: 216px; top: 288px; position: absolute" valueChangeListenerExpression="#{registrarNuevoUsuario.mes_processValueChange}"/>
                         <webuijsf:staticText id="staticText1" style="left: 312px; top: 288px; position: absolute" text="Día"/>
                         <webuijsf:staticText id="staticText2" style="left: 192px; top: 288px; position: absolute" text="Mes"/>
                         <webuijsf:staticText id="staticText3" style="left: 384px; top: 288px; position: absolute" text="Año"/>
@@ -57,6 +60,9 @@
                         <webuijsf:hyperlink actionExpression="#{registrarNuevoUsuario.regresar_action}" id="regresar"
                             style="height: 24px; left: 72px; top: 504px; position: absolute; width: 48px" text="Regresar"/>
                         <webuijsf:image height="48" id="image5" style="left: 24px; top: 168px; position: absolute" url="/resources/db_add.png" width="48"/>
+                        <jsfExt:ajaxZone id="zona1" style="height: 94px; left: 504px; top: 312px; position: absolute; width: 214px; -rave-layout: grid">
+                            <webuijsf:textField binding="#{registrarNuevoUsuario.prueba}" id="prueba" style="position: absolute; left: 24px; top: 24px; width: 168px; height: 24px"/>
+                        </jsfExt:ajaxZone>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
