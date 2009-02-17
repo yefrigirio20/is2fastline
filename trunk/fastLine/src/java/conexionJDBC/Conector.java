@@ -100,6 +100,36 @@ public class Conector {
         return esUsuario;
     }
 
+    public boolean existeUsuario(String usu){
+        boolean existe=false;
+        consultar("select count(nomusu) from usuarios where idnomusu='"+usu+"'");
+        try{
+            getResultSet().next();
+            if(getResultSet().getInt("count")>0)
+            //if(password.compareTo(getResultSet().getString("pass"))==0)
+                existe=true;
+        }
+        catch (Exception e) {
+            Estado="No se pudo hacer la consulta";
+        }
+        return existe;
+    }
+
+    public boolean existeDNI(String dni){
+        boolean existe=false;
+        consultar("select count(dniusu) from usuarios where dniusu='"+dni+"'");
+        try{
+            getResultSet().next();
+            if(getResultSet().getInt("count")>0)
+            //if(password.compareTo(getResultSet().getString("pass"))==0)
+                existe=true;
+        }
+        catch (Exception e) {
+            Estado="No se pudo hacer la consulta";
+        }
+        return existe;
+    }
+
     public void insertarNuevoUsuario(String idNomUsu,String passUsu,String apelPatUsu,String apelMatUsu,String nombresUsu,String fecNac,String dniUsu,String emailUsu){
         String insert="insert into usuarios values('"+idNomUsu+"','"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
         try{
