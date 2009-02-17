@@ -13,6 +13,7 @@
                 <webuijsf:head id="head1" title="FastLine - Registro de Nuevo Usuario">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                     <df:ajaxTransaction id="ajaxTransaction1" inputs="page1:html1:body1:form1:mes" render="page1:html1:body1:form1:zona1:prueba"/>
+                    <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:crearCuenta" render="page1:html1:body1:form1:errorDNI,page1:html1:body1:form1:errorNomUsu,page1:html1:body1:form1:errorPass,page1:html1:body1:form1:errorGeneral,page1:html1:body1:form1:errorApelPat,page1:html1:body1:form1:errorApelMat,page1:html1:body1:form1:errorNombres,page1:html1:body1:form1:errorEmail"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="background-color: rgb(139, 175, 228); -rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -35,9 +36,8 @@
                         <webuijsf:staticText id="staticText2" style="left: 192px; top: 288px; position: absolute" text="Mes"/>
                         <webuijsf:staticText id="staticText3" style="left: 384px; top: 288px; position: absolute" text="Año"/>
                         <webuijsf:label id="label6" style="left: 48px; top: 360px; position: absolute; text-align: right; width: 142px" text="Nombre de Usuario:"/>
-                        <webuijsf:label for="pass" id="label7" style="left: 120px; top: 384px; position: absolute; text-align: right; width: 70px" text="Contraseña:"/>
+                        <webuijsf:label id="label7" style="left: 120px; top: 384px; position: absolute; text-align: right; width: 70px" text="Contraseña:"/>
                         <webuijsf:textField binding="#{registrarNuevoUsuario.userName}" id="userName" style="left: 192px; top: 360px; position: absolute"/>
-                        <webuijsf:textField binding="#{registrarNuevoUsuario.pass}" id="pass" style="height: 24px; left: 192px; top: 384px; position: absolute; width: 168px"/>
                         <webuijsf:label id="label8"
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 70px; left: 0px; top: 72px; position: absolute; width: 838px" text="Registro de Nuevo Usuario de FastLine"/>
                         <webuijsf:label id="label9" style="left: 72px; top: 168px; position: absolute" text="Ingrese sus datos"/>
@@ -50,8 +50,7 @@
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 46px; left: 72px; top: 0px; position: absolute; width: 166px" text="FastLine"/>
                         <webuijsf:label id="label11" style="left: 72px; top: 240px; position: absolute; text-align: right; width: 118px" text="Apellido Materno:"/>
                         <webuijsf:textField binding="#{registrarNuevoUsuario.apellMaterno}" id="apellMaterno" style="left: 192px; top: 240px; position: absolute"/>
-                        <webuijsf:label for="pass" id="label12" style="left: 48px; top: 408px; position: absolute; text-align: right; width: 142px" text="Confirme su Contraseña:"/>
-                        <webuijsf:textField binding="#{registrarNuevoUsuario.confirmPass}" id="confirmPass" style="left: 192px; top: 408px; position: absolute"/>
+                        <webuijsf:label id="label12" style="left: 48px; top: 408px; position: absolute; text-align: right; width: 142px" text="Confirme su Contraseña:"/>
                         <webuijsf:image height="24" id="image2" style="left: 336px; top: 456px; position: absolute" url="/resources/apply.png" width="24"/>
                         <webuijsf:image height="24" id="image3" style="left: 48px; top: 504px; position: absolute" url="/resources/back.png" width="24"/>
                         <webuijsf:image height="24" id="image4" style="left: 168px; top: 504px; position: absolute" url="/resources/folder_home.png" width="24"/>
@@ -60,9 +59,16 @@
                         <webuijsf:hyperlink actionExpression="#{registrarNuevoUsuario.regresar_action}" id="regresar"
                             style="height: 24px; left: 72px; top: 504px; position: absolute; width: 48px" text="Regresar"/>
                         <webuijsf:image height="48" id="image5" style="left: 24px; top: 168px; position: absolute" url="/resources/db_add.png" width="48"/>
-                        <jsfExt:ajaxZone id="zona1" style="height: 94px; left: 504px; top: 312px; position: absolute; width: 214px; -rave-layout: grid">
-                            <webuijsf:textField binding="#{registrarNuevoUsuario.prueba}" id="prueba" style="position: absolute; left: 24px; top: 24px; width: 168px; height: 24px"/>
-                        </jsfExt:ajaxZone>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorNomUsu}" id="errorNomUsu" style="color: red; left: 480px; top: 360px; position: absolute; width: 192px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorPass}" id="errorPass" style="color: red; left: 336px; top: 384px; position: absolute; width: 144px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorDNI}" id="errorDNI" style="color: red; left: 336px; top: 312px; position: absolute; width: 310px"/>
+                        <webuijsf:passwordField binding="#{registrarNuevoUsuario.pass}" id="pass" style="position: absolute; left: 192px; top: 384px"/>
+                        <webuijsf:passwordField binding="#{registrarNuevoUsuario.confirmPass}" id="confirmPass" style="position: absolute; left: 192px; top: 408px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorGeneral}" id="errorGeneral" style="color: red; left: 384px; top: 456px; position: absolute"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorApelPat}" id="errorApelPat" style="color: red; height: 24px; left: 336px; top: 216px; position: absolute; width: 240px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorApelMat}" id="errorApelMat" style="color: red; height: 24px; left: 336px; top: 240px; position: absolute; width: 240px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorNombres}" id="errorNombres" style="color: red; height: 24px; left: 336px; top: 264px; position: absolute; width: 240px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorEmail}" id="errorEmail" style="color: red; height: 24px; left: 336px; top: 336px; position: absolute; width: 240px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

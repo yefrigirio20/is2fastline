@@ -8,6 +8,8 @@ package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import conexionJDBC.Conector;
@@ -171,32 +173,95 @@ public class registrarNuevoUsuario extends AbstractPageBean {
     public void setUserName(TextField tf) {
         this.userName = tf;
     }
-    private TextField pass = new TextField();
+    private StaticText errorDNI = new StaticText();
 
-    public TextField getPass() {
+    public StaticText getErrorDNI() {
+        return errorDNI;
+    }
+
+    public void setErrorDNI(StaticText st) {
+        this.errorDNI = st;
+    }
+    private StaticText errorNomUsu = new StaticText();
+
+    public StaticText getErrorNomUsu() {
+        return errorNomUsu;
+    }
+
+    public void setErrorNomUsu(StaticText st) {
+        this.errorNomUsu = st;
+    }
+    private StaticText errorPass = new StaticText();
+
+    public StaticText getErrorPass() {
+        return errorPass;
+    }
+
+    public void setErrorPass(StaticText st) {
+        this.errorPass = st;
+    }
+    private PasswordField pass = new PasswordField();
+
+    public PasswordField getPass() {
         return pass;
     }
 
-    public void setPass(TextField tf) {
-        this.pass = tf;
+    public void setPass(PasswordField pf) {
+        this.pass = pf;
     }
-    private TextField confirmPass = new TextField();
+    private PasswordField confirmPass = new PasswordField();
 
-    public TextField getConfirmPass() {
+    public PasswordField getConfirmPass() {
         return confirmPass;
     }
 
-    public void setConfirmPass(TextField tf) {
-        this.confirmPass = tf;
+    public void setConfirmPass(PasswordField pf) {
+        this.confirmPass = pf;
     }
-    private TextField prueba = new TextField();
+    private StaticText errorGeneral = new StaticText();
 
-    public TextField getPrueba() {
-        return prueba;
+    public StaticText getErrorGeneral() {
+        return errorGeneral;
     }
 
-    public void setPrueba(TextField tf) {
-        this.prueba = tf;
+    public void setErrorGeneral(StaticText st) {
+        this.errorGeneral = st;
+    }
+    private StaticText errorApelPat = new StaticText();
+
+    public StaticText getErrorApelPat() {
+        return errorApelPat;
+    }
+
+    public void setErrorApelPat(StaticText st) {
+        this.errorApelPat = st;
+    }
+    private StaticText errorApelMat = new StaticText();
+
+    public StaticText getErrorApelMat() {
+        return errorApelMat;
+    }
+
+    public void setErrorApelMat(StaticText st) {
+        this.errorApelMat = st;
+    }
+    private StaticText errorNombres = new StaticText();
+
+    public StaticText getErrorNombres() {
+        return errorNombres;
+    }
+
+    public void setErrorNombres(StaticText st) {
+        this.errorNombres = st;
+    }
+    private StaticText errorEmail = new StaticText();
+
+    public StaticText getErrorEmail() {
+        return errorEmail;
+    }
+
+    public void setErrorEmail(StaticText st) {
+        this.errorEmail = st;
     }
 
     // </editor-fold>
@@ -320,24 +385,129 @@ public class registrarNuevoUsuario extends AbstractPageBean {
     public String crearCuenta_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        String apelPatUsu=apellPaterno.getText().toString();
-        String apelMatUsu=apellMaterno.getText().toString();
-        String dniUsu=DNI.getText().toString();
-        String nombresUsu=nombres.getText().toString();
-        String emailUsu=email.getText().toString();
-        String idNomUsu=userName.getText().toString();
-        String passUsu=pass.getText().toString();
+
+        String apelPatUsu="";
+        String apelMatUsu="";
+        String dniUsu="";
+        String nombresUsu="";
+        String emailUsu="";
+        String idNomUsu="";
+        String passUsu="";
+        String confirmPassUsu="";
         String diaNacUsu=dia.getValue().toString();
         String mesNacUsu=mes.getValue().toString();
         String añoNacUsu=año.getValue().toString();
         String fecNacUsu=mesNacUsu+"/"+diaNacUsu+"/"+añoNacUsu;
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        email.setText("punto1");
-        Con.insertarNuevoUsuario(idNomUsu, passUsu, apelPatUsu, apelMatUsu, nombresUsu, fecNacUsu, dniUsu, emailUsu);
-        email.setText(fecNacUsu);
 
-        return null;
+
+        boolean todoCorrecto=true;
+
+        errorDNI.setVisible(false);
+        errorPass.setVisible(false);
+        errorNomUsu.setVisible(false);
+        errorDNI.setVisible(false);
+        errorGeneral.setVisible(false);
+        errorApelPat.setVisible(false);
+        errorApelMat.setVisible(false);
+        errorNombres.setVisible(false);
+        errorEmail.setVisible(false);
+
+
+        if(apellPaterno.getText()==null||apellMaterno.getText()==null||DNI.getText()==null||nombres.getText()==null||email.getText()==null||userName.getText()==null||pass.getText()==null||confirmPass.getText()==null){
+            errorGeneral.setText("Todos los campos son requeridos");
+            errorGeneral.setVisible(true);
+            todoCorrecto=false;
+        }
+        
+        if(apellPaterno.getText()!=null){
+            apelPatUsu=apellPaterno.getText().toString();
+            if(apelPatUsu.length()>20){
+                errorApelPat.setText("El campo no puede exceder los 20 caracteres");
+                errorApelPat.setVisible(true);
+                todoCorrecto=false;
+            }
+        }
+        if(apellMaterno.getText()!=null){
+            apelMatUsu=apellMaterno.getText().toString();
+            if(apelMatUsu.length()>20){
+                errorApelMat.setText("El campo no puede exceder los 20 caracteres");
+                errorApelMat.setVisible(true);
+                todoCorrecto=false;
+            }
+        }
+        if(nombres.getText()!=null){
+            nombresUsu=nombres.getText().toString();
+            if(nombresUsu.length()>20){
+                errorNombres.setText("El campo no puede exceder los 20 caracteres");
+                errorNombres.setVisible(true);
+                todoCorrecto=false;
+            }
+        }
+        if(email.getText()!=null){
+            emailUsu=email.getText().toString();
+            if(emailUsu.length()>30){
+                errorEmail.setText("El campo no puede exceder los 30 caracteres");
+                errorEmail.setVisible(true);
+                todoCorrecto=false;
+            }
+        }
+        if(DNI.getText()!=null){
+            dniUsu=DNI.getText().toString();
+            if(dniUsu.length()!=8){
+                    errorDNI.setText("El documento de identidad debe tener 8 digitos");
+                    errorDNI.setVisible(true);
+                    todoCorrecto=false;
+            }
+            else{
+                Conector Con=new Conector();
+                Con.IniciarConexion();
+                if(Con.existeDNI(dniUsu)){
+                    errorDNI.setText("El documento de identidad ya esta en uso por otro usuario");
+                    errorNomUsu.setVisible(true);
+                    todoCorrecto=false;
+                }
+                Con.CerrarConexion();
+            }
+        }
+        if(userName.getText()!=null){
+            idNomUsu=userName.getText().toString();
+            if(idNomUsu.length()>15){
+                errorNomUsu.setText("El nombre de usuario no puede exceder los 15 caracteres");
+                errorNomUsu.setVisible(true);
+                todoCorrecto=false;
+            }
+            else{
+                Conector Con=new Conector();
+                Con.IniciarConexion();
+                if(Con.existeUsuario(idNomUsu)){
+                    errorNomUsu.setText("El nombre de usuario ya esta en uso");
+                    errorNomUsu.setVisible(true);
+                    todoCorrecto=false;
+                }
+                Con.CerrarConexion();
+            }
+        }
+        if(pass.getText()!=null&&confirmPass.getText()!=null){
+            passUsu=pass.getText().toString();
+            confirmPassUsu=confirmPass.getText().toString();
+            if(passUsu.compareTo(confirmPassUsu)!=0){
+                errorPass.setText("Los campos no coinciden, reescriba su contraseña");
+                errorPass.setVisible(true);
+                todoCorrecto=false;
+            }
+        }
+        //todoCorrecto=todoCorrecto&&apelPatUsu.length()>0&&apelMatUsu.length()>0&&dniUsu.length()>0&&nombresUsu.length()>0&&emailUsu.length()>0&&idNomUsu.length()>0&&passUsu.length()>0&&confirmPassUsu.length()>0;
+
+        if(todoCorrecto){
+            Conector Con=new Conector();
+            Con.IniciarConexion();
+            //email.setText("punto1");
+            Con.insertarNuevoUsuario(idNomUsu, passUsu, apelPatUsu, apelMatUsu, nombresUsu, fecNacUsu, dniUsu, emailUsu);
+            //email.setText(fecNacUsu);
+            Con.CerrarConexion();
+            return "case3";
+        }
+        return "case4";
     }
 
     public String home_action() {
@@ -349,7 +519,7 @@ public class registrarNuevoUsuario extends AbstractPageBean {
     public String regresar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case2";
+        return null;
     }
 
     public void mes_processValueChange(ValueChangeEvent event) {
@@ -361,9 +531,6 @@ public class registrarNuevoUsuario extends AbstractPageBean {
         else
             poblarComboDias(30);       
 
-    }
-
-    
-    
+    }    
 }
 

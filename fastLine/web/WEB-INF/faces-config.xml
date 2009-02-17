@@ -178,6 +178,14 @@
             <from-outcome>case2</from-outcome>
             <to-view-id>/LogIn.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case4</from-outcome>
+            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/BusesyChoferes.jsp</from-view-id>
