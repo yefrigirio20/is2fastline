@@ -61,7 +61,7 @@
                         <webuijsf:image height="48" id="image5" style="left: 24px; top: 168px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorNomUsu}" id="errorNomUsu" style="color: red; left: 480px; top: 360px; position: absolute; width: 192px"/>
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorPass}" id="errorPass" style="color: red; left: 336px; top: 384px; position: absolute; width: 144px"/>
-                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorDNI}" id="errorDNI" style="color: red; left: 336px; top: 312px; position: absolute; width: 310px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorDNI}" id="errorDNI" style="color: red; left: 336px; top: 312px; position: absolute; width: 454px"/>
                         <webuijsf:passwordField binding="#{registrarNuevoUsuario.pass}" id="pass" style="position: absolute; left: 192px; top: 384px"/>
                         <webuijsf:passwordField binding="#{registrarNuevoUsuario.confirmPass}" id="confirmPass" style="position: absolute; left: 192px; top: 408px"/>
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorGeneral}" id="errorGeneral" style="color: red; left: 384px; top: 456px; position: absolute"/>

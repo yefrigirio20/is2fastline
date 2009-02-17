@@ -452,6 +452,7 @@ public class registrarNuevoUsuario extends AbstractPageBean {
             }
         }
         if(DNI.getText()!=null){
+             errorDNI.setVisible(false);
             dniUsu=DNI.getText().toString();
             if(dniUsu.length()!=8){
                     errorDNI.setText("El documento de identidad debe tener 8 digitos");
@@ -459,15 +460,24 @@ public class registrarNuevoUsuario extends AbstractPageBean {
                     todoCorrecto=false;
             }
             else{
-                Conector Con=new Conector();
-                Con.IniciarConexion();
-                if(Con.existeDNI(dniUsu)){
-                    errorDNI.setText("El documento de identidad ya esta en uso por otro usuario");
-                    errorNomUsu.setVisible(true);
+                if(dniCorrecto(dniUsu)){
+                    Conector Con=new Conector();
+                    Con.IniciarConexion();
+
+                    if(Con.existeDNI(dniUsu)){
+                        errorDNI.setText("El documento de identidad ya esta en uso por otro usuario");
+                        errorDNI.setVisible(true);
+                        todoCorrecto=false;
+                    }
+                    Con.CerrarConexion();
+                }
+                else{
+                    errorDNI.setText("El documento de identidad solo debe contener digitos");
+                    errorDNI.setVisible(true);
                     todoCorrecto=false;
                 }
-                Con.CerrarConexion();
             }
+
         }
         if(userName.getText()!=null){
             idNomUsu=userName.getText().toString();
@@ -531,6 +541,17 @@ public class registrarNuevoUsuario extends AbstractPageBean {
         else
             poblarComboDias(30);       
 
-    }    
+    }
+    public boolean dniCorrecto(String dni){
+        boolean ok;
+        try{
+            int temp=Integer.parseInt(dni);
+            ok=true;
+        }
+        catch(Exception e){
+            ok=false;
+        }
+        return ok;
+    }
 }
 
