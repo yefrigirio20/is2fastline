@@ -19,7 +19,7 @@
                         <webuijsf:label id="label3" style="height: 22px; left: 24px; top: 120px; position: absolute; width: 286px" text="Mamani Mestas David"/>
                         <webuijsf:label id="label4" style="height: 22px; left: 24px; top: 144px; position: absolute; width: 286px" text="&#xa;Pfuturi Huisa José"/>
                         <webuijsf:label id="label5" style="height: 22px; left: 24px; top: 168px; position: absolute; width: 286px" text="Quispe La Torre Rene"/>
-                        <webuijsf:label id="label6" style="height: 22px; left: 24px; top: 192px; position: absolute; width: 286px" text="&#xa;Valdivia Holguín Christian"/>
+                        <webuijsf:label id="label6" style="height: 22px; left: 24px; top: 192px; position: absolute; width: 286px" text="Florez Mayorga Yvan"/>
                         <webuijsf:label id="label7" style="height: 22px; left: 24px; top: 216px; position: absolute; width: 286px" text=" Zarate Ariste Giancarlo&#xa;"/>
                         <webuijsf:label id="label8" style="left: 24px; top: 24px; position: absolute" text="Programadores"/>
                         <webuijsf:image height="144" id="image1" style="left: 336px; top: 96px; position: absolute" url="/resources/akatlogo.jpg" width="201"/>
