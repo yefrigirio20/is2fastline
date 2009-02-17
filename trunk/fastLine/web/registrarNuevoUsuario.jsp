@@ -13,7 +13,7 @@
                 <webuijsf:head id="head1" title="FastLine - Registro de Nuevo Usuario">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                     <df:ajaxTransaction id="ajaxTransaction1" inputs="page1:html1:body1:form1:mes" render="page1:html1:body1:form1:zona1:prueba"/>
-                    <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:crearCuenta" render="page1:html1:body1:form1:errorDNI,page1:html1:body1:form1:errorNomUsu,page1:html1:body1:form1:errorPass,page1:html1:body1:form1:errorGeneral,page1:html1:body1:form1:errorApelPat,page1:html1:body1:form1:errorApelMat,page1:html1:body1:form1:errorNombres,page1:html1:body1:form1:errorEmail"/>
+                    <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:crearCuenta" render="page1:html1:body1:form1:errorDNI,page1:html1:body1:form1:errorNomUsu,page1:html1:body1:form1:errorPass,page1:html1:body1:form1:errorGeneral,page1:html1:body1:form1:errorApelPat,page1:html1:body1:form1:errorApelMat,page1:html1:body1:form1:errorNombres,page1:html1:body1:form1:errorEmail,page1:html1:body1:form1:errorFecha"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="background-color: rgb(139, 175, 228); -rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -69,6 +69,7 @@
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorApelMat}" id="errorApelMat" style="color: red; height: 24px; left: 336px; top: 240px; position: absolute; width: 240px"/>
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorNombres}" id="errorNombres" style="color: red; height: 24px; left: 336px; top: 264px; position: absolute; width: 240px"/>
                         <webuijsf:staticText binding="#{registrarNuevoUsuario.errorEmail}" id="errorEmail" style="color: red; height: 24px; left: 336px; top: 336px; position: absolute; width: 240px"/>
+                        <webuijsf:staticText binding="#{registrarNuevoUsuario.errorFecha}" id="errorFecha" style="color: red; height: 24px; left: 480px; top: 288px; position: absolute; width: 190px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
