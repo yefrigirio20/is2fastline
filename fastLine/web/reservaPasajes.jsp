@@ -17,8 +17,8 @@
                     <webuijsf:form id="form1">
                         <webuijsf:label id="label1"
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 70px; left: 0px; top: 72px; position: absolute; width: 838px" text="Bienvenido a la Reserva de Pasajes de FastLine"/>
-                        <webuijsf:label id="label2" style="left: 48px; top: 192px; position: absolute" text="Region de Origen"/>
-                        <webuijsf:label id="label4" style="left: 264px; top: 192px; position: absolute" text="Region de Destino"/>
+                        <webuijsf:label id="label2" style="left: 48px; top: 192px; position: absolute" text=" Origen"/>
+                        <webuijsf:label id="label4" style="left: 264px; top: 192px; position: absolute" text=" Destino"/>
                         <webuijsf:dropDown id="regionOrigen" items="#{reservaPasajes.regionOrigenDefaultOptions.options}"
                             style="left: 48px; top: 216px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.regionOrigen_processValueChange}"/>
                         <webuijsf:dropDown id="regionDestino" items="#{reservaPasajes.regionDestinoDefaultOptions.options}"
@@ -46,7 +46,7 @@
                         <webuijsf:textField id="precioBoleto" readOnly="true" style="border: 1px solid black; left: 144px; top: 336px; position: absolute"/>
                         <webuijsf:calendar id="calendar1" readOnly="true" style="left: 144px; top: 312px; position: absolute"/>
                         <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 526px; -rave-layout: grid">
-                            <a:widget name="google.map" args="{centerLat:-9.18887, zoom:5, mapType:'REGULAR', centerLon:-74.443359}"/>
+                            <a:widget args="{centerLat:-9.18887, zoom:5, mapType:'REGULAR', centerLon:-74.443359}" name="google.map"/>
                         </jsfExt:ajaxZone>
                     </webuijsf:form>
                 </webuijsf:body>
