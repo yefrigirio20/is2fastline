@@ -114,10 +114,6 @@
     <navigation-rule>
         <from-view-id>/FastLine.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>case1</from-outcome>
-            <to-view-id>/Administracion.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
             <from-outcome>case2</from-outcome>
             <to-view-id>/LogIn.jsp</to-view-id>
         </navigation-case>
@@ -135,6 +131,14 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>case6</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case7</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>

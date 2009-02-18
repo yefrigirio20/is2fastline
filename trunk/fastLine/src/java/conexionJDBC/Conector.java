@@ -100,6 +100,20 @@ public class Conector {
         return esUsuario;
     }
 
+    public boolean esAdministrador(String usuario){
+        consultar("select idtipousu from usuarios where idnomusu='"+usuario+"'");
+        boolean esAdm=false;
+        try{
+            getResultSet().next();
+            if(getResultSet().getInt("idtipousu")==1||getResultSet().getInt("idtipousu")==2)
+                esAdm=true;
+        }
+        catch (Exception e) {
+            Estado="No se pudo hacer la consulta";
+        }
+        return esAdm;
+    }
+
     public boolean existeUsuario(String usu){
         boolean existe=false;
         consultar("select count(nomusu) from usuarios where idnomusu='"+usu+"'");
@@ -131,7 +145,7 @@ public class Conector {
     }
 
     public void insertarNuevoUsuario(String idNomUsu,String passUsu,String apelPatUsu,String apelMatUsu,String nombresUsu,String fecNac,String dniUsu,String emailUsu){
-        String insert="insert into usuarios values('"+idNomUsu+"','"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
+        String insert="insert into usuarios values('"+idNomUsu+"',3,'"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
         try{
             //statement=Conexion.prepareStatement(insert);
             statement.executeUpdate(insert);
