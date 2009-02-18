@@ -7,6 +7,7 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
@@ -77,6 +78,15 @@ public class BusesyChoferes extends AbstractPageBean {
 
     public void setAñoDefaultOptions(SingleSelectOptionsList ssol) {
         this.añoDefaultOptions = ssol;
+    }
+    private TextField matricula = new TextField();
+
+    public TextField getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(TextField tf) {
+        this.matricula = tf;
     }
 
     // </editor-fold>

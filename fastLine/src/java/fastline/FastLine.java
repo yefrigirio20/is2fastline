@@ -262,7 +262,7 @@ public class FastLine extends AbstractPageBean {
     public String administracion_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return "case1";
+        return null;
     }
 
     public String quienSomos_action() {
@@ -304,8 +304,12 @@ public class FastLine extends AbstractPageBean {
         */
 
         //if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
-        if(Con.esUsuario(usuario,pass))
-        {   error.setVisible(false);
+
+        if(Con.esUsuario(usuario,pass)){
+            if(Con.esAdministrador(usuario))
+                return "case1";
+
+            error.setVisible(false);
             mensajelogginLabel.setVisible(false);
             userLabel.setVisible(false);
             passLabel.setVisible(false);
@@ -333,7 +337,7 @@ public class FastLine extends AbstractPageBean {
         //System.out.print(userName1.getText());
         //error.setText(userName1.getText());
          
-        return "case6";
+        return "case7";
     }
 
     public String nuevoUsuario_action() {
