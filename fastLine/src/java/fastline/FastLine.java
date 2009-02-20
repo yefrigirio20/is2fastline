@@ -308,7 +308,7 @@ public class FastLine extends AbstractPageBean {
 
         if(Con.esUsuario(usuario,pass)){
             if(Con.esAdministrador(usuario))
-                return "case";
+                return "case1";
 
             error.setVisible(false);
             mensajelogginLabel.setVisible(false);

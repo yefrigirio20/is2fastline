@@ -39,7 +39,7 @@
                         <webuijsf:hyperlink actionExpression="#{reservaPasajes.home_action}" id="home1"
                             style="height: 24px; left: 72px; top: 576px; position: absolute" text="Home"/>
                         <webuijsf:label id="label5" style="height: 22px; left: 24px; top: 432px; position: absolute; text-align: right; width: 118px" text="Precio del Boleto:"/>
-                        <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 526px; -rave-layout: grid">
+                        <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 360px; top: 816px; position: absolute; width: 526px; -rave-layout: grid">
                             <a:widget args="{centerLat:-9.18887, zoom:5, mapType:'REGULAR', centerLon:-74.443359}" name="google.map"/>
                         </jsfExt:ajaxZone>
                         <webuijsf:staticText binding="#{reservaPasajes.errorRuta}" id="errorRuta" style="color: red; left: 48px; top: 288px; position: absolute; width: 240px"/>
@@ -49,6 +49,9 @@
                         <webuijsf:calendar binding="#{reservaPasajes.startCalendar}" dateFormatPatternHelp="MM/dd/yyyy" id="startCalendar"
                             label="Fecha de Salida" onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'startCalendar');" required="true"
                             style="left: 48px; top: 312px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.startCalendar_processValueChange}"/>
+                        <div style="height: 310px; left: 384px; top: 168px; position: absolute; width: 478px">
+                            <jsp:directive.include file="FragmentoBuses.jspf"/>
+                        </div>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
