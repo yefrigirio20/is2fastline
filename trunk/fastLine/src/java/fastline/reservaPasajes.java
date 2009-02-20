@@ -16,6 +16,8 @@ import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 import java.sql.*;
 import java.text.DateFormat;
+import conexionJDBC.Conector;
+
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -102,15 +104,6 @@ public class reservaPasajes extends AbstractPageBean {
     public void setHorarios(DropDown dd) {
         this.horarios = dd;
     }
-    private Calendar fecha = new Calendar();
-
-    public Calendar getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Calendar c) {
-        this.fecha = c;
-    }
     private StaticText precio = new StaticText();
 
     public StaticText getPrecio() {
@@ -128,6 +121,15 @@ public class reservaPasajes extends AbstractPageBean {
 
     public void setConsultarHorarios(Button b) {
         this.consultarHorarios = b;
+    }
+    private Calendar startCalendar = new Calendar();
+
+    public Calendar getStartCalendar() {
+        return startCalendar;
+    }
+
+    public void setStartCalendar(Calendar c) {
+        this.startCalendar = c;
     }
 
     // </editor-fold>
@@ -276,44 +278,76 @@ public class reservaPasajes extends AbstractPageBean {
     public String consultarHorarios_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        precio.setVisible(false);
+        //precio.setVisible(false);
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());
         //fecha.get
-       precio.setText((String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate()));
+
+        /*precio.setText(
+                (String)DateFormat.getDateInstance(
+                DateFormat.MEDIUM).format(startCalendar.getSelectedDate())
+                + " is a valid date.");*/
+        String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+       //precio.setText((String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate()));
        //String fec=fecha.getSelectedDate().toString();
        //String fec=fecha.getSubmittedValue().toString();
         //String fec=fecha.getText().toString();
-        //fec=fec.subSequence(3,4)+"/"+fec.subSequence(0,1)+"/"+fec.subSequence(6,9);
-        //Conector Con=new Conector();
-        //Con.IniciarConexion();
-        //int numH=Con.obtenerHorarios(idOrigen, idDestino,fec);
-        //poblarComboHorarios(Con.Result, numH);
+        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        Conector Con=new Conector();
+        Con.IniciarConexion();
+        int numH=Con.obtenerHorarios(idOrigen,idDestino,fec);
+        poblarComboHorarios(Con.Result, numH);
         //precio.setText("O:"+idOrigen+" D:"+idDestino);
-        //precio.setText("fecha:"+fec);
-        precio.setVisible(true);
+        precio.setText("numerosal:"+numH);
+        //precio.setVisible(true);
         return null;
     }
 
     public void poblarComboHorarios(ResultSet R,int numHorarios){
 
-        com.sun.webui.jsf.model.Option[] horarios=new com.sun.webui.jsf.model.Option[numHorarios+1];
-        String hora;
-        horarios[0]=new com.sun.webui.jsf.model.Option("-----","-----");
+        com.sun.webui.jsf.model.Option[] horarios;
         try{
+            horarios=new com.sun.webui.jsf.model.Option[numHorarios+1];
+            String hora;
+            horarios[0]=new com.sun.webui.jsf.model.Option("-----","-----");
             int h=1;
             while(R.next()){
 
             //for(int h=1;h<=numHorarios;h++){
-                hora=R.getDate("horasal").toString();
+                hora=R.getString("horasal");
                 horarios[h]=new com.sun.webui.jsf.model.Option(hora,hora);
                 h++;
             }
         }
         catch(Exception e){
-
+            horarios=new com.sun.webui.jsf.model.Option[1];
+            horarios[0]=new com.sun.webui.jsf.model.Option("-----","-----");
         }
         horariosDefaultOptions.setOptions(horarios);
+    }
+
+    public void startCalendar_processValueChange(ValueChangeEvent event) {
+        int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
+        int idDestino=Integer.parseInt(depDestino.getValue().toString());
+        //fecha.get
+
+        /*precio.setText(
+                (String)DateFormat.getDateInstance(
+                DateFormat.MEDIUM).format(startCalendar.getSelectedDate())
+                + " is a valid date.");*/
+        String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+       //precio.setText((String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate()));
+       //String fec=fecha.getSelectedDate().toString();
+       //String fec=fecha.getSubmittedValue().toString();
+        //String fec=fecha.getText().toString();
+        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        Conector Con=new Conector();
+        Con.IniciarConexion();
+        int numH=Con.obtenerHorarios(idOrigen,idDestino,fec);
+        poblarComboHorarios(Con.Result, numH);
+        //precio.setText("O:"+idOrigen+" D:"+idDestino);
+        precio.setText("numerosal:"+numH);
+        //precio.setVisible(true);       
     }
     
 }

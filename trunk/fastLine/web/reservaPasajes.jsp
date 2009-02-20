@@ -26,7 +26,6 @@
                             onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depOrigen');" style="left: 48px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depOrigen_processValueChange}"/>
                         <webuijsf:dropDown binding="#{reservaPasajes.depDestino}" id="depDestino" items="#{reservaPasajes.depDestinoDefaultOptions.options}"
                             onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depDestino');" style="left: 192px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depDestino_processValueChange}"/>
-                        <webuijsf:label id="label3" style="left: 72px; top: 312px; position: absolute; text-align: right; width: 70px" text="Fecha:"/>
                         <webuijsf:button actionExpression="#{reservaPasajes.reservar_action}" id="reservar"
                             style="height: 24px; left: 47px; top: 528px; position: absolute; width: 72px" text="Reservar"/>
                         <webuijsf:label id="label7" style="left: 24px; top: 408px; position: absolute" text="Horarios Disponibles:"/>
@@ -40,9 +39,6 @@
                         <webuijsf:hyperlink actionExpression="#{reservaPasajes.home_action}" id="home1"
                             style="height: 24px; left: 72px; top: 576px; position: absolute" text="Home"/>
                         <webuijsf:label id="label5" style="height: 22px; left: 24px; top: 432px; position: absolute; text-align: right; width: 118px" text="Precio del Boleto:"/>
-                        <webuijsf:calendar binding="#{reservaPasajes.fecha}" dateFormatPattern="MM/dd/yyyy" id="fecha" label="Fecha de salida"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'fecha');" readOnly="true" required="true"
-                            style="left: 144px; top: 312px; position: absolute" validatorExpression="#{reservaPasajes.fecha_validate}" valueChangeListenerExpression="#{reservaPasajes.fecha_processValueChange}"/>
                         <jsfExt:ajaxZone id="ajaxZone1" style="height: 430px; left: 408px; top: 168px; position: absolute; width: 526px; -rave-layout: grid">
                             <a:widget args="{centerLat:-9.18887, zoom:5, mapType:'REGULAR', centerLon:-74.443359}" name="google.map"/>
                         </jsfExt:ajaxZone>
@@ -50,6 +46,9 @@
                         <webuijsf:staticText binding="#{reservaPasajes.precio}" id="precio" style="color: blue; left: 168px; top: 432px; position: absolute"/>
                         <webuijsf:button actionExpression="#{reservaPasajes.consultarHorarios_action}" binding="#{reservaPasajes.consultarHorarios}"
                             id="consultarHorarios" style="height: 24px; left: 119px; top: 360px; position: absolute" text="Consultar Horarios"/>
+                        <webuijsf:calendar binding="#{reservaPasajes.startCalendar}" dateFormatPatternHelp="MM/dd/yyyy" id="startCalendar"
+                            label="Fecha de Salida" onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'startCalendar');" required="true"
+                            style="left: 48px; top: 312px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.startCalendar_processValueChange}"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

@@ -170,14 +170,20 @@ public class Conector {
         consultar("select idrut from rutas where idini="+origen+" and idfin="+destino);
         int numSalidas=0;
         try{
-            int idruta=Result.getInt("idrut");
+            Result.next();
+
+            int idruta=getResultSet().getInt("idrut");
+           System.out.println("blablabla "+idruta+" fecha "+fecha);
+           System.out.println("\nselect count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'\n");
             consultar("select count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
-            numSalidas=Result.getInt("count");
+            Result.next();
+            numSalidas=getResultSet().getInt("count");
+            System.out.println("blablabla "+numSalidas);
             consultar("select horasal from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
-            
+            return numSalidas;
         }
         catch(Exception e){
-
+            numSalidas=-1;
         }
         return numSalidas;
     }

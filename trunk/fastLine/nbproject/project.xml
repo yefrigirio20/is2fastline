@@ -56,7 +56,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${libs.dynamicfaces_23322.classpath}</file>
+                    <file>${libs.dynamicfaces_3627099800228261111.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
