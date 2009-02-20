@@ -148,11 +148,12 @@ public class FastLine extends AbstractPageBean {
     }
 
     // </editor-fold>
-
+    boolean mostrar;
     /**
      * <p>Construct a new Page bean instance.</p>
      */
     public FastLine() {
+        mostrar=false;
     }
 
     /**
@@ -322,7 +323,8 @@ public class FastLine extends AbstractPageBean {
             reservarPasajes.setVisible(true);
             imageReservar.setVisible(true);
             userAccount.setText("Bienvenido "+ usuario+"@akatsuki.com" );
-            
+            reservarPasajes.setText("Reservar Pasajes");
+            reservarPasajes.setVisible(true);
         }   
         else
            error.setText("El nombre de usuario y/o password son incorrectos");
