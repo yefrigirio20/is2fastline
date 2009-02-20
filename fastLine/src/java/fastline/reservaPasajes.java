@@ -6,13 +6,16 @@
  
 package fastline;
 
-import com.sun.rave.faces.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.DefaultTableDataProvider;
-import com.sun.webui.jsf.model.MultipleSelectOptionsList;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
+import java.sql.*;
+import java.text.DateFormat;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -32,45 +35,99 @@ public class reservaPasajes extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        regionOrigenDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
-        regionDestinoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
-        radioButtonGroup1DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Pasillo"), new com.sun.webui.jsf.model.Option("", "Ventana"),new com.sun.webui.jsf.model.Option("", "No Importa")});
+        depOrigenDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
+        depDestinoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
+        horariosDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("-----", "-----")});
     }
-    private SingleSelectOptionsList regionOrigenDefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList depOrigenDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getRegionOrigenDefaultOptions() {
-        return regionOrigenDefaultOptions;
-    }
-
-    public void setRegionOrigenDefaultOptions(SingleSelectOptionsList ssol) {
-        this.regionOrigenDefaultOptions = ssol;
-    }
-    private SingleSelectOptionsList regionDestinoDefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getRegionDestinoDefaultOptions() {
-        return regionDestinoDefaultOptions;
+    public SingleSelectOptionsList getDepOrigenDefaultOptions() {
+        return depOrigenDefaultOptions;
     }
 
-    public void setRegionDestinoDefaultOptions(SingleSelectOptionsList ssol) {
-        this.regionDestinoDefaultOptions = ssol;
+    public void setDepOrigenDefaultOptions(SingleSelectOptionsList ssol) {
+        this.depOrigenDefaultOptions = ssol;
     }
-    private SingleSelectOptionsList radioButtonGroup1DefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList depDestinoDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getRadioButtonGroup1DefaultOptions() {
-        return radioButtonGroup1DefaultOptions;
-    }
-
-    public void setRadioButtonGroup1DefaultOptions(SingleSelectOptionsList ssol) {
-        this.radioButtonGroup1DefaultOptions = ssol;
-    }
-    private SingleSelectOptionsList dropDown1DefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getDropDown1DefaultOptions() {
-        return dropDown1DefaultOptions;
+    public SingleSelectOptionsList getDepDestinoDefaultOptions() {
+        return depDestinoDefaultOptions;
     }
 
-    public void setDropDown1DefaultOptions(SingleSelectOptionsList ssol) {
-        this.dropDown1DefaultOptions = ssol;
+    public void setDepDestinoDefaultOptions(SingleSelectOptionsList ssol) {
+        this.depDestinoDefaultOptions = ssol;
+    }
+    private SingleSelectOptionsList horariosDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getHorariosDefaultOptions() {
+        return horariosDefaultOptions;
+    }
+
+    public void setHorariosDefaultOptions(SingleSelectOptionsList ssol) {
+        this.horariosDefaultOptions = ssol;
+    }
+    private DropDown depOrigen = new DropDown();
+
+    public DropDown getDepOrigen() {
+        return depOrigen;
+    }
+
+    public void setDepOrigen(DropDown dd) {
+        this.depOrigen = dd;
+    }
+    private DropDown depDestino = new DropDown();
+
+    public DropDown getDepDestino() {
+        return depDestino;
+    }
+
+    public void setDepDestino(DropDown dd) {
+        this.depDestino = dd;
+    }
+    private StaticText errorRuta = new StaticText();
+
+    public StaticText getErrorRuta() {
+        return errorRuta;
+    }
+
+    public void setErrorRuta(StaticText st) {
+        this.errorRuta = st;
+    }
+    private DropDown horarios = new DropDown();
+
+    public DropDown getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(DropDown dd) {
+        this.horarios = dd;
+    }
+    private Calendar fecha = new Calendar();
+
+    public Calendar getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Calendar c) {
+        this.fecha = c;
+    }
+    private StaticText precio = new StaticText();
+
+    public StaticText getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(StaticText st) {
+        this.precio = st;
+    }
+    private Button consultarHorarios = new Button();
+
+    public Button getConsultarHorarios() {
+        return consultarHorarios;
+    }
+
+    public void setConsultarHorarios(Button b) {
+        this.consultarHorarios = b;
     }
 
     // </editor-fold>
@@ -179,7 +236,12 @@ public class reservaPasajes extends AbstractPageBean {
         return (SessionBean1) getBean("SessionBean1");
     }
 
-    public void regionOrigen_processValueChange(ValueChangeEvent event) {
+    public void depOrigen_processValueChange(ValueChangeEvent event) {
+        errorRuta.setVisible(false);
+        if(depOrigen.getValue().toString().compareTo(depDestino.getValue().toString())==0){
+            errorRuta.setText("El origen y el destino no pueden ser el mismo");
+            errorRuta.setVisible(true);
+        }
     }
 
     public String home_action() {
@@ -192,6 +254,66 @@ public class reservaPasajes extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return null;
+    }
+
+    public void depDestino_processValueChange(ValueChangeEvent vce) {
+        errorRuta.setVisible(false);
+        if(depOrigen.getValue().toString().compareTo(depDestino.getValue().toString())==0){
+            errorRuta.setText("El origen y el destino no pueden ser el mismo");
+            errorRuta.setVisible(true);
+        }
+    }
+
+    public void fecha_processValueChange(ValueChangeEvent event) {
+        precio.setVisible(false);
+        //String fec=fecha.getText().toString();
+        //fec=fec.subSequence(3,4)+"/"+fec.subSequence(0,1)+"/"+fec.subSequence(6,9);
+        precio.setText("probando");
+        precio.setVisible(true);
+        
+    }
+
+    public String consultarHorarios_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        precio.setVisible(false);
+        int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
+        int idDestino=Integer.parseInt(depDestino.getValue().toString());
+        //fecha.get
+       precio.setText((String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate()));
+       //String fec=fecha.getSelectedDate().toString();
+       //String fec=fecha.getSubmittedValue().toString();
+        //String fec=fecha.getText().toString();
+        //fec=fec.subSequence(3,4)+"/"+fec.subSequence(0,1)+"/"+fec.subSequence(6,9);
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        //int numH=Con.obtenerHorarios(idOrigen, idDestino,fec);
+        //poblarComboHorarios(Con.Result, numH);
+        //precio.setText("O:"+idOrigen+" D:"+idDestino);
+        //precio.setText("fecha:"+fec);
+        precio.setVisible(true);
+        return null;
+    }
+
+    public void poblarComboHorarios(ResultSet R,int numHorarios){
+
+        com.sun.webui.jsf.model.Option[] horarios=new com.sun.webui.jsf.model.Option[numHorarios+1];
+        String hora;
+        horarios[0]=new com.sun.webui.jsf.model.Option("-----","-----");
+        try{
+            int h=1;
+            while(R.next()){
+
+            //for(int h=1;h<=numHorarios;h++){
+                hora=R.getDate("horasal").toString();
+                horarios[h]=new com.sun.webui.jsf.model.Option(hora,hora);
+                h++;
+            }
+        }
+        catch(Exception e){
+
+        }
+        horariosDefaultOptions.setOptions(horarios);
     }
     
 }

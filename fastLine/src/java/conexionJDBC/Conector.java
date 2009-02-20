@@ -166,4 +166,19 @@ public class Conector {
     public ResultSet getResultSet(){
         return Result;
     }
+    public int obtenerHorarios(int origen,int destino,String fecha){
+        consultar("select idrut from rutas where idini="+origen+" and idfin="+destino);
+        int numSalidas=0;
+        try{
+            int idruta=Result.getInt("idrut");
+            consultar("select count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
+            numSalidas=Result.getInt("count");
+            consultar("select horasal from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
+            
+        }
+        catch(Exception e){
+
+        }
+        return numSalidas;
+    }
 }
