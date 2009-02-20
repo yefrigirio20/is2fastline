@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : FragmentoBuses
+    Created on : 20/02/2009, 08:47:59 AM
+    Author     : Rene
+-->
+
+<div style="-rave-layout: grid; width: 400px; height: 200px" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:f="http://java.sun.com/jsf/core" >
+  <f:subview id="FragmentoBuses">
+      
+  </f:subview>
+</div>
