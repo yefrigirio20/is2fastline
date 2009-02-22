@@ -199,5 +199,27 @@ public class Conector {
         }
         return precio;
     }
+    public boolean existeRuta(int origen, int destino){
+        boolean existe=false;
+        consultar("select count(idrut) from rutas where idini="+origen+" and idfin="+destino);
+         try{
+            getResultSet().next();
+            if(getResultSet().getInt("count")>0)
+                existe=true;
+        }
+        catch(Exception e){
+            Estado="Error en existeRuta";
+        }
+        return existe;
+    }
+    public void insertarNuevaRuta(int origen, int destino){
+        String insert="insert into rutas(idini,idfin) values("+origen+","+destino+")";
+        try{
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar la ruta";
+        }
+    }
 
 }
