@@ -221,5 +221,72 @@ public class Conector {
             Estado="No se pudo insertar la ruta";
         }
     }
+    public int obtenerRutas(){
+        int numRutas=0;
+        consultar("select count(idrut) from rutas");
+        try{
+            getResultSet().next();
+            numRutas=getResultSet().getInt("count");
+            consultar("select r.idrut,d1.name as origen,d2.name as destino from rutas r,departamentos d1, departamentos d2 where d1.gid=r.idini and d2.gid=r.idfin");
+        }
+        catch(Exception e){
+            Estado="Error en obtenerRutas";
+            numRutas=-1;
+        }
+
+        return numRutas;
+    }
+
+    public int obtenerBuses(){
+        int numbuses=0;
+        consultar("select count(matbus) from buses");
+        try{
+            getResultSet().next();
+            numbuses=getResultSet().getInt("count");
+            consultar("select * from buses");
+        }
+        catch(Exception e){
+            Estado="Error en obtenerBuses";
+            numbuses=-1;
+        }
+
+        return numbuses;
+    }
+
+    public int obtenerChoferes(){
+        int numChof=0;
+        consultar("select count(idchof) from choferes");
+        try{
+            getResultSet().next();
+            numChof=getResultSet().getInt("count");
+            consultar("select * from choferes order by apelpatchof,apelmatchof,nomchof");
+        }
+        catch(Exception e){
+            Estado="Error en obtenerChoferes";
+            numChof=-1;
+        }
+
+        return numChof;
+    }
+
+    public void eliminarRuta(int idruta){
+        String insert="delete from rutas where idrut="+idruta;
+        try{
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar la ruta";
+        }
+    }
+    
+    public void insertarNuevaSalida(String idRuta,String chof1,String chof2,String horaSal,String fecha,String matBus, String precBol){
+        String insert="insert into salidas(idrutsal,idchof1,idchof2,horasal,fechsal,matbus,precbol) values("+idRuta+","+chof1+","+chof2+",'"+horaSal+"','"+fecha+"','"+matBus+"',"+precBol+");";
+        try{
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar la salida";
+        }
+    }
 
 }
