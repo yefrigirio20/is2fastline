@@ -360,6 +360,14 @@ public class reservaPasajes extends AbstractPageBean {
         
     }
 
+
+    public String ajaxZone1_action() {
+        // TODO: Process the action request.  Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+
     public void horarios_processValueChange(ValueChangeEvent event) {
         Conector Con=new Conector();
         Con.IniciarConexion();
@@ -378,6 +386,7 @@ public class reservaPasajes extends AbstractPageBean {
         poblarComboHorarios(Con.Result, numH);
         Con.CerrarConexion();
     }
+
     
 }
 
