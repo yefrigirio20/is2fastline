@@ -144,8 +144,8 @@ public class Conector {
         return existe;
     }
 
-    public void insertarNuevoUsuario(String idNomUsu,String passUsu,String apelPatUsu,String apelMatUsu,String nombresUsu,String fecNac,String dniUsu,String emailUsu){
-        String insert="insert into usuarios values('"+idNomUsu+"',3,'"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
+    public void insertarNuevoUsuario(String idNomUsu,int tipUsu,String passUsu,String apelPatUsu,String apelMatUsu,String nombresUsu,String fecNac,String dniUsu,String emailUsu){
+        String insert="insert into usuarios values('"+idNomUsu+"',"+tipUsu+",'"+passUsu+"','"+apelPatUsu+"','"+apelMatUsu+"','"+nombresUsu+"','"+fecNac+"',"+dniUsu+",'"+emailUsu+"') ";
         try{
             //statement=Conexion.prepareStatement(insert);
             statement.executeUpdate(insert);
@@ -179,7 +179,7 @@ public class Conector {
             Result.next();
             numSalidas=getResultSet().getInt("count");
             System.out.println("blablabla "+numSalidas);
-            consultar("select horasal from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
+            consultar("select idsal,horasal from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"' order by horasal");
             return numSalidas;
         }
         catch(Exception e){
@@ -187,4 +187,17 @@ public class Conector {
         }
         return numSalidas;
     }
+    public String obtenerPrecioBoleto(String idSal){
+        String precio;
+        consultar("select precbol from salidas where idsal='"+idSal+"'");
+        try{
+            getResultSet().next();
+            precio=getResultSet().getString("precbol");
+        }
+        catch(Exception e){
+            precio="";
+        }
+        return precio;
+    }
+
 }

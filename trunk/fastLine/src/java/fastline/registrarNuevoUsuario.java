@@ -533,7 +533,7 @@ public class registrarNuevoUsuario extends AbstractPageBean {
             Conector Con=new Conector();
             Con.IniciarConexion();
             //email.setText("punto1");
-            Con.insertarNuevoUsuario(idNomUsu, passUsu, apelPatUsu, apelMatUsu, nombresUsu, fecNacUsu, dniUsu, emailUsu);
+            Con.insertarNuevoUsuario(idNomUsu,3,passUsu, apelPatUsu, apelMatUsu, nombresUsu, fecNacUsu, dniUsu, emailUsu);
             //email.setText(fecNacUsu);
             Con.CerrarConexion();
             return "case3";
