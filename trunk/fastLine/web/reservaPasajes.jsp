@@ -47,7 +47,8 @@
                         <webuijsf:staticText id="staticText1"
                             style="color: rgb(0, 51, 255); font-size: 24px; height: 24px; left: 24px; top: 624px; position: absolute" text="Blanco:Asiento Libre"/>
                         <webuijsf:staticText id="staticText2" style="color: rgb(0, 51, 204); font-size: 24px; left: 24px; top: 672px; position: absolute" text="Verde: Asiento Ocupado"/>
-                        <webuijsf:textField binding="#{reservaPasajes.asiento}" id="asiento" style="left: 144px; top: 480px; position: absolute"/>
+                        <webuijsf:textField binding="#{reservaPasajes.asiento}" id="asiento" style="left: 192px; top: 480px; position: absolute"/>
+                        <webuijsf:label id="label3" style="left: 24px; top: 480px; position: absolute" text="Indique un Asiento disponible"/>
                     </webuijsf:form>
                     <div style="height: 670px; left: 384px; top: 24px; position: absolute; width: 478px">
                         <jsp:directive.include file="FragmentoBuses.jspf"/>
