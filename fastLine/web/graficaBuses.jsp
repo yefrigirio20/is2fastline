@@ -74,12 +74,19 @@
  <div id="container"></div>
             
       
-  
+      
+<p>Nombre de su servidor: <%= request.getRemoteHost() %></p>
+<jsp:useBean id="datosAsiento" class="fastline.ConseguirDatosbase" scope="session"/>
+
         <%
+        //ConseguirDatosbase datosAsiento= new ConseguirDatosbase();
         //System.out.print("hola");
-        
-        String estilo="style2";
-        int numeroAsientos=61;//siempre impar y(numeroAsientos-1) multiplo de 4
+        out.print(datosAsiento.getApplicationBean1().getNombreusuario());
+        int asientos[]=datosAsiento.getApplicationBean1().getEstadoAsientos();
+        if(asientos!=null)
+        {
+             String estilo="style2";
+        int numeroAsientos=asientos.length-1;//siempre impar y(numeroAsientos-1) multiplo de 4
         int totalFilas=(int)(numeroAsientos-1)/4;
         int untimaFila=1;
         int w=10;
@@ -98,10 +105,11 @@
             //asiento se genera de 1 a numeroAsientos
             //int numeroAsiento=1 + (int)(Math.random() * 6); //produce los enteros 1 a 6
             int numeroAsiento=cont;
-            int estadoAsiento=(int)(Math.random() * 2);///produce cero o uno
+            //int estadoAsiento=(int)(Math.random() * 2);///produce cero o uno
+            int estadoAsiento=asientos[cont];///produce cero o uno
             //-------------------------
-          
-            
+
+
             if(contColumna==6)
                 {    y=0;
                      x=x+h+vspace;
@@ -116,7 +124,7 @@
                             //class :alphacube spread
                             out.print("win["+cont+"]=new Window({id:"+comi+"win"+cont+comi+", title: "+comi+cont+"____"+comi+",className: "+comi+className+comi+", resizable:false, closable: false,draggable:false, minimizable: false, width:"+w+", height:"+h+", top:0, left: 1, parent:$('container') });"+"\n");
                             //<p class="+estilo+"><font color=#0000FF  size=2>Bus:De Casa A Terminal</font><br><font color=#0000FF  size=2>Avion:De Terminal A Ayacucho</font><br><font color=#0000FF  size=2>Tiempo:fecha </font><font color=#0000FF  size=2>Precio:precio </font></p><br><br><br><br><p><img src=imagens/bus.gif width="+w+" height="+h+"><font color=#0000FF  size=2>Bus:De Casa A Terminal</font><br><img src=imagens/avion2.jpg width=65 height=47><font color=#0000FF  size=2>Avion:De Terminal A Ayacucho</font><br><img src=imagens/reloj.jpg width=62 height=49><font color=#0000FF  size=2>Tiempo:fecha </font><br><br></p>Opciones de ruta: seleccione una de las rutas posibles y el medio<br>
-                            out.print("win["+cont+"].getContent().innerHTML ="+comi+"<font color=#0000FF  size=4>Asiento"+cont+"</font>"+comi+";");
+                            out.print("win["+cont+"].getContent().innerHTML ="+comi+"<font color=#0000FF  size=4>"+cont+"</font>"+comi+";");
                             // win.setContent("content");
                             out.print("win["+cont+"].setDestroyOnClose();"+"\n");
                             out.print("win["+cont+"].setLocation("+x+","+y+");"+"\n");
@@ -134,8 +142,8 @@
                         {   y=y+hspace;
                             contColumna=contColumna+1;
                             asiento--;
-                            
-                            
+
+
                         }
                     else{
                             if(estadoAsiento==1)
@@ -145,7 +153,7 @@
                             //class :alphacube spread
                             out.print("win["+cont+"]=new Window({id:"+comi+"win"+cont+comi+", title: "+comi+cont+"____"+comi+",className: "+comi+className+comi+", resizable:false, closable: false,draggable:false, minimizable: false, width:"+w+", height:"+h+", top:0, left: 1, parent:$('container') });"+"\n");
                             //<p class="+estilo+"><font color=#0000FF  size=2>Bus:De Casa A Terminal</font><br><font color=#0000FF  size=2>Avion:De Terminal A Ayacucho</font><br><font color=#0000FF  size=2>Tiempo:fecha </font><font color=#0000FF  size=2>Precio:precio </font></p><br><br><br><br><p><img src=imagens/bus.gif width="+w+" height="+h+"><font color=#0000FF  size=2>Bus:De Casa A Terminal</font><br><img src=imagens/avion2.jpg width=65 height=47><font color=#0000FF  size=2>Avion:De Terminal A Ayacucho</font><br><img src=imagens/reloj.jpg width=62 height=49><font color=#0000FF  size=2>Tiempo:fecha </font><br><br></p>Opciones de ruta: seleccione una de las rutas posibles y el medio<br>
-                            out.print("win["+cont+"].getContent().innerHTML ="+comi+"<font color=#0000FF  size=4>Asiento"+cont+"</font>"+comi+";");
+                            out.print("win["+cont+"].getContent().innerHTML ="+comi+"<font color=#0000FF  size=4>"+cont+"</font>"+comi+";");
                             // win.setContent("content");
                             out.print("win["+cont+"].setDestroyOnClose();"+"\n");
                             out.print("win["+cont+"].setLocation("+x+","+y+");"+"\n");
@@ -159,11 +167,17 @@
                             //x=x+100;
                     }
                }
-               
-         
-             
-             
+
+
+
+
          }
+
+        }
+        else
+        {
+        out.print(datosAsiento.getApplicationBean1().getNombreusuario());
+        }
         
       
 

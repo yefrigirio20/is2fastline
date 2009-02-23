@@ -559,13 +559,14 @@ public class gestionarRutas extends AbstractPageBean {
 
 
         String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate());
-        fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-        //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
         if(todoCorrecto){
             Conector Con=new Conector();
             Con.IniciarConexion();
             Con.insertarNuevaSalida(idRuta, chof1, chof2, horaSal, fec, matBus, precBol);
+            Con.prepararAsientos();
             Con.CerrarConexion();
         }        
         

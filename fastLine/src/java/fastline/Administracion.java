@@ -20,13 +20,14 @@ import javax.faces.FacesException;
  */
 public class Administracion extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
-
+      
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        //nombreusuario="";
     }
 
     // </editor-fold>
@@ -170,6 +171,9 @@ public class Administracion extends AbstractPageBean {
         // case name where null will return to the same page.
         return "case1";
     }
+
+    
+    
     
 }
 

@@ -24,9 +24,9 @@
                         <webuijsf:label id="label2" style="left: 48px; top: 240px; position: absolute" text=" Origen"/>
                         <webuijsf:label id="label4" style="left: 192px; top: 240px; position: absolute" text=" Destino"/>
                         <webuijsf:dropDown binding="#{reservaPasajes.depOrigen}" id="depOrigen" items="#{reservaPasajes.depOrigenDefaultOptions.options}"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depOrigen');" style="left: 48px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depOrigen_processValueChange}"/>
+                            onChange="" style="left: 48px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depOrigen_processValueChange}"/>
                         <webuijsf:dropDown binding="#{reservaPasajes.depDestino}" id="depDestino" items="#{reservaPasajes.depDestinoDefaultOptions.options}"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depDestino');" style="left: 192px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depDestino_processValueChange}"/>
+                            onChange="" style="left: 192px; top: 264px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.depDestino_processValueChange}"/>
                         <webuijsf:button actionExpression="#{reservaPasajes.reservar_action}" id="reservar"
                             style="height: 24px; left: 47px; top: 528px; position: absolute; width: 72px" text="Reservar"/>
                         <webuijsf:label id="label7" style="left: 24px; top: 408px; position: absolute" text="Horarios Disponibles:"/>
@@ -44,13 +44,14 @@
                             id="consultarHorarios" style="height: 24px; left: 167px; top: 360px; position: absolute" text="Consultar Horarios"/>
                         <webuijsf:calendar binding="#{reservaPasajes.startCalendar}" dateFormatPatternHelp="MM/dd/yyyy" id="startCalendar"
                             label="Fecha de Salida" onChange="" required="true" style="left: 72px; top: 312px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.startCalendar_processValueChange}"/>
-                        <div style="height: 670px; left: 384px; top: 24px; position: absolute; width: 478px">
-                            <jsp:directive.include file="FragmentoBuses.jspf"/>
-                        </div>
                         <webuijsf:staticText id="staticText1"
                             style="color: rgb(0, 51, 255); font-size: 24px; height: 24px; left: 24px; top: 624px; position: absolute" text="Blanco:Asiento Libre"/>
                         <webuijsf:staticText id="staticText2" style="color: rgb(0, 51, 204); font-size: 24px; left: 24px; top: 672px; position: absolute" text="Verde: Asiento Ocupado"/>
+                        <webuijsf:textField binding="#{reservaPasajes.asiento}" id="asiento" style="left: 144px; top: 480px; position: absolute"/>
                     </webuijsf:form>
+                    <div style="height: 670px; left: 384px; top: 24px; position: absolute; width: 478px">
+                        <jsp:directive.include file="FragmentoBuses.jspf"/>
+                    </div>
                 </webuijsf:body>
             </webuijsf:html>
         </webuijsf:page>

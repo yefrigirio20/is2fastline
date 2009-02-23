@@ -11,6 +11,7 @@ import com.sun.webui.jsf.component.Button;
 import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
@@ -130,6 +131,15 @@ public class reservaPasajes extends AbstractPageBean {
 
     public void setStartCalendar(Calendar c) {
         this.startCalendar = c;
+    }
+    private TextField asiento = new TextField();
+
+    public TextField getAsiento() {
+        return asiento;
+    }
+
+    public void setAsiento(TextField tf) {
+        this.asiento = tf;
     }
 
     // </editor-fold>
@@ -261,6 +271,14 @@ public class reservaPasajes extends AbstractPageBean {
     public String reservar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        int idSal=Integer.parseInt(horarios.getValue().toString());
+        int idAsi=Integer.parseInt(asiento.getText().toString());
+        String idusu=getApplicationBean1().getNombreusuario();
+        Conector Con=new Conector();
+        Con.IniciarConexion();
+        Con.reservarPasaje(idusu, idSal, idAsi);
+
+        Con.CerrarConexion();
         return null;
     }
 
@@ -297,14 +315,14 @@ public class reservaPasajes extends AbstractPageBean {
         int idDestino=Integer.parseInt(depDestino.getValue().toString());      
 
         if(idOrigen==0||idDestino==0){
-            //errorGnrl.setText("Debe de especificar el origen y destino");
-            //errorGnrl.setVisible(true);
+            errorRuta.setText("Debe de especificar el origen y destino");
+            errorRuta.setVisible(true);
         }
         else{
             String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
-            fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-            //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+            fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
             Conector Con=new Conector();
             Con.IniciarConexion();
@@ -372,18 +390,29 @@ public class reservaPasajes extends AbstractPageBean {
         Conector Con=new Conector();
         Con.IniciarConexion();
         precio.setText(Con.obtenerPrecioBoleto(horarios.getValue().toString()));
+
+        int asientos[]=Con.estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
+        getApplicationBean1().setEstadoAsientos(asientos);
+        for (int i = 0; i < asientos.length; i++) {
+            //int j = asientos[i];
+            System.out.println(i+":"+asientos[i]);
+        }
+
         Con.CerrarConexion();
 
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());
         String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
-        fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-        //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
         
         Con.IniciarConexion();
         int numH=Con.obtenerHorarios(idOrigen,idDestino,fec); 
         poblarComboHorarios(Con.Result, numH);
+
+        //int asientos=Con.estadoAsientos(horarios.getValue().toString());
+
         Con.CerrarConexion();
     }
 
