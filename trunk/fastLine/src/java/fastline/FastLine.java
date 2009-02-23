@@ -307,6 +307,7 @@ public class FastLine extends AbstractPageBean {
         //if(usuario.compareTo("itachi")==0 && pass.compareTo("itachi")==0)
 
         if(Con.esUsuario(usuario,pass)){
+            getApplicationBean1().setNombreusuario(usuario);
             if(Con.esAdministrador(usuario))
                 return "case1";
 

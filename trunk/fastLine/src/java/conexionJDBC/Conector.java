@@ -288,5 +288,77 @@ public class Conector {
             Estado="No se pudo insertar la salida";
         }
     }
+    /*
+    public int [] asientos(){
+        int estados[];
+
+        return estados[];
+    }
+    */
+    public void prepararAsientos(){
+        System.out.println("----------------------------------");
+        consultar("select idsal from salidas order by idsal DESC limit 1");
+        
+        try {
+            String consulta;
+            getResultSet().next();
+            int idSal=getResultSet().getInt("idsal");
+            System.out.println("idSal="+idSal);
+            consultar("select b.capbus as cap from buses b,salidas s where s.idsal="+idSal+" and s.matbus=b.matbus");
+            getResultSet().next();
+            int numAsientos=getResultSet().getInt("cap");
+            System.out.println("numAsientos="+numAsientos);
+            for(int idAsiento=1;idAsiento<=numAsientos;idAsiento++){
+                consulta="insert into asientos(nroasibus,idsal,estado) values("+idAsiento+","+idSal+",'d')";
+                System.out.println(consulta);
+                statement.executeUpdate(consulta);
+            }
+        } catch (Exception e) {
+            Estado="No se pudo preparar los asientos";
+        }
+
+    }
+    public void reservarPasaje(String idUsu,int idSal,int numAsi){
+        try {
+            statement.executeUpdate("update asientos SET estado='r' where idsal="+idSal+" and nroasibus="+numAsi);
+            consultar("select idasi from asientos where idsal="+idSal+" and nroasibus="+numAsi);
+            getResultSet().next();
+            int idasi=getResultSet().getInt("idasi");
+            statement.executeUpdate("insert into reservapasajes(idasi,idnomusu) values("+idasi+",'"+idUsu+"')");
+
+        } catch (Exception e) {
+            Estado="Error en reservarPasaje";
+        }
+
+    }
+
+    public int[] estadoAsientos(int idSal){
+        int asientos[];
+        try {
+            consultar("select b.capbus as cap from buses b,salidas s where s.idsal="+idSal+" and s.matbus=b.matbus");
+            getResultSet().next();
+            int numAsientos=getResultSet().getInt("cap");
+            asientos=new int[numAsientos+1];
+            asientos[0]=-1;
+            consultar("select * from asientos where idsal="+idSal+" order by nroasibus");
+            int a=1;
+            while(getResultSet().next()){
+                if(getResultSet().getString("estado").compareTo("d")==0)
+                    asientos[a]=0;
+                if(getResultSet().getString("estado").compareTo("r")==0)
+                    asientos[a]=1;
+                if(getResultSet().getString("estado").compareTo("o")==0)
+                    asientos[a]=1;
+                a++;
+            }
+        }
+        catch (Exception e) {
+            asientos=new int[1];
+            asientos[0]=-1;
+        }
+
+        
+        return asientos;
+    }
 
 }

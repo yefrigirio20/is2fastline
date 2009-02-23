@@ -23,7 +23,8 @@ import javax.faces.FacesException;
  */
 public class ApplicationBean1 extends AbstractApplicationBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
-
+    private String nombreusuario;
+    private int estadoAsientos[];
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
@@ -100,5 +101,33 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     @Override
     public String getLocaleCharacterEncoding() {
         return super.getLocaleCharacterEncoding();
+    }
+
+    /**
+     * @return the nombreusuario
+     */
+    public String getNombreusuario() {
+        return nombreusuario;
+    }
+
+    /**
+     * @param nombreusuario the nombreusuario to set
+     */
+    public void setNombreusuario(String nombreusuario) {
+        this.nombreusuario = nombreusuario;
+    }
+
+    /**
+     * @return the estadoAsientos
+     */
+    public int[] getEstadoAsientos() {
+        return estadoAsientos;
+    }
+
+    /**
+     * @param estadoAsientos the estadoAsientos to set
+     */
+    public void setEstadoAsientos(int[] estadoAsientos) {
+        this.estadoAsientos = estadoAsientos;
     }
 }
