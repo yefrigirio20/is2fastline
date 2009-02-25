@@ -13,18 +13,18 @@
                 <webuijsf:head id="head1" title="FastLine - Gestion de Rutas">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                     <df:ajaxTransaction id="ajaxTransaction1" inputs="page1:html1:body1:form1:agregarRuta" render="page1:html1:body1:form1:errorRuta,page1:html1:body1:form1:comboRutas,page1:html1:body1:form1:rutaNuevaSalida"/>
-                    <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:agregarNuevaSalida" render="page1:html1:body1:form1:prueba,page1:html1:body1:form1:errorHora,page1:html1:body1:form1:errorChoferes,page1:html1:body1:form1:errorBus,page1:html1:body1:form1:errorRutaSal,page1:html1:body1:form1:errorPrecio"/>
+                    <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:agregarNuevaSalida" render="page1:html1:body1:form1:prueba,page1:html1:body1:form1:errorHora,page1:html1:body1:form1:errorChoferes,page1:html1:body1:form1:errorBus,page1:html1:body1:form1:errorRutaSal,page1:html1:body1:form1:errorPrecio,page1:html1:body1:form1:errorFecha"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="background-color: rgb(139, 175, 228); -rave-layout: grid">
                     <webuijsf:form id="form1">
                         <webuijsf:label id="label1"
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 70px; left: 0px; top: 72px; position: absolute; width: 694px" text="Gestion de Salidas y Rutas  de FastLine"/>
-                        <webuijsf:label id="label2" style="left: 48px; top: 192px; position: absolute" text="Partida:"/>
-                        <webuijsf:label id="label4" style="left: 216px; top: 192px; position: absolute" text="Llegada:"/>
+                        <webuijsf:label id="label2" style="left: 48px; top: 192px; position: absolute" text="Origen:"/>
+                        <webuijsf:label id="label4" style="left: 216px; top: 192px; position: absolute" text="Destino:"/>
                         <webuijsf:dropDown binding="#{gestionarRutas.depOrigen}" id="depOrigen" items="#{gestionarRutas.depOrigenDefaultOptions.options}"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depOrigen');" style="left: 48px; top: 216px; position: absolute" valueChangeListenerExpression="#{gestionarRutas.regionOrigen_processValueChange}"/>
+                            onChange="" style="left: 48px; top: 216px; position: absolute" valueChangeListenerExpression="#{gestionarRutas.regionOrigen_processValueChange}"/>
                         <webuijsf:dropDown binding="#{gestionarRutas.depDestino}" id="depDestino" items="#{gestionarRutas.depDestinoDefaultOptions.options}"
-                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'depDestino');" style="left: 216px; top: 216px; position: absolute" valueChangeListenerExpression="#{gestionarRutas.depDestino_processValueChange}"/>
+                            onChange="" style="left: 216px; top: 216px; position: absolute" valueChangeListenerExpression="#{gestionarRutas.depDestino_processValueChange}"/>
                         <webuijsf:button actionExpression="#{gestionarRutas.agregarRuta_action}" binding="#{gestionarRutas.agregarRuta}" id="agregarRuta"
                             style="height: 24px; left: 239px; top: 240px; position: absolute; width: 72px" text="Agregar Ruta"/>
                         <webuijsf:pageSeparator id="pageSeparator1" style="height: 0px; left: 0px; top: 264px; position: absolute; width: 672px"/>
@@ -51,10 +51,9 @@
                         <webuijsf:label id="label11" style="left: 96px; top: 504px; position: absolute; text-align: right; width: 51px" text="Bus:"/>
                         <webuijsf:dropDown binding="#{gestionarRutas.chofer1}" id="chofer1" items="#{gestionarRutas.chofer1DefaultOptions.options}" style="left: 144px; top: 528px; position: absolute"/>
                         <webuijsf:label id="label12" style="left: 96px; top: 600px; position: absolute; text-align: right; width: 48px" text="Hora:"/>
-                        <webuijsf:calendar binding="#{gestionarRutas.fecha}" dateFormatPatternHelp="MM/dd/yyyy" id="fecha" label="Fecha de salida"
-                            required="true" style="left: 48px; top: 576px; position: absolute"/>
+                        <webuijsf:calendar binding="#{gestionarRutas.fecha}" dateFormatPatternHelp="MM/dd/yyyy" id="fecha" label="Fecha de salida" style="left: 48px; top: 576px; position: absolute"/>
                         <webuijsf:button actionExpression="#{gestionarRutas.agregarNuevaSalida_action}" binding="#{gestionarRutas.agregarNuevaSalida}"
-                            id="agregarNuevaSalida" style="height: 24px; left: 359px; top: 648px; position: absolute" text="Agregar Nueva Salida"/>
+                            id="agregarNuevaSalida" style="height: 24px; left: 311px; top: 648px; position: absolute" text="Agregar Nueva Salida"/>
                         <webuijsf:label id="label14"
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 46px; left: 72px; top: 0px; position: absolute; width: 166px" text="FastLine"/>
                         <webuijsf:image height="72" id="image1" style="left: 0px; top: 0px; position: absolute" url="/resources/utilities.png" width="72"/>
@@ -75,13 +74,14 @@
                         <webuijsf:dropDown binding="#{gestionarRutas.minutos}" id="minutos" items="#{gestionarRutas.minutosDefaultOptions.options}" style="left: 216px; top: 600px; position: absolute"/>
                         <webuijsf:staticText id="staticText2" style="left: 264px; top: 600px; position: absolute" text="min"/>
                         <webuijsf:staticText binding="#{gestionarRutas.errorRuta}" id="errorRuta" style="color: red; left: 336px; top: 216px; position: absolute"/>
-                        <webuijsf:staticText binding="#{gestionarRutas.errorHora}" id="errorHora" style="color: red; height: 24px; left: 360px; top: 600px; position: absolute; width: 96px"/>
-                        <webuijsf:staticText binding="#{gestionarRutas.errorChoferes}" id="errorChoferes" style="color: red; left: 336px; top: 528px; position: absolute"/>
-                        <webuijsf:staticText binding="#{gestionarRutas.errorBus}" id="errorBus" style="color: red; left: 336px; top: 504px; position: absolute"/>
-                        <webuijsf:staticText binding="#{gestionarRutas.errorRutaSal}" id="errorRutaSal" style="color: red; left: 336px; top: 480px; position: absolute"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.errorHora}" id="errorHora" style="color: red; height: 24px; left: 360px; top: 600px; position: absolute; width: 214px"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.errorChoferes}" id="errorChoferes" style="color: red; left: 360px; top: 528px; position: absolute"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.errorBus}" id="errorBus" style="color: red; left: 360px; top: 504px; position: absolute"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.errorRutaSal}" id="errorRutaSal" style="color: red; left: 360px; top: 480px; position: absolute"/>
                         <webuijsf:label id="label13" style="left: 24px; top: 624px; position: absolute; text-align: right" text="Precio del boleto (S/.):"/>
                         <webuijsf:textField binding="#{gestionarRutas.precio}" id="precio" style="left: 144px; top: 624px; position: absolute"/>
                         <webuijsf:staticText binding="#{gestionarRutas.errorPrecio}" id="errorPrecio" style="color: red; height: 24px; left: 144px; top: 648px; position: absolute; width: 96px"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.errorFecha}" id="errorFecha" style="color: red; height: 22px; left: 360px; top: 576px; position: absolute; width: 214px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

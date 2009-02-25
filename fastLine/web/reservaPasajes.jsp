@@ -14,8 +14,8 @@
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                     <df:ajaxTransaction id="ajaxTransaction1" inputs="page1:html1:body1:form1:depOrigen" render="page1:html1:body1:form1:staticText1,page1:html1:body1:form1:errorRuta"/>
                     <df:ajaxTransaction id="ajaxTransaction2" inputs="page1:html1:body1:form1:depDestino" render="page1:html1:body1:form1:errorRuta"/>
-                    <df:ajaxTransaction id="ajaxTransaction3" inputs="page1:html1:body1:form1:consultarHorarios" render="page1:html1:body1:form1:errorGnrl"/>
-                    <df:ajaxTransaction id="ajaxTransaction4" render="page1:html1:body1:form1:precio"/>
+                    <df:ajaxTransaction id="ajaxTransaction3" inputs="page1:html1:body1:form1:consultarHorarios" render="page1:html1:body1:form1:errorGnrl,page1:html1:body1:form1:pruebaFecha,page1:html1:body1:form1:precio"/>
+                    <df:ajaxTransaction id="ajaxTransaction4" render=""/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="background-color: rgb(255, 255, 255); -rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -49,6 +49,7 @@
                         <webuijsf:staticText id="staticText2" style="color: rgb(0, 51, 204); font-size: 24px; left: 24px; top: 672px; position: absolute" text="Verde: Asiento Ocupado"/>
                         <webuijsf:textField binding="#{reservaPasajes.asiento}" id="asiento" style="left: 192px; top: 480px; position: absolute"/>
                         <webuijsf:label id="label3" style="left: 24px; top: 480px; position: absolute" text="Indique un Asiento disponible"/>
+                        <webuijsf:staticText binding="#{reservaPasajes.pruebaFecha}" id="pruebaFecha" style="color: green; left: 48px; top: 360px; position: absolute"/>
                     </webuijsf:form>
                     <div style="height: 670px; left: 384px; top: 24px; position: absolute; width: 478px">
                         <jsp:directive.include file="FragmentoBuses.jspf"/>

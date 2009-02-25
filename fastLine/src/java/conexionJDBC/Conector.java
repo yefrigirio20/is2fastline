@@ -215,9 +215,11 @@ public class Conector {
     public void insertarNuevaRuta(int origen, int destino){
         String insert="insert into rutas(idini,idfin) values("+origen+","+destino+")";
         try{
+            System.out.println(insert);
             statement.executeUpdate(insert);
         }
         catch (Exception e) {
+            System.out.println("error al insertar nueva ruta");
             Estado="No se pudo insertar la ruta";
         }
     }
@@ -270,9 +272,9 @@ public class Conector {
     }
 
     public void eliminarRuta(int idruta){
-        String insert="delete from rutas where idrut="+idruta;
-        try{
-            statement.executeUpdate(insert);
+        String delete="delete from rutas where idrut="+idruta;
+        try{            
+            statement.executeUpdate(delete);
         }
         catch (Exception e) {
             Estado="No se pudo insertar la ruta";

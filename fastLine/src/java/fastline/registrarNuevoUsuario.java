@@ -527,6 +527,11 @@ public class registrarNuevoUsuario extends AbstractPageBean {
                 todoCorrecto=false;
             }
         }
+        else{
+            errorPass.setText("Escriba su contraseña 2 veces");
+            errorPass.setVisible(true);
+            todoCorrecto=false;
+        }
         //todoCorrecto=todoCorrecto&&apelPatUsu.length()>0&&apelMatUsu.length()>0&&dniUsu.length()>0&&nombresUsu.length()>0&&emailUsu.length()>0&&idNomUsu.length()>0&&passUsu.length()>0&&confirmPassUsu.length()>0;
 
         if(todoCorrecto){
