@@ -141,6 +141,15 @@ public class reservaPasajes extends AbstractPageBean {
     public void setAsiento(TextField tf) {
         this.asiento = tf;
     }
+    private StaticText pruebaFecha = new StaticText();
+
+    public StaticText getPruebaFecha() {
+        return pruebaFecha;
+    }
+
+    public void setPruebaFecha(StaticText st) {
+        this.pruebaFecha = st;
+    }
 
     // </editor-fold>
 
@@ -310,6 +319,7 @@ public class reservaPasajes extends AbstractPageBean {
         // case name where null will return to the same page.
         //precio.setVisible(false);
         errorRuta.setVisible(false);
+        pruebaFecha.setVisible(false);
         //errorGnrl.setVisible(false);
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());      
@@ -321,16 +331,17 @@ public class reservaPasajes extends AbstractPageBean {
         else{
             String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
-            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-            fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+            fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+            //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+
+            pruebaFecha.setText("fecha: "+fec);
+            pruebaFecha.setVisible(true);
 
             Conector Con=new Conector();
             Con.IniciarConexion();
             int numH=Con.obtenerHorarios(idOrigen,idDestino,fec);
-            poblarComboHorarios(Con.Result, numH);
-
-            //precio.setText("numerosal:"+numH);
-            precio.setVisible(true);
+            poblarComboHorarios(Con.Result, numH);            
+            precio.setVisible(false);
         }
         return null;
     }
@@ -390,7 +401,7 @@ public class reservaPasajes extends AbstractPageBean {
         Conector Con=new Conector();
         Con.IniciarConexion();
         precio.setText(Con.obtenerPrecioBoleto(horarios.getValue().toString()));
-
+        precio.setVisible(true);
         int asientos[]=Con.estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
         getApplicationBean1().setEstadoAsientos(asientos);
         for (int i = 0; i < asientos.length; i++) {

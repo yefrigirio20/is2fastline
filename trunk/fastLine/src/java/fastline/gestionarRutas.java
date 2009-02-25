@@ -314,6 +314,15 @@ public class gestionarRutas extends AbstractPageBean {
     public void setErrorPrecio(StaticText st) {
         this.errorPrecio = st;
     }
+    private StaticText errorFecha = new StaticText();
+
+    public StaticText getErrorFecha() {
+        return errorFecha;
+    }
+
+    public void setErrorFecha(StaticText st) {
+        this.errorFecha = st;
+    }
 
     // </editor-fold>
 
@@ -466,10 +475,15 @@ public class gestionarRutas extends AbstractPageBean {
                 errorRuta.setText("Ruta no valida");
                 errorRuta.setVisible(true);
             }
-            else
-                Con.insertarNuevaRuta(idOrigen,idDestino);
+            else if(idOrigen==0||idDestino==0){
+                errorRuta.setText("Debe especificar origen y destino");
+                errorRuta.setVisible(true);
+            }
+            else                
+                Con.insertarNuevaRuta(idOrigen,idDestino);            
         }
         Con.CerrarConexion();
+        poblarComboRutas();
         return null;
     }
 
@@ -481,6 +495,7 @@ public class gestionarRutas extends AbstractPageBean {
         Con.IniciarConexion();
         Con.eliminarRuta(idruta);
         Con.CerrarConexion();
+        poblarComboRutas();
         return null;
     }
 
@@ -556,11 +571,18 @@ public class gestionarRutas extends AbstractPageBean {
             todoCorrecto=false;
         }
 
-
-
-        String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate());
-        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        String fec="";
+        try {
+            fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate());
+            fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+            //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        }
+        catch (Exception e) {
+            errorFecha.setText("Debe indicar la fecha");
+            errorFecha.setVisible(true);
+            todoCorrecto=false;
+        }
+        
 
         if(todoCorrecto){
             Conector Con=new Conector();
