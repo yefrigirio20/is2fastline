@@ -55,10 +55,6 @@
                     <file>${file.reference.postgresql-8.2-506.jdbc4.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
-                <library>
-                    <file>${libs.dynamicfaces_23322.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
             </web-module-libraries>
             <web-module-additional-libraries>
                 <library>
