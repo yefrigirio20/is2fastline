@@ -331,11 +331,11 @@ public class reservaPasajes extends AbstractPageBean {
         else{
             String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
-            fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
             //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
-            pruebaFecha.setText("fecha: "+fec);
-            pruebaFecha.setVisible(true);
+           // pruebaFecha.setText("fecha: "+fec);
+            //pruebaFecha.setVisible(true);
 
             Conector Con=new Conector();
             Con.IniciarConexion();
@@ -416,7 +416,7 @@ public class reservaPasajes extends AbstractPageBean {
         String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
         //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+        //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
         
         Con.IniciarConexion();
         int numH=Con.obtenerHorarios(idOrigen,idDestino,fec); 

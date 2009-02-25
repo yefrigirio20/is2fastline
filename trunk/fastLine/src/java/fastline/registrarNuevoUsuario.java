@@ -408,7 +408,8 @@ public class registrarNuevoUsuario extends AbstractPageBean {
         String diaNacUsu=dia.getValue().toString();
         String mesNacUsu=mes.getValue().toString();
         String añoNacUsu=año.getValue().toString();
-        String fecNacUsu=mesNacUsu+"/"+diaNacUsu+"/"+añoNacUsu;
+        String fecNacUsu=diaNacUsu+"/"+mesNacUsu+"/"+añoNacUsu;
+        //String fecNacUsu=mesNacUsu+"/"+diaNacUsu+"/"+añoNacUsu;
 
 
         boolean todoCorrecto=true;
