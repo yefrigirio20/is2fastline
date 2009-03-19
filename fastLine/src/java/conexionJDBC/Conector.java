@@ -183,8 +183,8 @@ public class Conector {
             Result.next();
 
             int idruta=getResultSet().getInt("idrut");
-           System.out.println("blablabla "+idruta+" fecha "+fecha);
-           System.out.println("\nselect count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'\n");
+           //System.out.println("blablabla "+idruta+" fecha "+fecha);
+           //System.out.println("\nselect count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'\n");
             consultar("select count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
             Result.next();
             numSalidas=getResultSet().getInt("count");
@@ -197,6 +197,27 @@ public class Conector {
         }
         return numSalidas;
     }
+
+    public int obtenerHorarios(int idruta,String fecha){
+
+        int numSalidas=0;
+        try{
+            Result.next();
+           //System.out.println("blablabla "+idruta+" fecha "+fecha);
+           //System.out.println("\nselect count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'\n");
+            consultar("select count(idsal) from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"'");
+            Result.next();
+            numSalidas=getResultSet().getInt("count");
+            System.out.println("blablabla "+numSalidas);
+            consultar("select idsal,horasal from salidas where idrutsal="+idruta+" and fechsal='"+fecha+"' order by horasal");
+            return numSalidas;
+        }
+        catch(Exception e){
+            numSalidas=-1;
+        }
+        return numSalidas;
+    }
+
     public String obtenerPrecioBoleto(String idSal){
         String precio;
         consultar("select precbol from salidas where idsal='"+idSal+"'");
@@ -263,6 +284,22 @@ public class Conector {
         }
 
         return numbuses;
+    }
+
+    public int obtenerRservaciones(int idSal){
+        int numReservaciones=0;
+        consultar("select count(rp.idasi) from reservapasajes rp,salidas s,asientos a where a.idsal=1 and rp.idasi=a.idasi");
+        try{
+            getResultSet().next();
+            numReservaciones=getResultSet().getInt("count");
+            consultar("select distinct u.apelpatusu,u.apelmatusu,u.dniusu,s.precbol,rp.idasi from usuarios u,salidas s,asientos a,reservapasajes rp where s.idsal="+idSal+" and a.idsal=s.idsal and rp.idnomusu=u.idnomusu order by u.apelpatusu");
+        }
+        catch(Exception e){
+            Estado="Error en obtenerRutas";
+            numReservaciones=-1;
+        }
+
+        return numReservaciones;
     }
 
     public int obtenerChoferes(){
