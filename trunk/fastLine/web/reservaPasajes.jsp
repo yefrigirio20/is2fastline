@@ -42,7 +42,7 @@
                         <webuijsf:staticText binding="#{reservaPasajes.precio}" id="precio" style="color: blue; left: 168px; top: 432px; position: absolute"/>
                         <webuijsf:button actionExpression="#{reservaPasajes.consultarHorarios_action}" binding="#{reservaPasajes.consultarHorarios}"
                             id="consultarHorarios" style="height: 24px; left: 167px; top: 360px; position: absolute" text="Consultar Horarios"/>
-                        <webuijsf:calendar binding="#{reservaPasajes.startCalendar}" dateFormatPatternHelp="MM/dd/yyyy" id="startCalendar"
+                        <webuijsf:calendar binding="#{reservaPasajes.startCalendar}" dateFormatPatternHelp="dd/MM/yyyy" id="startCalendar"
                             label="Fecha de Salida" onChange="" required="true" style="left: 72px; top: 312px; position: absolute" valueChangeListenerExpression="#{reservaPasajes.startCalendar_processValueChange}"/>
                         <webuijsf:staticText id="staticText1"
                             style="color: rgb(0, 51, 255); font-size: 24px; height: 24px; left: 24px; top: 624px; position: absolute" text="Blanco:Asiento Libre"/>
