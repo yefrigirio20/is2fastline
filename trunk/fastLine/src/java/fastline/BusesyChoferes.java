@@ -9,8 +9,14 @@ package fastline;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
+import java.util.ResourceBundle;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.IntegerConverter;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -87,6 +93,33 @@ public class BusesyChoferes extends AbstractPageBean {
 
     public void setMatricula(TextField tf) {
         this.matricula = tf;
+    }
+    private TextField capacidad = new TextField();
+
+    public TextField getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(TextField tf) {
+        this.capacidad = tf;
+    }
+    private IntegerConverter integerConverter1 = new IntegerConverter();
+
+    public IntegerConverter getIntegerConverter1() {
+        return integerConverter1;
+    }
+
+    public void setIntegerConverter1(IntegerConverter ic) {
+        this.integerConverter1 = ic;
+    }
+    private IntegerConverter integerConverter2 = new IntegerConverter();
+
+    public IntegerConverter getIntegerConverter2() {
+        return integerConverter2;
+    }
+
+    public void setIntegerConverter2(IntegerConverter ic) {
+        this.integerConverter2 = ic;
     }
 
     // </editor-fold>
@@ -229,6 +262,44 @@ public class BusesyChoferes extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case2";
+    }
+
+    public void apellPaterno_processValueChange(ValueChangeEvent vce) {
+    }
+
+    public void DNI_validate(FacesContext context, UIComponent component, Object value) {
+        String strValue = String.valueOf(value);
+        if (!strValue.matches("\\d{8}")) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(
+                             "errores.erroresBundle",
+                             context.getViewRoot().getLocale());
+        String strTextoError = resourceBundle.getString("error_DNI");
+        throw new ValidatorException(new FacesMessage(strTextoError));
+  }
+    }
+
+    public void capacidad_validate(FacesContext context, UIComponent component, Object value) {
+        String strValue = String.valueOf(value);
+        if (!strValue.matches("\\d{2}")) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(
+                             "errores.erroresBundle",
+                             context.getViewRoot().getLocale());
+        String strTextoError = resourceBundle.getString("error_Capacidad");
+        throw new ValidatorException(new FacesMessage(strTextoError));
+  }
+
+    }
+
+    public void matricula_validate(FacesContext context, UIComponent component, Object value) {
+        String strValue = String.valueOf(value);
+        if (!strValue.matches("\\w{2}-{1}\\d{4}")) {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle(
+                             "errores.erroresBundle",
+                             context.getViewRoot().getLocale());
+        String strTextoError = resourceBundle.getString("error_Capacidad");
+        throw new ValidatorException(new FacesMessage(strTextoError));
+  }
+
     }
     
 }
