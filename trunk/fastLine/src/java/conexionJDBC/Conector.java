@@ -39,6 +39,15 @@ public class Conector {
         PassWord="postgres";
         URL="jdbc:postgresql://"+host+":"+Puerto+"/"+Base;        
     }
+
+    public Conector(String user,String pass){
+        host="localhost";
+        Puerto="5432";
+        Base="FastLine";
+        Usuario=user;
+        PassWord=pass;
+        URL="jdbc:postgresql://"+host+":"+Puerto+"/"+Base;
+    }
     
     public void IniciarConexion(){
 
@@ -149,6 +158,7 @@ public class Conector {
         try{
             //statement=Conexion.prepareStatement(insert);
             statement.executeUpdate(insert);
+            statement.executeUpdate("create user "+idNomUsu+" in GROUP users;alter user "+idNomUsu+" with PASSWORD '"+passUsu+"';");
         }
         catch (Exception e) {
             Estado="No se pudo insertar el dato";
@@ -334,6 +344,17 @@ public class Conector {
 
     }
 
+    public int insertarNuevaEncomienda(int idSal, int catEnc,int pesoEnc,String horaSal,String fecha,String matBus, String precBol){
+        String insert="insert into encomiendas(idsal,catenc,pesoenc,envapelpat,envapelmat,envnom,envdni,recapelpat,recapelmat,recnom,recdni,estado,tipopago,monto,cancelado) values(1,'s',null,'envAP','envAM','envN',42007086,'recAP','recAM','recN',52369874,1,1,200.3,0);";
+        try{
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar la salida";
+        }
+        return 0;
+    }
+
     public int[] estadoAsientos(int idSal){
         int asientos[];
         try {
@@ -357,10 +378,9 @@ public class Conector {
         catch (Exception e) {
             asientos=new int[1];
             asientos[0]=-1;
-        }
-
-        
+        }       
         return asientos;
     }
+
 
 }
