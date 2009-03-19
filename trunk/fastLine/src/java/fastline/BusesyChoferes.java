@@ -280,7 +280,7 @@ public class BusesyChoferes extends AbstractPageBean {
 
     public void capacidad_validate(FacesContext context, UIComponent component, Object value) {
         String strValue = String.valueOf(value);
-        if (!strValue.matches("\\d{2}")) {
+        if (!strValue.matches("\\d{3}")) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(
                              "errores.erroresBundle",
                              context.getViewRoot().getLocale());
