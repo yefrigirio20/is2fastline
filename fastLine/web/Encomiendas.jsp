@@ -56,7 +56,7 @@
                         <webuijsf:textField binding="#{Encomiendas.peso}" id="peso" style="left: 168px; top: 360px; position: absolute"/>
                         <webuijsf:label id="label20" style="height: 22px; left: 48px; top: 264px; position: absolute; text-align: right; width: 120px" text="Horarios Disponibles:"/>
                         <webuijsf:dropDown binding="#{Encomiendas.horarios}" id="horarios" items="#{Encomiendas.horariosDefaultOptions.options}" style="left: 168px; top: 264px; position: absolute"/>
-                        <webuijsf:label id="label21" style="height: 22px; left: 384px; top: 648px; position: absolute; text-align: right; width: 72px" text="Nro Recibo:"/>
+                        <webuijsf:label id="label21" style="height: 46px; left: 336px; top: 648px; position: absolute; text-align: right; width: 190px" text="Esta encomienda se didentificara con el siguiente  número"/>
                         <webuijsf:label id="label22" style="left: 48px; top: 552px; position: absolute" text="OPCIONES DE PAGO"/>
                         <webuijsf:label id="label24" style="height: 22px; left: 48px; top: 600px; position: absolute; text-align: right; width: 120px" text="Monto Cancelado:"/>
                         <webuijsf:textField binding="#{Encomiendas.montoCancelado}" id="montoCancelado" style="left: 168px; top: 600px; position: absolute"/>
@@ -71,7 +71,7 @@
                         <webuijsf:image height="24" id="image5" style="left: 144px; top: 1368px; position: absolute" url="/resources/folder_home.png" width="24"/>
                         <webuijsf:image height="48" id="image6" style="left: 24px; top: 144px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:label id="label23"
-                            style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 744px; position: absolute; width: 238px" text="Actualizar Estado de Encomienda"/>
+                            style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 744px; position: absolute; width: 262px" text="Actualizar Estado de Encomiendas"/>
                         <webuijsf:image height="48" id="image7" style="left: 24px; top: 744px; position: absolute" url="/resources/db_comit.png" width="48"/>
                         <webuijsf:pageSeparator id="pageSeparator1" style="height: 7px; left: 0px; top: 696px; position: absolute; width: 624px"/>
                         <webuijsf:label id="label25" style="height: 22px; left: 48px; top: 792px; position: absolute; text-align: right; width: 72px" text="Nro Recibo:"/>
@@ -129,7 +129,9 @@
                         <webuijsf:staticText binding="#{Encomiendas.errorHorario}" id="errorHorario" style="color: red; left: 336px; top: 264px; position: absolute; width: 120px"/>
                         <webuijsf:staticText binding="#{Encomiendas.errorOpcPago}" id="errorOpcPago" style="color: red; height: 22px; left: 360px; top: 552px; position: absolute"/>
                         <webuijsf:staticText binding="#{Encomiendas.errorMontoCanc}" id="errorMontoCanc" style="color: red; height: 22px; left: 360px; top: 600px; position: absolute"/>
-                        <webuijsf:staticText binding="#{Encomiendas.encID}" id="encID" style="color: blue; left: 456px; top: 648px; position: absolute"/>
+                        <webuijsf:staticText binding="#{Encomiendas.encID}" id="encID" style="color: blue; font-size: 24px; height: 18px; left: 528px; top: 648px; position: absolute"/>
+                        <webuijsf:label id="label42" style="height: 22px; left: 48px; top: 576px; position: absolute; text-align: right; width: 120px" text="Monto:"/>
+                        <webuijsf:textField binding="#{Encomiendas.montoTotal}" id="montoTotal" style="left: 168px; top: 576px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

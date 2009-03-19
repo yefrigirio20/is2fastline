@@ -322,6 +322,15 @@ public class Encomiendas extends AbstractPageBean {
     public void setEncID(StaticText st) {
         this.encID = st;
     }
+    private TextField montoTotal = new TextField();
+
+    public TextField getMontoTotal() {
+        return montoTotal;
+    }
+
+    public void setMontoTotal(TextField tf) {
+        this.montoTotal = tf;
+    }
 
     // </editor-fold>
 
@@ -441,7 +450,8 @@ public class Encomiendas extends AbstractPageBean {
        int idSal;
        double pesoEnc;
        boolean todoCorrecto=true;
-        String envAP,envAM,envN,envDNI,recAP,recAM,recN,recDNI;
+        String envAP="",envAM="",envN="",recAP="",recAM="",recN="";
+        int envDNI=0,recDNI=0;
         try {
             idSal=Integer.parseInt(horarios.getValue().toString());
         }
@@ -452,16 +462,15 @@ public class Encomiendas extends AbstractPageBean {
            idSal=-1;
         }
 
-        int catEnc;
+        String catEnc="";
 
-        try {
-            catEnc=Integer.parseInt(categoriaEnc.getValue().toString());
-        }
-        catch (Exception e) {
+        if(categoriaEnc.getValue().toString().compareTo("-")==0){
             todoCorrecto=false;
             errorCategoria.setText("Debe escoger una cateogria de la encomienda");
             errorCategoria.setVisible(true);
         }
+        else
+            catEnc=categoriaEnc.getValue().toString();
         
 
         try {
@@ -470,6 +479,7 @@ public class Encomiendas extends AbstractPageBean {
         catch (Exception e) {
             errorPeso.setText("El peso no es correcto");
             errorPeso.setVisible(true);
+            pesoEnc=-1;
             todoCorrecto=false;
         }
         boolean faltaDato=false;
@@ -499,7 +509,10 @@ public class Encomiendas extends AbstractPageBean {
             todoCorrecto=false;
         }
         else
-            envDNI=DNI1.getText().toString();
+            if(DNI1.getText().toString().length()!=8)
+                todoCorrecto=false;
+            else
+                envDNI=Integer.parseInt(DNI1.getText().toString());
 
 
         if(apellPaterno2.getText()==null){
@@ -523,12 +536,15 @@ public class Encomiendas extends AbstractPageBean {
         else
             recN=nombres2.getText().toString();
 
-        if(DNI2.getText()==null){
+       if(DNI2.getText()==null){
             faltaDato=true;
             todoCorrecto=false;
         }
         else
-            recDNI=DNI2.getText().toString();
+            if(DNI2.getText().toString().length()!=8)
+                todoCorrecto=false;
+            else
+                recDNI=Integer.parseInt(DNI2.getText().toString());
 
         if(faltaDato)
             errorNombres.setText("Se deben especificar todos los datos");
@@ -539,18 +555,34 @@ public class Encomiendas extends AbstractPageBean {
         }
         catch (Exception e) {
             todoCorrecto=false;
-            errorOpcPago.setText("Debe de seleccionar un opcion de pago");
+            errorOpcPago.setText("Debe de seleccionar una opcion de pago");
             errorOpcPago.setVisible(true);
+            tipoPago=-1;
         }
+
+        double monto;
+        try {
+            monto=Double.parseDouble(montoTotal.getText().toString());
+        } catch (Exception e) {
+            todoCorrecto=false;
+            errorMontoCanc.setText("El monto no es válido");
+            errorMontoCanc.setVisible(true);
+            monto=-1;
+        }
+
+
         double cancelado;
         try {
             cancelado=Double.parseDouble(montoCancelado.getText().toString());
         }
         catch (Exception e) {
             todoCorrecto=false;
-            errorMontoCanc.setText("El monto no es válido");
+            errorMontoCanc.setText("El monto cancelado no es válido");
             errorMontoCanc.setVisible(true);
+            cancelado=-1;
         }
+        //insertarNuevaEncomienda(int idSal, String catEnc,double pesoEnc,String envAP,String envAM ,String envN,int envDNI,String recAP,String recAM,String recN,int recDNI,int estado,int tipopago,double monto,double cancelado)
+        encID.setText(getApplicationBean1().getCon().insertarNuevaEncomienda(idSal,catEnc,pesoEnc,envAP, envAM , envN,envDNI, recAP, recAM, recN,recDNI,1,tipoPago,monto,cancelado));
 
         return null;
     }
@@ -599,18 +631,29 @@ public class Encomiendas extends AbstractPageBean {
             errorRuta.setVisible(true);
         }
         else{
-            String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+            
+            String fec;
+            try {
+                fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+                int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+            poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+            }
+            catch (Exception e) {
+                errorFecha.setText("Debe indicar la fecha");
+                errorFecha.setVisible(true);
+
+            }
+
 
             //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
             //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
             //errorFecha.setText("fecha: "+fec);
-            errorFecha.setVisible(true);
+            
 
             //Conector Con=new Conector();
             //Con.IniciarConexion();
-            int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
-            poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+            
             //precio.setVisible(false);
         }
         return null;
