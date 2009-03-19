@@ -9,6 +9,7 @@ package fastline;
 import com.sun.rave.web.ui.appbase.AbstractApplicationBean;
 import javax.faces.FacesException;
 import conexionJDBC.Conector;
+import java.sql.ResultSet;
 
 /**
  * <p>Application scope data bean for your application.  Create properties
@@ -27,6 +28,7 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     private String nombreusuario;
     private int estadoAsientos[];
     private Conector Con;
+    private ResultSet respaldo1,respaldo2;
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
@@ -145,5 +147,33 @@ public class ApplicationBean1 extends AbstractApplicationBean {
      */
     public void setCon(String usu,String pass) {
         this.Con = new Conector(usu,pass);
+    }
+
+    /**
+     * @return the respaldo1
+     */
+    public ResultSet getRespaldo1() {
+        return respaldo1;
+    }
+
+    /**
+     * @param respaldo1 the respaldo1 to set
+     */
+    public void setRespaldo1(ResultSet respaldo1) {
+        this.respaldo1 = respaldo1;
+    }
+
+    /**
+     * @return the respaldo2
+     */
+    public ResultSet getRespaldo2() {
+        return respaldo2;
+    }
+
+    /**
+     * @param respaldo2 the respaldo2 to set
+     */
+    public void setRespaldo2(ResultSet respaldo2) {
+        this.respaldo2 = respaldo2;
     }
 }

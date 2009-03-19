@@ -284,11 +284,11 @@ public class reservaPasajes extends AbstractPageBean {
         int idAsi=Integer.parseInt(asiento.getText().toString());
         
         String idusu=getApplicationBean1().getNombreusuario();
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        Con.reservarPasaje(idusu, idSal, idAsi);
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        getApplicationBean1().getCon().reservarPasaje(idusu, idSal, idAsi);
 
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
         return null;
     }
 
