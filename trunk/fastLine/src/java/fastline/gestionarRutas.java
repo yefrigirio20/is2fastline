@@ -323,6 +323,15 @@ public class gestionarRutas extends AbstractPageBean {
     public void setErrorFecha(StaticText st) {
         this.errorFecha = st;
     }
+    private StaticText asisalio = new StaticText();
+
+    public StaticText getAsisalio() {
+        return asisalio;
+    }
+
+    public void setAsisalio(StaticText st) {
+        this.asisalio = st;
+    }
 
     // </editor-fold>
 
@@ -464,9 +473,9 @@ public class gestionarRutas extends AbstractPageBean {
         errorRuta.setVisible(false);
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        if(Con.existeRuta(idOrigen, idDestino)){
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        if(getApplicationBean1().getCon().existeRuta(idOrigen, idDestino)){
             errorRuta.setText("La ruta ya existe en la base");
             errorRuta.setVisible(true);
         }
@@ -480,9 +489,9 @@ public class gestionarRutas extends AbstractPageBean {
                 errorRuta.setVisible(true);
             }
             else                
-                Con.insertarNuevaRuta(idOrigen,idDestino);            
+                getApplicationBean1().getCon().insertarNuevaRuta(idOrigen,idDestino);
         }
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
         poblarComboRutas();
         return null;
     }
@@ -491,10 +500,10 @@ public class gestionarRutas extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         int idruta=Integer.parseInt(comboRutas.getValue().toString());
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        Con.eliminarRuta(idruta);
-        Con.CerrarConexion();
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        getApplicationBean1().getCon().eliminarRuta(idruta);
+        //Con.CerrarConexion();
         poblarComboRutas();
         return null;
     }
@@ -509,6 +518,7 @@ public class gestionarRutas extends AbstractPageBean {
         errorHora.setVisible(false);
         errorPrecio.setVisible(false);
 
+        asisalio.setVisible(false);
 
         String idRuta=rutaNuevaSalida.getValue().toString();
         String matBus=busNuevaSalida.getValue().toString();
@@ -585,11 +595,13 @@ public class gestionarRutas extends AbstractPageBean {
         
 
         if(todoCorrecto){
-            Conector Con=new Conector();
-            Con.IniciarConexion();
-            Con.insertarNuevaSalida(idRuta, chof1, chof2, horaSal, fec, matBus, precBol);
-            Con.prepararAsientos();
-            Con.CerrarConexion();
+            //Conector Con=new Conector();
+            //Con.IniciarConexion();
+            getApplicationBean1().getCon().insertarNuevaSalida(idRuta, chof1, chof2, horaSal, fec, matBus, precBol);
+            asisalio.setText(fec);
+            asisalio.setVisible(true);
+            getApplicationBean1().getCon().prepararAsientos();
+            //Con.CerrarConexion();
         }        
         
         return null;
@@ -608,19 +620,19 @@ public class gestionarRutas extends AbstractPageBean {
     }
     private void poblarComboRutas(){
         com.sun.webui.jsf.model.Option[] rutas;
-        Conector Con=new Conector();
-        Con.IniciarConexion();
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
         try{
-            int numRutas=Con.obtenerRutas();
+            int numRutas=getApplicationBean1().getCon().obtenerRutas();
             if(numRutas>0){
                 rutas=new com.sun.webui.jsf.model.Option[numRutas+1];
                 String idruta,origen,destino;
                 rutas[0]=new com.sun.webui.jsf.model.Option("---","Seleccione la ruta");
                 int r=1;
-                while(Con.getResultSet().next()){
-                    idruta=Con.getResultSet().getString("idrut");
-                    origen=Con.getResultSet().getString("origen");
-                    destino=Con.getResultSet().getString("destino");
+                while(getApplicationBean1().getCon().getResultSet().next()){
+                    idruta=getApplicationBean1().getCon().getResultSet().getString("idrut");
+                    origen=getApplicationBean1().getCon().getResultSet().getString("origen");
+                    destino=getApplicationBean1().getCon().getResultSet().getString("destino");
                     rutas[r]=new com.sun.webui.jsf.model.Option(idruta,origen+" - "+destino);
                     r++;
                 }
@@ -634,26 +646,26 @@ public class gestionarRutas extends AbstractPageBean {
             rutas=new com.sun.webui.jsf.model.Option[1];
             rutas[0]=new com.sun.webui.jsf.model.Option("---","Ocurrio un error con la base de datos");
         }
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
         comboRutasDefaultOptions.setOptions(rutas);
         rutaNuevaSalidaDefaultOptions.setOptions(rutas);
     }
 
     private void poblarComboBuses(){
         com.sun.webui.jsf.model.Option[] buses;
-        Conector Con=new Conector();
-        Con.IniciarConexion();
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
         try{
-            int numbuses=Con.obtenerBuses();
+            int numbuses=getApplicationBean1().getCon().obtenerBuses();
             if(numbuses>0){
                 buses=new com.sun.webui.jsf.model.Option[numbuses+1];
                 String matBus;
                 int Capacidad;
                 buses[0]=new com.sun.webui.jsf.model.Option("---","Seleccione el bus");
                 int b=1;
-                while(Con.getResultSet().next()){
-                    matBus=Con.getResultSet().getString("matbus");
-                    Capacidad=Con.getResultSet().getInt("capbus");
+                while(getApplicationBean1().getCon().getResultSet().next()){
+                    matBus=getApplicationBean1().getCon().getResultSet().getString("matbus");
+                    Capacidad=getApplicationBean1().getCon().getResultSet().getInt("capbus");
                     buses[b]=new com.sun.webui.jsf.model.Option(matBus,matBus+" Capacidad:"+Capacidad);
                     b++;
                 }
@@ -667,26 +679,26 @@ public class gestionarRutas extends AbstractPageBean {
             buses=new com.sun.webui.jsf.model.Option[1];
             buses[0]=new com.sun.webui.jsf.model.Option("---","Ocurrio un error con la base de datos");
         }
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
         busNuevaSalidaDefaultOptions.setOptions(buses);
     }
 
     private void poblarComboChoferes(){
         com.sun.webui.jsf.model.Option[] choferes;
-        Conector Con=new Conector();
-        Con.IniciarConexion();
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
         try{
-            int numChof=Con.obtenerChoferes();
+            int numChof=getApplicationBean1().getCon().obtenerChoferes();
             if(numChof>0){
                 choferes=new com.sun.webui.jsf.model.Option[numChof+1];
                 String idChof,apelPatChof,apelMatChof,nomChof;
                 choferes[0]=new com.sun.webui.jsf.model.Option("---","Seleccione el chofer");
                 int c=1;
-                while(Con.getResultSet().next()){
-                    idChof=Con.getResultSet().getString("idchof");
-                    apelPatChof=Con.getResultSet().getString("apelpatchof");
-                    apelMatChof=Con.getResultSet().getString("apelmatchof");
-                    nomChof=Con.getResultSet().getString("nomchof");
+                while(getApplicationBean1().getCon().getResultSet().next()){
+                    idChof=getApplicationBean1().getCon().getResultSet().getString("idchof");
+                    apelPatChof=getApplicationBean1().getCon().getResultSet().getString("apelpatchof");
+                    apelMatChof=getApplicationBean1().getCon().getResultSet().getString("apelmatchof");
+                    nomChof=getApplicationBean1().getCon().getResultSet().getString("nomchof");
                     choferes[c]=new com.sun.webui.jsf.model.Option(idChof,apelPatChof+" "+apelMatChof+", "+nomChof);
                     c++;
                 }
@@ -700,9 +712,12 @@ public class gestionarRutas extends AbstractPageBean {
             choferes=new com.sun.webui.jsf.model.Option[1];
             choferes[0]=new com.sun.webui.jsf.model.Option("---","Ocurrio un error con la base de datos");
         }
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
         chofer1DefaultOptions.setOptions(choferes);
         chofer2DefaultOptions.setOptions(choferes);
+    }
+
+    public void fecha_processValueChange(ValueChangeEvent event) {
     }
 }
 
