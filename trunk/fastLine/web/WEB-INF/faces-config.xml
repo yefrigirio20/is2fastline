@@ -245,4 +245,17 @@
         <managed-bean-class>fastline.Page1</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
+    <application>
+    <resource-bundle>
+        <base-name>fastline.Bundle</base-name>
+        <var>mensajes</var>
+    </resource-bundle>
+    <locale-config>
+        <default-locale>es</default-locale>
+        <supported-locale>en</supported-locale>
+        <supported-locale>es</supported-locale>
+    </locale-config>
+    <message-bundle>errores.erroresBundle</message-bundle>
+    </application>
 </faces-config>
