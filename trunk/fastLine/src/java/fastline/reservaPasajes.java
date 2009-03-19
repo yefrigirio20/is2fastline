@@ -280,8 +280,9 @@ public class reservaPasajes extends AbstractPageBean {
     public String reservar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        int idSal=Integer.parseInt(horarios.getValue().toString());
+        int idSal=Integer.parseInt(horarios.getValue().toString());        
         int idAsi=Integer.parseInt(asiento.getText().toString());
+        
         String idusu=getApplicationBean1().getNombreusuario();
         Conector Con=new Conector();
         Con.IniciarConexion();
@@ -334,13 +335,13 @@ public class reservaPasajes extends AbstractPageBean {
             //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
             //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
-           // pruebaFecha.setText("fecha: "+fec);
-            //pruebaFecha.setVisible(true);
+            pruebaFecha.setText("fecha: "+fec);
+            pruebaFecha.setVisible(true);
 
-            Conector Con=new Conector();
-            Con.IniciarConexion();
-            int numH=Con.obtenerHorarios(idOrigen,idDestino,fec);
-            poblarComboHorarios(Con.Result, numH);            
+            //Conector Con=new Conector();
+            //Con.IniciarConexion();
+            int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+            poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
             precio.setVisible(false);
         }
         return null;
@@ -381,11 +382,11 @@ public class reservaPasajes extends AbstractPageBean {
         String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
        
         fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        int numH=Con.obtenerHorarios(idOrigen,idDestino,fec);
-        poblarComboHorarios(Con.Result, numH);
-        Con.CerrarConexion();
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+        poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+        //Con.CerrarConexion();
         
     }
 
@@ -398,18 +399,18 @@ public class reservaPasajes extends AbstractPageBean {
 
 
     public void horarios_processValueChange(ValueChangeEvent event) {
-        Conector Con=new Conector();
-        Con.IniciarConexion();
-        precio.setText(Con.obtenerPrecioBoleto(horarios.getValue().toString()));
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        precio.setText(getApplicationBean1().getCon().obtenerPrecioBoleto(horarios.getValue().toString()));
         precio.setVisible(true);
-        int asientos[]=Con.estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
+        int asientos[]=getApplicationBean1().getCon().estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
         getApplicationBean1().setEstadoAsientos(asientos);
         for (int i = 0; i < asientos.length; i++) {
             //int j = asientos[i];
             System.out.println(i+":"+asientos[i]);
         }
 
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
 
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());
@@ -418,13 +419,13 @@ public class reservaPasajes extends AbstractPageBean {
         //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
         //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
         
-        Con.IniciarConexion();
-        int numH=Con.obtenerHorarios(idOrigen,idDestino,fec); 
-        poblarComboHorarios(Con.Result, numH);
+        //Con.IniciarConexion();
+        int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+        poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
 
         //int asientos=Con.estadoAsientos(horarios.getValue().toString());
 
-        Con.CerrarConexion();
+        //Con.CerrarConexion();
     }
 
     
