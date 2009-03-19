@@ -7,7 +7,13 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
+import java.sql.ResultSet;
+import java.text.DateFormat;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -29,30 +35,31 @@ public class Encomiendas extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        origenEncomiendaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
-        destinoEncomiendaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Amazonas"), new com.sun.webui.jsf.model.Option("", "Ancash"), new com.sun.webui.jsf.model.Option("", "Apurimac"),new com.sun.webui.jsf.model.Option("", "Arequipa"), new com.sun.webui.jsf.model.Option("", "Ayacucho"), new com.sun.webui.jsf.model.Option("", "Cajamarca"), new com.sun.webui.jsf.model.Option("", "Callao"), new com.sun.webui.jsf.model.Option("", "Cusco"), new com.sun.webui.jsf.model.Option("", "Huancavelica"), new com.sun.webui.jsf.model.Option("", "Huanuco"), new com.sun.webui.jsf.model.Option("", "Ica"), new com.sun.webui.jsf.model.Option("", "Junin"), new com.sun.webui.jsf.model.Option("", "La Libertad"), new com.sun.webui.jsf.model.Option("", "Lambayeque"), new com.sun.webui.jsf.model.Option("", "Lima"), new com.sun.webui.jsf.model.Option("", "Loreto"), new com.sun.webui.jsf.model.Option("", "Madre de Dios"), new com.sun.webui.jsf.model.Option("", "Moquegua"), new com.sun.webui.jsf.model.Option("", "Pasco"), new com.sun.webui.jsf.model.Option("", "Piura"), new com.sun.webui.jsf.model.Option("", "Puno"), new com.sun.webui.jsf.model.Option("", "San Martin"), new com.sun.webui.jsf.model.Option("", "Tacna"), new com.sun.webui.jsf.model.Option("", "Tumbes"), new com.sun.webui.jsf.model.Option("", "Ucayali")});
-        categoriaEncDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "--Seleccione--"), new com.sun.webui.jsf.model.Option("", "Sobre"), new com.sun.webui.jsf.model.Option("", "Paquete")});
-        tipoPagoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Cancela el que envía"), new com.sun.webui.jsf.model.Option("", "Cancela el que recibe"),new com.sun.webui.jsf.model.Option("", "Quien envía cancela una fracción")});
+        depOrigenDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
+        depDestinoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
+        horariosDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("-----", "Consulte los horarios primero")});
+        categoriaEncDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("-", "--Seleccione--"), new com.sun.webui.jsf.model.Option("s", "Sobre"), new com.sun.webui.jsf.model.Option("p", "Paquete")});
         dropDown2DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Esperando Embarque"), new com.sun.webui.jsf.model.Option("", "Embarcado"), new com.sun.webui.jsf.model.Option("", "Esperando Entrega"), new com.sun.webui.jsf.model.Option("", "Entregado")});
+        opcPagoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("--", "Seleccione una opcion de pago"), new com.sun.webui.jsf.model.Option("1", "Paga quien envía"), new com.sun.webui.jsf.model.Option("2", "Ambos pagan una parte"),new com.sun.webui.jsf.model.Option("3", "Paga quien recibe")});
         
     }
-    private SingleSelectOptionsList origenEncomiendaDefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList depOrigenDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getOrigenEncomiendaDefaultOptions() {
-        return origenEncomiendaDefaultOptions;
+    public SingleSelectOptionsList getDepOrigenDefaultOptions() {
+        return depOrigenDefaultOptions;
     }
 
-    public void setOrigenEncomiendaDefaultOptions(SingleSelectOptionsList ssol) {
-        this.origenEncomiendaDefaultOptions = ssol;
+    public void setDepOrigenDefaultOptions(SingleSelectOptionsList ssol) {
+        this.depOrigenDefaultOptions = ssol;
     }
-    private SingleSelectOptionsList destinoEncomiendaDefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList depDestinoDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getDestinoEncomiendaDefaultOptions() {
-        return destinoEncomiendaDefaultOptions;
+    public SingleSelectOptionsList getDepDestinoDefaultOptions() {
+        return depDestinoDefaultOptions;
     }
 
-    public void setDestinoEncomiendaDefaultOptions(SingleSelectOptionsList ssol) {
-        this.destinoEncomiendaDefaultOptions = ssol;
+    public void setDepDestinoDefaultOptions(SingleSelectOptionsList ssol) {
+        this.depDestinoDefaultOptions = ssol;
     }
     private SingleSelectOptionsList categoriaEncDefaultOptions = new SingleSelectOptionsList();
 
@@ -63,23 +70,14 @@ public class Encomiendas extends AbstractPageBean {
     public void setCategoriaEncDefaultOptions(SingleSelectOptionsList ssol) {
         this.categoriaEncDefaultOptions = ssol;
     }
-    private SingleSelectOptionsList dropDown1DefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList horariosDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getDropDown1DefaultOptions() {
-        return dropDown1DefaultOptions;
+    public SingleSelectOptionsList getHorariosDefaultOptions() {
+        return horariosDefaultOptions;
     }
 
-    public void setDropDown1DefaultOptions(SingleSelectOptionsList ssol) {
-        this.dropDown1DefaultOptions = ssol;
-    }
-    private SingleSelectOptionsList tipoPagoDefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getTipoPagoDefaultOptions() {
-        return tipoPagoDefaultOptions;
-    }
-
-    public void setTipoPagoDefaultOptions(SingleSelectOptionsList ssol) {
-        this.tipoPagoDefaultOptions = ssol;
+    public void setHorariosDefaultOptions(SingleSelectOptionsList ssol) {
+        this.horariosDefaultOptions = ssol;
     }
     private SingleSelectOptionsList dropDown2DefaultOptions = new SingleSelectOptionsList();
 
@@ -89,6 +87,240 @@ public class Encomiendas extends AbstractPageBean {
 
     public void setDropDown2DefaultOptions(SingleSelectOptionsList ssol) {
         this.dropDown2DefaultOptions = ssol;
+    }
+    private DropDown depOrigen = new DropDown();
+
+    public DropDown getDepOrigen() {
+        return depOrigen;
+    }
+
+    public void setDepOrigen(DropDown dd) {
+        this.depOrigen = dd;
+    }
+    private DropDown depDestino = new DropDown();
+
+    public DropDown getDepDestino() {
+        return depDestino;
+    }
+
+    public void setDepDestino(DropDown dd) {
+        this.depDestino = dd;
+    }
+    private Calendar startCalendar = new Calendar();
+
+    public Calendar getStartCalendar() {
+        return startCalendar;
+    }
+
+    public void setStartCalendar(Calendar c) {
+        this.startCalendar = c;
+    }
+    private StaticText errorRuta = new StaticText();
+
+    public StaticText getErrorRuta() {
+        return errorRuta;
+    }
+
+    public void setErrorRuta(StaticText st) {
+        this.errorRuta = st;
+    }
+    private StaticText errorFecha = new StaticText();
+
+    public StaticText getErrorFecha() {
+        return errorFecha;
+    }
+
+    public void setErrorFecha(StaticText st) {
+        this.errorFecha = st;
+    }
+    private TextField apellPaterno1 = new TextField();
+
+    public TextField getApellPaterno1() {
+        return apellPaterno1;
+    }
+
+    public void setApellPaterno1(TextField tf) {
+        this.apellPaterno1 = tf;
+    }
+    private TextField apellMaterno1 = new TextField();
+
+    public TextField getApellMaterno1() {
+        return apellMaterno1;
+    }
+
+    public void setApellMaterno1(TextField tf) {
+        this.apellMaterno1 = tf;
+    }
+    private TextField nombres1 = new TextField();
+
+    public TextField getNombres1() {
+        return nombres1;
+    }
+
+    public void setNombres1(TextField tf) {
+        this.nombres1 = tf;
+    }
+    private TextField DNI1 = new TextField();
+
+    public TextField getDNI1() {
+        return DNI1;
+    }
+
+    public void setDNI1(TextField tf) {
+        this.DNI1 = tf;
+    }
+    private TextField apellPaterno2 = new TextField();
+
+    public TextField getApellPaterno2() {
+        return apellPaterno2;
+    }
+
+    public void setApellPaterno2(TextField tf) {
+        this.apellPaterno2 = tf;
+    }
+    private TextField apellMaterno2 = new TextField();
+
+    public TextField getApellMaterno2() {
+        return apellMaterno2;
+    }
+
+    public void setApellMaterno2(TextField tf) {
+        this.apellMaterno2 = tf;
+    }
+    private TextField nombres2 = new TextField();
+
+    public TextField getNombres2() {
+        return nombres2;
+    }
+
+    public void setNombres2(TextField tf) {
+        this.nombres2 = tf;
+    }
+    private TextField DNI2 = new TextField();
+
+    public TextField getDNI2() {
+        return DNI2;
+    }
+
+    public void setDNI2(TextField tf) {
+        this.DNI2 = tf;
+    }
+    private SingleSelectOptionsList opcPagoDefaultOptions = new SingleSelectOptionsList();
+
+    public SingleSelectOptionsList getOpcPagoDefaultOptions() {
+        return opcPagoDefaultOptions;
+    }
+
+    public void setOpcPagoDefaultOptions(SingleSelectOptionsList ssol) {
+        this.opcPagoDefaultOptions = ssol;
+    }
+    private DropDown categoriaEnc = new DropDown();
+
+    public DropDown getCategoriaEnc() {
+        return categoriaEnc;
+    }
+
+    public void setCategoriaEnc(DropDown dd) {
+        this.categoriaEnc = dd;
+    }
+    private TextField peso = new TextField();
+
+    public TextField getPeso() {
+        return peso;
+    }
+
+    public void setPeso(TextField tf) {
+        this.peso = tf;
+    }
+    private DropDown horarios = new DropDown();
+
+    public DropDown getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(DropDown dd) {
+        this.horarios = dd;
+    }
+    private StaticText errorCategoria = new StaticText();
+
+    public StaticText getErrorCategoria() {
+        return errorCategoria;
+    }
+
+    public void setErrorCategoria(StaticText st) {
+        this.errorCategoria = st;
+    }
+    private StaticText errorPeso = new StaticText();
+
+    public StaticText getErrorPeso() {
+        return errorPeso;
+    }
+
+    public void setErrorPeso(StaticText st) {
+        this.errorPeso = st;
+    }
+    private StaticText errorHorario = new StaticText();
+
+    public StaticText getErrorHorario() {
+        return errorHorario;
+    }
+
+    public void setErrorHorario(StaticText st) {
+        this.errorHorario = st;
+    }
+    private StaticText errorMontoCanc = new StaticText();
+
+    public StaticText getErrorMontoCanc() {
+        return errorMontoCanc;
+    }
+
+    public void setErrorMontoCanc(StaticText st) {
+        this.errorMontoCanc = st;
+    }
+    private StaticText errorOpcPago = new StaticText();
+
+    public StaticText getErrorOpcPago() {
+        return errorOpcPago;
+    }
+
+    public void setErrorOpcPago(StaticText st) {
+        this.errorOpcPago = st;
+    }
+    private StaticText errorNombres = new StaticText();
+
+    public StaticText getErrorNombres() {
+        return errorNombres;
+    }
+
+    public void setErrorNombres(StaticText st) {
+        this.errorNombres = st;
+    }
+    private DropDown opcPago = new DropDown();
+
+    public DropDown getOpcPago() {
+        return opcPago;
+    }
+
+    public void setOpcPago(DropDown dd) {
+        this.opcPago = dd;
+    }
+    private TextField montoCancelado = new TextField();
+
+    public TextField getMontoCancelado() {
+        return montoCancelado;
+    }
+
+    public void setMontoCancelado(TextField tf) {
+        this.montoCancelado = tf;
+    }
+    private StaticText encID = new StaticText();
+
+    public StaticText getEncID() {
+        return encID;
+    }
+
+    public void setEncID(StaticText st) {
+        this.encID = st;
     }
 
     // </editor-fold>
@@ -206,6 +438,122 @@ public class Encomiendas extends AbstractPageBean {
     public String registrarEncomienda_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+       int idSal;
+       double pesoEnc;
+       boolean todoCorrecto=true;
+        String envAP,envAM,envN,envDNI,recAP,recAM,recN,recDNI;
+        try {
+            idSal=Integer.parseInt(horarios.getValue().toString());
+        }
+        catch (Exception e) {
+            todoCorrecto=false;
+            errorHorario.setText("Se debe de escoger un horario");
+            errorHorario.setVisible(true);
+           idSal=-1;
+        }
+
+        int catEnc;
+
+        try {
+            catEnc=Integer.parseInt(categoriaEnc.getValue().toString());
+        }
+        catch (Exception e) {
+            todoCorrecto=false;
+            errorCategoria.setText("Debe escoger una cateogria de la encomienda");
+            errorCategoria.setVisible(true);
+        }
+        
+
+        try {
+            pesoEnc=Double.parseDouble(peso.getText().toString());
+        }
+        catch (Exception e) {
+            errorPeso.setText("El peso no es correcto");
+            errorPeso.setVisible(true);
+            todoCorrecto=false;
+        }
+        boolean faltaDato=false;
+        if(apellPaterno1.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            envAP=apellPaterno1.getText().toString();
+
+        if(apellMaterno1.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            envAM=apellMaterno1.getText().toString();
+
+        if(nombres1.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            envN=nombres1.getText().toString();
+
+        if(DNI1.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            envDNI=DNI1.getText().toString();
+
+
+        if(apellPaterno2.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            recAP=apellPaterno2.getText().toString();
+
+        if(apellMaterno2.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            recAM=apellMaterno2.getText().toString();
+
+        if(nombres2.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            recN=nombres2.getText().toString();
+
+        if(DNI2.getText()==null){
+            faltaDato=true;
+            todoCorrecto=false;
+        }
+        else
+            recDNI=DNI2.getText().toString();
+
+        if(faltaDato)
+            errorNombres.setText("Se deben especificar todos los datos");
+
+        int tipoPago;
+        try {
+            tipoPago=Integer.parseInt(opcPago.getValue().toString());
+        }
+        catch (Exception e) {
+            todoCorrecto=false;
+            errorOpcPago.setText("Debe de seleccionar un opcion de pago");
+            errorOpcPago.setVisible(true);
+        }
+        double cancelado;
+        try {
+            cancelado=Double.parseDouble(montoCancelado.getText().toString());
+        }
+        catch (Exception e) {
+            todoCorrecto=false;
+            errorMontoCanc.setText("El monto no es válido");
+            errorMontoCanc.setVisible(true);
+        }
+
+
+
         return null;
     }
 
@@ -237,6 +585,65 @@ public class Encomiendas extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return null;
+    }
+
+    public String button1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        errorRuta.setVisible(false);
+        errorFecha.setVisible(false);
+        //errorGnrl.setVisible(false);
+        int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
+        int idDestino=Integer.parseInt(depDestino.getValue().toString());
+
+        if(idOrigen==0||idDestino==0){
+            errorRuta.setText("Debe de especificar el origen y destino");
+            errorRuta.setVisible(true);
+        }
+        else{
+            String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+
+            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+            //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+
+            //errorFecha.setText("fecha: "+fec);
+            errorFecha.setVisible(true);
+
+            //Conector Con=new Conector();
+            //Con.IniciarConexion();
+            int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+            poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+            //precio.setVisible(false);
+        }
+        return null;
+    }
+
+    public void poblarComboHorarios(ResultSet R,int numHorarios){
+
+        com.sun.webui.jsf.model.Option[] horarios;
+        try{
+            if(numHorarios>0){
+                horarios=new com.sun.webui.jsf.model.Option[numHorarios+1];
+                String hora,idSal;
+                horarios[0]=new com.sun.webui.jsf.model.Option("-----","Seleccione el horario");
+                int h=1;
+                while(R.next()){
+                    hora=R.getString("horasal");
+                    idSal=R.getString("idsal");
+                    horarios[h]=new com.sun.webui.jsf.model.Option(idSal,hora);
+                    h++;
+                }
+            }
+            else{
+                horarios=new com.sun.webui.jsf.model.Option[1];
+                horarios[0]=new com.sun.webui.jsf.model.Option("-----","No hay salidas programadas para esta ruta y fecha");
+            }
+        }
+        catch(Exception e){
+            horarios=new com.sun.webui.jsf.model.Option[1];
+            horarios[0]=new com.sun.webui.jsf.model.Option("-----","Ocurrio un error en la consulta");
+        }
+        horariosDefaultOptions.setOptions(horarios);
     }
     
 }
