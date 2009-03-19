@@ -344,13 +344,13 @@ public class Conector {
 
     }
 
-    public int insertarNuevaEncomienda(int idSal, int catEnc,int pesoEnc,String horaSal,String fecha,String matBus, String precBol){
-        String insert="insert into encomiendas(idsal,catenc,pesoenc,envapelpat,envapelmat,envnom,envdni,recapelpat,recapelmat,recnom,recdni,estado,tipopago,monto,cancelado) values(1,'s',null,'envAP','envAM','envN',42007086,'recAP','recAM','recN',52369874,1,1,200.3,0);";
+    public int insertarNuevaEncomienda(int idSal, String catEnc,double pesoEnc,String envAP,String envAM ,String envN,int envDNI,String recAP,String recAM,String recN,int recDNI,int estado,int tipopago,double monto,double cancelado){
+        String insert="insert into encomiendas(idsal,catenc,pesoenc,envapelpat,envapelmat,envnom,envdni,recapelpat,recapelmat,recnom,recdni,estado,tipopago,monto,cancelado) values("+idSal+",'"+catEnc+"',"+pesoEnc+",'"+envAP+"','"+envAM+"','"+envN+"',"+envDNI+",'"+recAP+"','"+recAM+"','"+recN+"',"+recDNI+","+estado+","+tipopago+","+monto+","+cancelado+");";
         try{
             statement.executeUpdate(insert);
         }
         catch (Exception e) {
-            Estado="No se pudo insertar la salida";
+            Estado="No se pudo insertar la encomienda";
         }
         return 0;
     }
