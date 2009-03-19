@@ -308,9 +308,11 @@ public class FastLine extends AbstractPageBean {
 
         if(Con.esUsuario(usuario,pass)){
             getApplicationBean1().setNombreusuario(usuario);
-            if(Con.esAdministrador(usuario))
+            if(Con.esAdministrador(usuario)){
+                getApplicationBean1().setCon("postgres","postgres");
+                getApplicationBean1().getCon().IniciarConexion();
                 return "case1";
-
+            }
             error.setVisible(false);
             mensajelogginLabel.setVisible(false);
             userLabel.setVisible(false);
@@ -326,6 +328,8 @@ public class FastLine extends AbstractPageBean {
             userAccount.setText("Bienvenido "+ usuario+"@akatsuki.com" );
             reservarPasajes.setText("Reservar Pasajes");
             reservarPasajes.setVisible(true);
+            getApplicationBean1().setCon(usuario,pass);
+            getApplicationBean1().getCon().IniciarConexion();
         }   
         else
            error.setText("El nombre de usuario y/o password son incorrectos");
@@ -333,9 +337,7 @@ public class FastLine extends AbstractPageBean {
         
         //if(usuario.length()==0 && pass.length()==0)
             
-        
-        
-        
+               
         //error.setText("errorrr");
         //System.out.print(userName1.getText());
         //error.setText(userName1.getText());
