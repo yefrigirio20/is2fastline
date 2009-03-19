@@ -8,6 +8,7 @@ package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractApplicationBean;
 import javax.faces.FacesException;
+import conexionJDBC.Conector;
 
 /**
  * <p>Application scope data bean for your application.  Create properties
@@ -25,6 +26,7 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
     private String nombreusuario;
     private int estadoAsientos[];
+    private Conector Con;
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
@@ -129,5 +131,19 @@ public class ApplicationBean1 extends AbstractApplicationBean {
      */
     public void setEstadoAsientos(int[] estadoAsientos) {
         this.estadoAsientos = estadoAsientos;
+    }
+
+    /**
+     * @return the Con
+     */
+    public Conector getCon() {
+        return Con;
+    }
+
+    /**
+     * @param Con the Con to set
+     */
+    public void setCon(String usu,String pass) {
+        this.Con = new Conector(usu,pass);
     }
 }
