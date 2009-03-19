@@ -552,8 +552,6 @@ public class Encomiendas extends AbstractPageBean {
             errorMontoCanc.setVisible(true);
         }
 
-
-
         return null;
     }
 
