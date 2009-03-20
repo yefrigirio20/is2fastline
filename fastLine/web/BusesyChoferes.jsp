@@ -36,7 +36,7 @@
                         <webuijsf:label id="label7" style="left: 24px; top: 360px; position: absolute; text-align: right; width: 96px" text="#{mensajes.literal_Matricula}"/>
                         <webuijsf:dropDown id="dropDown1" items="#{BusesyChoferes.dropDown1DefaultOptions.options}" style="left: 120px; top: 360px; position: absolute"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.eliminarBus_action}" id="eliminarBus"
-                            style="height: 24px; left: 216px; top: 360px; position: absolute; width: 71px" text="#{mensajes.literal_Eliminar_Bus}"/>
+                            style="height: 24px; left: 216px; top: 360px; position: absolute; width: 95px" text="#{mensajes.literal_Eliminar_Bus}"/>
                         <webuijsf:pageSeparator id="pageSeparator2" style="left: 0px; top: 384px; position: absolute; width: 720px"/>
                         <webuijsf:label id="label8"
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 432px; position: absolute; width: 166px" text="#{mensajes.literal_Agregar_Choferes}"/>
@@ -48,12 +48,12 @@
                         <webuijsf:label for="DNI" id="lblDNI" style="left: 120px; top: 576px; position: absolute; text-align: right; width: 24px" text="#{mensajes.literal_DNI}"/>
                         <webuijsf:label id="label14" style="left: 0px; top: 552px; position: absolute; text-align: right; width: 142px" text="#{mensajes.literal_Fecha_Nacimiento}"/>
                         <webuijsf:dropDown id="dia" items="#{BusesyChoferes.diaDefaultOptions.options}" onChange=""
-                            style="left: 168px; top: 552px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.dia_processValueChange}"/>
-                        <webuijsf:staticText id="staticText1" style="left: 144px; top: 552px; position: absolute" text="#{mensajes.literal_Dia}"/>
-                        <webuijsf:staticText id="staticText2" style="left: 216px; top: 552px; position: absolute" text="#{mensajes.literal_Mes}"/>
-                        <webuijsf:staticText id="staticText3" style="left: 360px; top: 552px; position: absolute" text="#{mensajes.literal_Ano}"/>
-                        <webuijsf:dropDown id="mes" items="#{BusesyChoferes.mesDefaultOptions.options}" style="left: 264px; top: 552px; position: absolute"/>
-                        <webuijsf:dropDown id="año" items="#{BusesyChoferes.añoDefaultOptions.options}" style="left: 384px; top: 552px; position: absolute"/>
+                            style="left: 192px; top: 552px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.dia_processValueChange}"/>
+                        <webuijsf:staticText id="staticText1" style="left: 168px; top: 552px; position: absolute" text="#{mensajes.literal_Dia}"/>
+                        <webuijsf:staticText id="staticText2" style="left: 240px; top: 552px; position: absolute" text="#{mensajes.literal_Mes}"/>
+                        <webuijsf:staticText id="staticText3" style="left: 384px; top: 552px; position: absolute" text="#{mensajes.literal_Ano}"/>
+                        <webuijsf:dropDown id="mes" items="#{BusesyChoferes.mesDefaultOptions.options}" style="left: 288px; top: 552px; position: absolute"/>
+                        <webuijsf:dropDown id="año" items="#{BusesyChoferes.añoDefaultOptions.options}" style="left: 408px; top: 552px; position: absolute"/>
                         <webuijsf:textField id="apellPaterno" required="true" style="left: 144px; top: 480px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.apellPaterno_processValueChange}"/>
                         <webuijsf:textField id="apellMaterno" required="true" style="left: 144px; top: 504px; position: absolute"/>
                         <webuijsf:textField id="nombres" required="true" style="position: absolute; left: 144px; top: 528px"/>
@@ -70,7 +70,7 @@
                         <webuijsf:image height="48" id="image6" style="left: 24px; top: 144px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image7" style="left: 24px; top: 432px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image8" style="left: 24px; top: 312px; position: absolute" url="/resources/db_remove.png" width="48"/>
-                        <webuijsf:image height="24" id="image9" style="left: 288px; top: 360px; position: absolute" url="/resources/button_cancel.png" width="24"/>
+                        <webuijsf:image height="24" id="image9" style="left: 312px; top: 360px; position: absolute" url="/resources/button_cancel.png" width="24"/>
                         <webuijsf:message for="apellPaterno" id="msgApellidoPaterno" showDetail="false" showSummary="true" style="height: 24px; left: 288px; top: 480px; position: absolute; width: 190px"/>
                         <webuijsf:message for="apellMaterno" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 504px; width: 192px; height: 24px"/>
                         <webuijsf:message for="nombres" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 528px; width: 192px; height: 24px"/>
