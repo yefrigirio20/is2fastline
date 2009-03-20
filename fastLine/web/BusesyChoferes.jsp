@@ -67,8 +67,6 @@
                         <webuijsf:image height="24" id="image5" style="left: 144px; top: 648px; position: absolute" url="/resources/folder_home.png" width="24"/>
                         <webuijsf:hyperlink actionExpression="#{BusesyChoferes.home1_action}" id="home1"
                             style="height: 24px; left: 168px; top: 648px; position: absolute" text="Home"/>
-                        <webuijsf:hyperlink actionExpression="#{BusesyChoferes.regresar1_action}" id="regresar1"
-                            style="height: 24px; left: 48px; top: 648px; position: absolute; width: 48px" text="Regresar"/>
                         <webuijsf:image height="48" id="image6" style="left: 24px; top: 144px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image7" style="left: 24px; top: 432px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image8" style="left: 24px; top: 312px; position: absolute" url="/resources/db_remove.png" width="48"/>
@@ -80,6 +78,9 @@
                         <webuijsf:message for="capacidad" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 264px; top: 216px; width: 120px; height: 24px"/>
                         <webuijsf:message for="matricula" id="message5" showDetail="false" showSummary="true" style="position: absolute; left: 264px; top: 192px; width: 120px; height: 24px"/>
                     </webuijsf:form>
+                     <webuijsf:hyperlink actionExpression="#{BusesyChoferes.regresar1_action}" id="regresar1"
+                            style="height: 24px; left: 48px; top: 648px; position: absolute; width: 48px" text="Regresar"/>
+                       
                 </webuijsf:body>
             </webuijsf:html>
         </webuijsf:page>

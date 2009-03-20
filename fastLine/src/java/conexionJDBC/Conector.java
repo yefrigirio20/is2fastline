@@ -401,6 +401,27 @@ public class Conector {
 
     }
 
+    public void consultarEncomienda(int idEnc){
+        consultar("select d1.name as origen,d2.name as destino , s.fechsal ,e.* from encomiendas e,salidas s,rutas r, departamentos d1,departamentos d2 " +
+                "where e.idenc="+idEnc+" and e.idsal=s.idsal and d1.gid=r.idini and d2.gid=r.idfin and r.idrut=s.idrutsal");
+    }
+
+    public boolean existeEncomienda(int idEnc){
+        boolean existe=false;        
+        consultar("select count(idenc) from encomiendas where idenc="+idEnc);
+        try{
+            getResultSet().next();
+            if(getResultSet().getInt("count")>0){               
+                existe=true;
+            }
+        }
+        catch (Exception e) {
+            Estado="No se pudo hacer la consulta";
+        }
+        return existe;
+    }
+
+
     public String insertarNuevaEncomienda(int idSal, String catEnc,double pesoEnc,String envAP,String envAM ,String envN,int envDNI,String recAP,String recAM,String recN,int recDNI,int estado,int tipopago,double monto,double cancelado){
         String insert="insert into encomiendas(idsal,catenc,pesoenc,envapelpat,envapelmat,envnom,envdni,recapelpat,recapelmat,recnom,recdni,estado,tipopago,monto,cancelado) values("+idSal+",'"+catEnc+"',"+pesoEnc+",'"+envAP+"','"+envAM+"','"+envN+"',"+envDNI+",'"+recAP+"','"+recAM+"','"+recN+"',"+recDNI+","+estado+","+tipopago+","+monto+","+cancelado+");";
         try{
@@ -442,6 +463,7 @@ public class Conector {
         }       
         return asientos;
     }
+
 
 
 }
