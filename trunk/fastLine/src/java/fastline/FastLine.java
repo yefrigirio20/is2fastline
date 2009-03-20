@@ -149,6 +149,24 @@ public class FastLine extends AbstractPageBean {
 
     // </editor-fold>
     boolean mostrar;
+    private StaticText errorEnc = new StaticText();
+
+    public StaticText getErrorEnc() {
+        return errorEnc;
+    }
+
+    public void setErrorEnc(StaticText st) {
+        this.errorEnc = st;
+    }
+    private TextField idEnc = new TextField();
+
+    public TextField getIdEnc() {
+        return idEnc;
+    }
+
+    public void setIdEnc(TextField tf) {
+        this.idEnc = tf;
+    }
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -356,6 +374,36 @@ public class FastLine extends AbstractPageBean {
         System.out.print("sfsdf"); 
         System.out.print(userName1.getText());
         editor.setValue("fdsf");*/
+    }
+
+    public String verificarEncomienda_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        errorEnc.setVisible(false);
+        if(idEnc.getText()==null){
+            errorEnc.setText("Bebe especificar el identificador para su encomienda");
+            errorEnc.setVisible(true);
+            return null;
+        }
+        else{
+            int idenc=Integer.parseInt(idEnc.getText().toString());
+            getApplicationBean1().setCon("postgres", "postgres");
+            //Conector Con=new Conector();
+            //Con.IniciarConexion();
+            getApplicationBean1().getCon().IniciarConexion();
+            if(getApplicationBean1().getCon().existeEncomienda(idenc)){
+                getApplicationBean1().getCon().consultarEncomienda(idenc);
+                return "case8";
+            }
+            else{
+                getApplicationBean1().getCon().CerrarConexion();
+                errorEnc.setText("EL identificador no figura en la Base de Datos");
+                errorEnc.setVisible(true);
+                return null;
+            }
+
+        }
+        
     }
     
 }

@@ -141,6 +141,10 @@
             <from-outcome>case7</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case8</from-outcome>
+            <to-view-id>/estadoEncomiendas.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/Encomiendas.jsp</from-view-id>
@@ -258,4 +262,9 @@
     </locale-config>
     <message-bundle>errores.erroresBundle</message-bundle>
     </application>
+    <managed-bean>
+        <managed-bean-name>estadoEncomiendas</managed-bean-name>
+        <managed-bean-class>fastline.estadoEncomiendas</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

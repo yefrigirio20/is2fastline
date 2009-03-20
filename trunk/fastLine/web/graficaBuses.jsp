@@ -75,13 +75,13 @@
             
       
       
-<p>Nombre de su servidor: <%= request.getRemoteHost() %></p>
+
 <jsp:useBean id="datosAsiento" class="fastline.ConseguirDatosbase" scope="session"/>
 
         <%
         //ConseguirDatosbase datosAsiento= new ConseguirDatosbase();
         //System.out.print("hola");
-        out.print(datosAsiento.getApplicationBean1().getNombreusuario());
+        //out.print(datosAsiento.getApplicationBean1().getNombreusuario());
         int asientos[]=datosAsiento.getApplicationBean1().getEstadoAsientos();
         if(asientos!=null)
         {
