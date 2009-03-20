@@ -8,13 +8,14 @@
         <Node id="redirect.jsp" x="877" y="63" zoom="false"/>
         <Node id="reservaPasajes.jsp" x="280" y="-27" zoom="false"/>
         <Node id="DatosDepartamentos.jsp" x="227" y="303" zoom="true"/>
-        <Node id="FastLine.jsp" x="39" y="14" zoom="false"/>
         <Node id="googleEarth.jsp" x="409" y="82" zoom="true"/>
+        <Node id="FastLine.jsp" x="39" y="14" zoom="false"/>
         <Node id="Encomiendas.jsp" x="685" y="283" zoom="false"/>
         <Node id="QuienesSomos.jsp" x="503" y="21" zoom="true"/>
         <Node id="Administracion.jsp" x="492" y="287" zoom="false"/>
         <Node id="welcomeJSF.jsp" x="858" y="15" zoom="false"/>
         <Node id="graficaBuses.jsp" x="150" y="150" zoom="true"/>
+        <Node id="BusesyChoferes.jsp" x="654" y="77" zoom="false"/>
         <Node id="BusesyChoferes.jsp" x="677" y="45" zoom="false"/>
         <Node id="gestionarRutas.jsp" x="400" y="340" zoom="false"/>
         <Node id="registrarNuevoUsuario.jsp" x="-14" y="511" zoom="true"/>
