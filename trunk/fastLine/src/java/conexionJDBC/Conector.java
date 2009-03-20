@@ -286,16 +286,20 @@ public class Conector {
         return numbuses;
     }
 
-    public int obtenerRservaciones(int idSal){
+    public int obtenerReservaciones(String idNumUsu){
         int numReservaciones=0;
-        consultar("select count(rp.idasi) from reservapasajes rp,salidas s,asientos a where a.idsal=1 and rp.idasi=a.idasi");
+        consultar("select count(nropas) from reservapasajes where idnomusu='"+idNumUsu+"'");
         try{
             getResultSet().next();
             numReservaciones=getResultSet().getInt("count");
-            consultar("select distinct u.apelpatusu,u.apelmatusu,u.dniusu,s.precbol,rp.idasi from usuarios u,salidas s,asientos a,reservapasajes rp where s.idsal="+idSal+" and a.idsal=s.idsal and rp.idnomusu=u.idnomusu order by u.apelpatusu");
+            consultar("select u.apelpatusu,u.apelmatusu,u.nomusu,a.idsal,d1.name as origen,d2.name as destino,s.fechsal,s.horasal,s.precbol,a.nroasibus,rp.nropas,a.idasi " +
+                    "from usuarios u,reservapasajes rp,asientos a,salidas s,rutas r,departamentos d1,departamentos d2 " +
+                    "where rp.idnomusu='"+idNumUsu+"' and rp.idnomusu=u.idnomusu and rp.idasi=a.idasi and " +
+                    "a.idsal=s.idsal and r.idrut=s.idrutsal and d1.gid=r.idini and d2.gid=r.idfin");
+           
         }
         catch(Exception e){
-            Estado="Error en obtenerRutas";
+            Estado="Error en obtenerReservaciones";
             numReservaciones=-1;
         }
 
@@ -337,6 +341,22 @@ public class Conector {
             Estado="No se pudo insertar la salida";
         }
     }
+
+    public void registrarVenta(String nroPas){
+        String insert="insert into ventapasajes(idrespas) values("+nroPas+")";
+        try{
+            statement.executeUpdate(insert);
+            consultar("select a.idasi from asientos a,reservapasajes rp where rp.nropas="+nroPas+" and rp.idasi=a.idasi");
+            getResultSet().next();
+            int idasi=getResultSet().getInt("idasi");
+            //System.out.println("idasi:"+idasi);
+            statement.executeUpdate("update asientos set estado='p' where idasi="+idasi);
+        }
+        catch (Exception e) {
+            Estado="No se pudo actualizar el estado del asiento";
+        }
+    }
+
     /*
     public int [] asientos(){
         int estados[];
