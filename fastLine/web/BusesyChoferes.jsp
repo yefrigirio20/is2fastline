@@ -22,21 +22,9 @@
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 70px; left: 0px; top: 72px; position: absolute; width: 718px" text="#{mensajes.literal_Titulo_Pagina}"/>
                         <webuijsf:label id="label5"
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 144px; position: absolute; width: 142px" text="#{mensajes.literal_Agregar_Buses}"/>
-                        <webuijsf:label for="matricula" id="lblMatricula" style="left: 48px; top: 192px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Matricula}"/>
-                        <webuijsf:label for="capacidad" id="lblCapacidad" style="left: 48px; top: 216px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Capacidad}"/>
-                        <webuijsf:textField binding="#{BusesyChoferes.matricula}" id="matricula" required="true"
-                            style="left: 120px; top: 192px; position: absolute" validatorExpression="#{BusesyChoferes.matricula_validate}"/>
-                        <webuijsf:textField binding="#{BusesyChoferes.capacidad}" converter="#{BusesyChoferes.integerConverter2}" id="capacidad" required="true"
-                            style="left: 120px; top: 216px; position: absolute" validatorExpression="#{BusesyChoferes.capacidad_validate}"/>
-                        <webuijsf:button actionExpression="#{BusesyChoferes.agregarBus_action}" id="agregarBus"
-                            style="height: 24px; left: 167px; top: 240px; position: absolute; width: 72px" text="#{mensajes.literal_Agregar_Buses}"/>
                         <webuijsf:pageSeparator id="pageSeparator1" style="left: 0px; top: 264px; position: absolute; width: 720px"/>
                         <webuijsf:label id="label6"
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 312px; position: absolute; width: 190px" text="#{mensajes.literal_Eliminar_Bus}"/>
-                        <webuijsf:label id="label7" style="left: 24px; top: 360px; position: absolute; text-align: right; width: 96px" text="#{mensajes.literal_Matricula}"/>
-                        <webuijsf:dropDown id="dropDown1" items="#{BusesyChoferes.dropDown1DefaultOptions.options}" style="left: 120px; top: 360px; position: absolute"/>
-                        <webuijsf:button actionExpression="#{BusesyChoferes.eliminarBus_action}" id="eliminarBus"
-                            style="height: 24px; left: 216px; top: 360px; position: absolute; width: 95px" text="#{mensajes.literal_Eliminar_Bus}"/>
                         <webuijsf:pageSeparator id="pageSeparator2" style="left: 0px; top: 384px; position: absolute; width: 720px"/>
                         <webuijsf:label id="label8"
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 432px; position: absolute; width: 166px" text="#{mensajes.literal_Agregar_Choferes}"/>
@@ -59,28 +47,46 @@
                         <webuijsf:textField id="nombres" required="true" style="position: absolute; left: 144px; top: 528px"/>
                         <webuijsf:textField converter="#{BusesyChoferes.integerConverter1}" id="DNI" required="true"
                             style="left: 144px; top: 576px; position: absolute" validatorExpression="#{BusesyChoferes.DNI_validate}"/>
-                        <webuijsf:image height="24" id="image2" style="left: 240px; top: 240px; position: absolute" url="/resources/apply.png" width="24"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.agregarChofer_action}" id="agregarChofer"
                             style="height: 24px; left: 143px; top: 600px; position: absolute; width: 96px" text="#{mensajes.literal_Agregar_Choferes}"/>
                         <webuijsf:image height="24" id="image3" style="left: 240px; top: 600px; position: absolute" url="/resources/apply.png" width="24"/>
-                        <webuijsf:image height="24" id="image4" style="left: 24px; top: 648px; position: absolute" url="/resources/back.png" width="24"/>
-                        <webuijsf:image height="24" id="image5" style="left: 144px; top: 648px; position: absolute" url="/resources/folder_home.png" width="24"/>
-                        <webuijsf:hyperlink actionExpression="#{BusesyChoferes.home1_action}" id="home1"
-                            style="height: 24px; left: 168px; top: 648px; position: absolute" text="Home"/>
                         <webuijsf:image height="48" id="image6" style="left: 24px; top: 144px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image7" style="left: 24px; top: 432px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image8" style="left: 24px; top: 312px; position: absolute" url="/resources/db_remove.png" width="48"/>
-                        <webuijsf:image height="24" id="image9" style="left: 312px; top: 360px; position: absolute" url="/resources/button_cancel.png" width="24"/>
+
                         <webuijsf:message for="apellPaterno" id="msgApellidoPaterno" showDetail="false" showSummary="true" style="height: 24px; left: 288px; top: 480px; position: absolute; width: 190px"/>
                         <webuijsf:message for="apellMaterno" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 504px; width: 192px; height: 24px"/>
                         <webuijsf:message for="nombres" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 528px; width: 192px; height: 24px"/>
                         <webuijsf:message for="DNI" id="message3" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 576px; width: 192px; height: 24px"/>
-                        <webuijsf:message for="capacidad" id="message4" showDetail="false" showSummary="true" style="position: absolute; left: 264px; top: 216px; width: 120px; height: 24px"/>
-                        <webuijsf:message for="matricula" id="message5" showDetail="false" showSummary="true" style="position: absolute; left: 264px; top: 192px; width: 120px; height: 24px"/>
                     </webuijsf:form>
-                     <webuijsf:hyperlink actionExpression="#{BusesyChoferes.regresar1_action}" id="regresar1"
-                            style="height: 24px; left: 48px; top: 648px; position: absolute; width: 48px" text="Regresar"/>
-                       
+                    <webuijsf:form id="form2" style="height: 96px; left: 0px; top: 624px; position: absolute; width: 240px">
+                        <webuijsf:image height="24" id="image4" style="left: 24px; top: 24px; position: absolute" url="/resources/back.png" width="24"/>
+                        <webuijsf:image height="24" id="image5" style="left: 120px; top: 24px; position: absolute" url="/resources/folder_home.png" width="24"/>
+                        <webuijsf:hyperlink actionExpression="#{BusesyChoferes.home1_action}" id="home1"
+                            style="height: 24px; left: 168px; top: 24px; position: absolute" text="Home"/>
+                        <webuijsf:hyperlink actionExpression="#{BusesyChoferes.regresar1_action}" id="regresar1"
+                            style="height: 24px; left: 48px; top: 24px; position: absolute; width: 48px" text="Regresar"/>
+                    </webuijsf:form>
+                    <webuijsf:form id="form3" style="height: 168px; left: 168px; top: 144px; position: absolute; width: 456px">
+                        <webuijsf:label for="matricula" id="lblMatricula" style="left: 24px; top: 48px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Matricula}"/>
+                        <webuijsf:label for="capacidad" id="lblCapacidad" style="left: 24px; top: 72px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Capacidad}"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.matricula}" id="matricula" required="true"
+                            style="left: 120px; top: 48px; position: absolute" validatorExpression="#{BusesyChoferes.matricula_validate}"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.capacidad}" converter="#{BusesyChoferes.integerConverter2}" id="capacidad" required="true"
+                            style="left: 120px; top: 72px; position: absolute" validatorExpression="#{BusesyChoferes.capacidad_validate}"/>
+                        <webuijsf:button actionExpression="#{BusesyChoferes.agregarBus_action}" id="agregarBus"
+                            style="height: 24px; left: 95px; top: 120px; position: absolute; width: 72px" text="#{mensajes.literal_Agregar_Buses}"/>
+                        <webuijsf:message for="capacidad" id="message4" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 96px; position: absolute; width: 120px"/>
+                        <webuijsf:message for="matricula" id="message5" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 48px; position: absolute; width: 120px"/>
+                        <webuijsf:image height="24" id="image2" style="left: 192px; top: 120px; position: absolute" url="/resources/apply.png" width="24"/>
+                    </webuijsf:form>
+                    <webuijsf:form id="form4" style="height: 96px; left: 216px; top: 312px; position: absolute; width: 240px">
+                        <webuijsf:label id="label7" style="left: 0px; top: 24px; position: absolute; text-align: right; width: 96px" text="#{mensajes.literal_Matricula}"/>
+                        <webuijsf:dropDown id="dropDown1" items="#{BusesyChoferes.dropDown1DefaultOptions.options}" style="left: 120px; top: 24px; position: absolute"/>
+                        <webuijsf:image height="24" id="image9" style="left: 120px; top: 72px; position: absolute" url="/resources/button_cancel.png" width="24"/>
+                        <webuijsf:button actionExpression="#{BusesyChoferes.eliminarBus_action}" id="eliminarBus"
+                            style="height: 24px; left: 47px; top: 72px; position: absolute; width: 71px" text="#{mensajes.literal_Eliminar_Bus}"/>
+                    </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
         </webuijsf:page>
