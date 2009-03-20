@@ -52,12 +52,11 @@
                         <div style="height: 478px; left: 408px; top: 72px; position: absolute; width: 574px">
                             <jsp:directive.include file="FragmentoFastLine.jspf"/>
                         </div>
-                        <webuijsf:label id="label2" style="left: 24px; top: 552px; position: absolute" text="Verifique el estado de su encomienda "/>
+                        <webuijsf:label id="label2" style="left: 24px; top: 552px; position: absolute" text="#{mensajes.index_Verifique}"/>
                         <webuijsf:textField binding="#{FastLine.idEnc}" id="idEnc" style="left: 216px; top: 576px; position: absolute"/>
                         <webuijsf:button actionExpression="#{FastLine.verificarEncomienda_action}" id="verificarEncomienda"
-                            style="height: 24px; left: 215px; top: 600px; position: absolute; width: 120px" text="Verificar estado"/>
-                        <webuijsf:label id="label3" style="left: 24px; top: 576px; position: absolute; text-align: right; width: 190px" text="Identificador de la Encomienda:"/>
-                        <webuijsf:staticText binding="#{FastLine.errorEnc}" id="errorEnc" style="color: red; left: 360px; top: 576px; position: absolute"/>
+                        style="height: 24px; left: 215px; top: 600px; position: absolute; width: 120px" text="#{mensajes.index_Verificar}"/>
+                        <webuijsf:label id="label3" style="left: 24px; top: 576px; position: absolute; text-align: right; width: 190px" text="#{mensajes.index_Identificador_Enc}"/>                        <webuijsf:staticText binding="#{FastLine.errorEnc}" id="errorEnc" style="color: red; left: 360px; top: 576px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

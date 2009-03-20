@@ -7,6 +7,7 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.StaticText;
 import javax.faces.FacesException;
 
 /**
@@ -27,7 +28,16 @@ public class Administracion extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        //nombreusuario="";
+        nomusuario.setText("Bienvenido: "+getApplicationBean1().getNombreusuario());
+    }
+    private StaticText nomusuario = new StaticText();
+
+    public StaticText getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(StaticText st) {
+        this.nomusuario = st;
     }
 
     // </editor-fold>
@@ -170,6 +180,13 @@ public class Administracion extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return "case1";
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        return "case6";
     }
 
     
