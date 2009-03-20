@@ -7,13 +7,11 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.component.Button;
-import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import java.sql.ResultSet;
-import java.text.DateFormat;
 import javax.faces.FacesException;
 import javax.faces.event.ValueChangeEvent;
 
@@ -35,27 +33,7 @@ public class pagoBoletos extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        poblarComboRuta();
-        horariosDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("----", "Consulte horarios primero")});
-        reservacionesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("----", "Seleccione el horario")});
-    }
-    private SingleSelectOptionsList rutaDefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getRutaDefaultOptions() {
-        return rutaDefaultOptions;
-    }
-
-    public void setRutaDefaultOptions(SingleSelectOptionsList ssol) {
-        this.rutaDefaultOptions = ssol;
-    }
-    private SingleSelectOptionsList horariosDefaultOptions = new SingleSelectOptionsList();
-
-    public SingleSelectOptionsList getHorariosDefaultOptions() {
-        return horariosDefaultOptions;
-    }
-
-    public void setHorariosDefaultOptions(SingleSelectOptionsList ssol) {
-        this.horariosDefaultOptions = ssol;
+        reservacionesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("----", "Consulte reservaciones primero")});
     }
     private SingleSelectOptionsList reservacionesDefaultOptions = new SingleSelectOptionsList();
 
@@ -66,59 +44,14 @@ public class pagoBoletos extends AbstractPageBean {
     public void setReservacionesDefaultOptions(SingleSelectOptionsList ssol) {
         this.reservacionesDefaultOptions = ssol;
     }
-    private DropDown ruta = new DropDown();
+    private StaticText errorNomUsu = new StaticText();
 
-    public DropDown getRuta() {
-        return ruta;
+    public StaticText getErrorNomUsu() {
+        return errorNomUsu;
     }
 
-    public void setRuta(DropDown dd) {
-        this.ruta = dd;
-    }
-    private StaticText errorRuta = new StaticText();
-
-    public StaticText getErrorRuta() {
-        return errorRuta;
-    }
-
-    public void setErrorRuta(StaticText st) {
-        this.errorRuta = st;
-    }
-    private Button button1 = new Button();
-
-    public Button getButton1() {
-        return button1;
-    }
-
-    public void setButton1(Button b) {
-        this.button1 = b;
-    }
-    private Calendar fecha = new Calendar();
-
-    public Calendar getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Calendar c) {
-        this.fecha = c;
-    }
-    private StaticText errorFecha = new StaticText();
-
-    public StaticText getErrorFecha() {
-        return errorFecha;
-    }
-
-    public void setErrorFecha(StaticText st) {
-        this.errorFecha = st;
-    }
-    private DropDown horarios = new DropDown();
-
-    public DropDown getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(DropDown dd) {
-        this.horarios = dd;
+    public void setErrorNomUsu(StaticText st) {
+        this.errorNomUsu = st;
     }
     private DropDown reservaciones = new DropDown();
 
@@ -128,6 +61,15 @@ public class pagoBoletos extends AbstractPageBean {
 
     public void setReservaciones(DropDown dd) {
         this.reservaciones = dd;
+    }
+    private TextField idNomUsu = new TextField();
+
+    public TextField getIdNomUsu() {
+        return idNomUsu;
+    }
+
+    public void setIdNomUsu(TextField tf) {
+        this.idNomUsu = tf;
     }
 
     // </editor-fold>
@@ -251,152 +193,112 @@ public class pagoBoletos extends AbstractPageBean {
     public String regEncEntregada_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        try{
+            String nroRes=reservaciones.getValue().toString();
+           
+            getApplicationBean1().getCon().registrarVenta(nroRes);
+            String nomusu=idNomUsu.getText().toString();
+            int numRes=getApplicationBean1().getCon().obtenerReservaciones(nomusu);
+            poblarComboReservaciones(getApplicationBean1().getCon().Result, numRes);
+        }
+        catch(Exception e){
+
+        }
         return null;
     }
 
-    private void poblarComboRuta(){
-        com.sun.webui.jsf.model.Option[] rutas;
-        //Conector Con=new Conector();
-        //Con.IniciarConexion();
-        try{
-            int numRutas=getApplicationBean1().getCon().obtenerRutas();
-            if(numRutas>0){
-                rutas=new com.sun.webui.jsf.model.Option[numRutas+1];
-                String idruta,origen,destino;
-                rutas[0]=new com.sun.webui.jsf.model.Option("---","Seleccione la ruta");
-                int r=1;
-                while(getApplicationBean1().getCon().getResultSet().next()){
-                    idruta=getApplicationBean1().getCon().getResultSet().getString("idrut");
-                    origen=getApplicationBean1().getCon().getResultSet().getString("origen");
-                    destino=getApplicationBean1().getCon().getResultSet().getString("destino");
-                    rutas[r]=new com.sun.webui.jsf.model.Option(idruta,origen+" - "+destino);
-                    r++;
-                }
-            }
-            else{
-                rutas=new com.sun.webui.jsf.model.Option[1];
-                rutas[0]=new com.sun.webui.jsf.model.Option("---","No hay rutas en la base de datos");
-            }
-        }
-        catch(Exception e){
-            rutas=new com.sun.webui.jsf.model.Option[1];
-            rutas[0]=new com.sun.webui.jsf.model.Option("---","Ocurrio un error con la base de datos");
-        }
-        //Con.CerrarConexion();
-        rutaDefaultOptions.setOptions(rutas);
-    }
+    
 
     public String button1_action() {
         // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        errorFecha.setVisible(false);
-        errorRuta.setVisible(false);
-        int idSal=0;
-        try {
-            idSal=Integer.parseInt(ruta.getValue().toString());
-        } catch (Exception e) {
-            errorRuta.setText("Debe escoger una ruta");
+        // case name where null will return to the same page.       
+        String nomusu="";
+        if(idNomUsu.getText()!=null){
+            nomusu=idNomUsu.getText().toString();
+            int numRes=getApplicationBean1().getCon().obtenerReservaciones(nomusu);
+            System.out.println("--------------------------------------\n"+numRes);
+            poblarComboReservaciones(getApplicationBean1().getCon().Result, numRes);
         }
-        String fec="";
-        try{
-                fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(fecha.getSelectedDate());
-        }catch(Exception e){
-            errorFecha.setText("La fecha es requerida");
-            errorFecha.setVisible(true);
-        }
-        if(idSal==0||fec.compareTo("")!=0){
-            int numH=getApplicationBean1().getCon().obtenerHorarios(idSal, fec);
-            getApplicationBean1().setRespaldo1(getApplicationBean1().getCon().getResultSet());
-            poblarComboHorarios(getApplicationBean1().getRespaldo1(), numH);
-        }
-        
+        else
+            errorNomUsu.setText("Debe especificar el nombre de usuario");
         return null;
     }
 
-    public void poblarComboHorarios(ResultSet R,int numHorarios){
-
-        com.sun.webui.jsf.model.Option[] horarios;
-        try{
-            if(numHorarios>0){
-                horarios=new com.sun.webui.jsf.model.Option[numHorarios+1];
-                String hora,idSal;
-                horarios[0]=new com.sun.webui.jsf.model.Option("-----","Seleccione el horario");
-                int h=1;
-                while(R.next()){
-                    hora=R.getString("horasal");
-                    idSal=R.getString("idsal");
-                    horarios[h]=new com.sun.webui.jsf.model.Option(idSal,hora);
-                    h++;
-                }
-            }
-            else{
-                horarios=new com.sun.webui.jsf.model.Option[1];
-                horarios[0]=new com.sun.webui.jsf.model.Option("-----","No hay salidas programadas para esta ruta y fecha");
-            }
-        }
-        catch(Exception e){
-            horarios=new com.sun.webui.jsf.model.Option[1];
-            horarios[0]=new com.sun.webui.jsf.model.Option("-----","Ocurrio un error en la consulta");
-        }
-        horariosDefaultOptions.setOptions(horarios);
-    }
 
     public void poblarComboReservaciones(ResultSet R,int numReservaciones){
 
-        com.sun.webui.jsf.model.Option[] reservaciones;
+        com.sun.webui.jsf.model.Option[] reservas;
         try{
             if(numReservaciones>0){
-                reservaciones=new com.sun.webui.jsf.model.Option[numReservaciones+1];
-                String apelpatusu,apelmatusu,dniusu,precbol,idasi,nropas;
-                reservaciones[0]=new com.sun.webui.jsf.model.Option("-----","Seleccione la reservacion");
+                reservas=new com.sun.webui.jsf.model.Option[numReservaciones+1];
+                String apelpatusu,apelmatusu,nomusu,dniusu,idsal,origen,destino,fechsal,horasal,precbol,nroasibus,nropas;
+                reservas[0]=new com.sun.webui.jsf.model.Option("-----","Seleccione la reservacion");
                 int r=1;
+                //System.out.println("--------------------------------------\nantes delwhile");
                 while(R.next()){
+                    //System.out.println("--------------------------------------\nr="+r);
                     apelpatusu=R.getString("apelpatusu");
+                    //System.out.println(apelpatusu);
                     apelmatusu=R.getString("apelmatusu");
+                    //System.out.println(apelmatusu);
+                    nomusu=R.getString("nomusu");
+                    //System.out.println(nomusu);
+                    //dniusu=R.getString("dniusu");
+                    //System.out.println(dniusu);
+                    /*idsal=R.getString(5);*/
+                    
+                    origen=R.getString("origen");
 
-                    dniusu=R.getString("dniusu");
+                    destino=R.getString("destino");
+                    //System.out.println(destino);
+
+                    fechsal=R.getString("fechsal");
+                    //System.out.println(fechsal);
+
+                    horasal=R.getString("horasal");
+                    //System.out.println(horasal);
+
                     precbol=R.getString("precbol");
-                    idasi=R.getString("idasi");
+                    nroasibus=R.getString("nroasibus");
+                    
                     nropas=R.getString("nropas");
-                    reservaciones[r]=new com.sun.webui.jsf.model.Option(nropas,apelpatusu+" "+apelmatusu+", "+dniusu+" "+idasi);
+                    //System.out.println("iddelasiento: "+nropas);
+
+                    //System.out.println(nropas);
+                    //reservaciones[r]=new com.sun.webui.jsf.model.Option(nropas,apelpatusu+" "+apelmatusu+", "+nomusu+" "+dniusu+" "+idsal+" "+origen+" "+destino+" "+fechsal+" "+horasal+" "+precbol+" "+nroasibus+" "+nropas);
+                    reservas[r]=new com.sun.webui.jsf.model.Option(nropas,apelpatusu+" "+apelmatusu+", "+nomusu+"\tRuta:"+origen+"-"+destino+"\tDia:"+fechsal+" Hora:"+horasal+" Asiento: "+nroasibus+"\t Precio: "+precbol);
+
+
                     r++;
                 }
             }
             else{
-                reservaciones=new com.sun.webui.jsf.model.Option[1];
-                reservaciones[0]=new com.sun.webui.jsf.model.Option("-----","No hay salidas programadas para esta ruta y fecha");
+                reservas=new com.sun.webui.jsf.model.Option[1];
+                reservas[0]=new com.sun.webui.jsf.model.Option("-----","No hay salidas programadas para esta ruta y fecha");
             }
         }
         catch(Exception e){
-            reservaciones=new com.sun.webui.jsf.model.Option[1];
-            reservaciones[0]=new com.sun.webui.jsf.model.Option("-----","Ocurrio un error en la consulta");
+            reservas=new com.sun.webui.jsf.model.Option[1];
+            reservas[0]=new com.sun.webui.jsf.model.Option("-----","Ocurrio un error en la consulta");
         }
-        reservacionesDefaultOptions.setOptions(reservaciones);
+        reservacionesDefaultOptions.setOptions(reservas);
     }
 
     public void horarios_processValueChange(ValueChangeEvent event) {
         try {
-            int idSal=Integer.parseInt(horarios.getValue().toString());
-            int numReservaciones=getApplicationBean1().getCon().obtenerRservaciones(idSal);
+        /*    String idNomUsu=id
+            int numReservaciones=getApplicationBean1().getCon().obtenerReservaciones(idNumUsu)
             poblarComboReservaciones(getApplicationBean1().getCon().getResultSet(), numReservaciones);
-
+*/
         }
         catch (Exception e) {
         }
+    }    
+
+    public void ruta_processValueChange(ValueChangeEvent event) {
     }
 
-    public String button2_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        try {
-            int idSal=Integer.parseInt(horarios.getValue().toString());
-            int numReservaciones=getApplicationBean1().getCon().obtenerRservaciones(idSal);
-            poblarComboReservaciones(getApplicationBean1().getCon().getResultSet(), numReservaciones);
-
-        }
-        catch (Exception e) {
-        }
-        return null;
+    public void reservaciones_processValueChange(ValueChangeEvent event) {
     }
 }
 
