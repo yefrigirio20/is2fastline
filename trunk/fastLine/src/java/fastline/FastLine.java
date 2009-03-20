@@ -329,6 +329,7 @@ public class FastLine extends AbstractPageBean {
             if(Con.esAdministrador(usuario)){
                 getApplicationBean1().setCon("postgres","postgres");
                 getApplicationBean1().getCon().IniciarConexion();
+                getApplicationBean1().setNombreusuario(usuario);
                 return "case1";
             }
             error.setVisible(false);

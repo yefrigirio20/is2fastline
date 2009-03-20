@@ -29,6 +29,9 @@
                         <webuijsf:hyperlink actionExpression="#{Administracion.home_action}" id="home"
                             style="height: 24px; left: 48px; top: 264px; position: absolute" text="Home"/>
                         <webuijsf:image height="24" id="image3" style="left: 24px; top: 264px; position: absolute" url="/resources/folder_home.png" width="24"/>
+                        <webuijsf:staticText binding="#{Administracion.nomusuario}" id="nomusuario" style="color: blue; height: 24px; left: 408px; top: 24px; position: absolute; width: 96px"/>
+                        <webuijsf:hyperlink actionExpression="#{Administracion.cerrarsesion_action}" id="cerrarsesion"
+                            style="left: 528px; top: 24px; position: absolute" text="Cerrar sesion"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
