@@ -635,6 +635,7 @@ public class Encomiendas extends AbstractPageBean {
             String fec;
             try {
                 fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+                fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
                 int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
             poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
             }

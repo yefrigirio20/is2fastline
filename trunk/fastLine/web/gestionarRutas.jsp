@@ -59,7 +59,7 @@
                             style="color: rgb(51, 153, 0); font-size: 36px; height: 46px; left: 72px; top: 0px; position: absolute; width: 166px" text="FastLine"/>
                         <webuijsf:image height="72" id="image1" style="left: 0px; top: 0px; position: absolute" url="/resources/utilities.png" width="72"/>
                         <webuijsf:image height="24" id="image2" style="left: 312px; top: 240px; position: absolute" url="/resources/apply.png" width="24"/>
-                        <webuijsf:image height="24" id="image3" style="left: 480px; top: 648px; position: absolute" url="/resources/apply.png" width="24"/>
+                        <webuijsf:image height="24" id="image3" style="left: 432px; top: 672px; position: absolute" url="/resources/apply.png" width="24"/>
                         <webuijsf:image height="24" id="image4" style="left: 24px; top: 696px; position: absolute" url="/resources/back.png" width="24"/>
                         <webuijsf:image height="24" id="image5" style="left: 144px; top: 696px; position: absolute" url="/resources/folder_home.png" width="24"/>
                         <webuijsf:hyperlink actionExpression="#{gestionarRutas.home_action}" id="home"
@@ -83,7 +83,7 @@
                         <webuijsf:textField binding="#{gestionarRutas.precio}" id="precio" style="left: 144px; top: 648px; position: absolute"/>
                         <webuijsf:staticText binding="#{gestionarRutas.errorPrecio}" id="errorPrecio" style="color: red; height: 24px; left: 144px; top: 672px; position: absolute; width: 96px"/>
                         <webuijsf:staticText binding="#{gestionarRutas.errorFecha}" id="errorFecha" style="color: red; height: 22px; left: 360px; top: 576px; position: absolute; width: 214px"/>
-                        <webuijsf:staticText binding="#{gestionarRutas.asisalio}" id="asisalio" style="color: yellow; left: 480px; top: 648px; position: absolute"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.asisalio}" id="asisalio" style="color: yellow; left: 456px; top: 672px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
