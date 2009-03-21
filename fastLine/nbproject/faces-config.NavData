@@ -2,29 +2,29 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="resources/google/search/component.htm" x="429" y="597" zoom="true"/>
-        <Node id="estadoEncomiendas.jsp" x="120" y="570" zoom="true"/>
-        <Node id="resources/dojo/dijit/button/component.htm" x="650" y="300" zoom="true"/>
-        <Node id="DatosDepartamentos.jsp" x="227" y="303" zoom="true"/>
-        <Node id="redirect.jsp" x="877" y="63" zoom="false"/>
-        <Node id="reservaPasajes.jsp" x="280" y="-27" zoom="false"/>
-        <Node id="FastLine.jsp" x="39" y="14" zoom="false"/>
-        <Node id="googleEarth.jsp" x="409" y="82" zoom="true"/>
-        <Node id="Encomiendas.jsp" x="685" y="283" zoom="false"/>
-        <Node id="QuienesSomos.jsp" x="503" y="21" zoom="true"/>
-        <Node id="Administracion.jsp" x="346" y="192" zoom="false"/>
-        <Node id="welcomeJSF.jsp" x="858" y="15" zoom="false"/>
-        <Node id="BusesyChoferes.jsp" x="677" y="45" zoom="false"/>
-        <Node id="graficaBuses.jsp" x="150" y="150" zoom="true"/>
-        <Node id="gestionarRutas.jsp" x="400" y="340" zoom="false"/>
-        <Node id="registrarNuevoUsuario.jsp" x="-14" y="511" zoom="true"/>
-        <Node id="LogIn.jsp" x="12" y="336" zoom="true"/>
-        <Node id="FragmentoFastLineGoogle.jsp" x="150" y="450" zoom="true"/>
-        <Node id="LoginIncorrecto.jsp" x="409" y="498" zoom="false"/>
-        <Node id="resources/google/map/component.htm" x="900" y="150" zoom="true"/>
-        <Node id="resources/dojo/dijit/resources/libs/dojo/v1.2.0/dojo/resources/blank.html" x="900" y="300" zoom="true"/>
-        <Node id="resources/dojo/dijit/resources/libs/dojo/v1.2.0/dojo/resources/iframe_history.html" x="1010" y="218" zoom="true"/>
-        <Node id="pagoBoletos.jsp" x="399" y="178" zoom="true"/>
+        <Node id="resources/google/search/component.htm" x="789" y="-32" zoom="true"/>
+        <Node id="estadoEncomiendas.jsp" x="16" y="420" zoom="false"/>
+        <Node id="resources/dojo/dijit/button/component.htm" x="784" y="-64" zoom="true"/>
+        <Node id="reservaPasajes.jsp" x="292" y="-67" zoom="false"/>
+        <Node id="DatosDepartamentos.jsp" x="884" y="59" zoom="true"/>
+        <Node id="redirect.jsp" x="958" y="174" zoom="false"/>
+        <Node id="FastLine.jsp" x="23" y="-126" zoom="false"/>
+        <Node id="googleEarth.jsp" x="936" y="147" zoom="true"/>
+        <Node id="Encomiendas.jsp" x="573" y="276" zoom="false"/>
+        <Node id="QuienesSomos.jsp" x="292" y="-130" zoom="false"/>
+        <Node id="Administracion.jsp" x="290" y="80" zoom="false"/>
+        <Node id="welcomeJSF.jsp" x="932" y="119" zoom="true"/>
+        <Node id="graficaBuses.jsp" x="930" y="89" zoom="true"/>
+        <Node id="BusesyChoferes.jsp" x="569" y="120" zoom="false"/>
+        <Node id="gestionarRutas.jsp" x="293" y="284" zoom="false"/>
+        <Node id="registrarNuevoUsuario.jsp" x="-15" y="111" zoom="false"/>
+        <Node id="FragmentoFastLineGoogle.jsp" x="856" y="28" zoom="true"/>
+        <Node id="LogIn.jsp" x="8" y="287" zoom="true"/>
+        <Node id="LoginIncorrecto.jsp" x="26" y="331" zoom="false"/>
+        <Node id="resources/google/map/component.htm" x="803" y="-2" zoom="true"/>
+        <Node id="resources/dojo/dijit/resources/libs/dojo/v1.2.0/dojo/resources/blank.html" x="615" y="-98" zoom="true"/>
+        <Node id="resources/dojo/dijit/resources/libs/dojo/v1.2.0/dojo/resources/iframe_history.html" x="562" y="-128" zoom="true"/>
+        <Node id="pagoBoletos.jsp" x="576" y="-25" zoom="false"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
