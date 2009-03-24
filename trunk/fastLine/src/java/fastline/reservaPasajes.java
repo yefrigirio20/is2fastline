@@ -288,6 +288,19 @@ public class reservaPasajes extends AbstractPageBean {
         //Con.IniciarConexion();
         getApplicationBean1().getCon().reservarPasaje(idusu, idSal, idAsi);
 
+        int asientos[]=getApplicationBean1().getCon().estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
+        getApplicationBean1().setEstadoAsientos(asientos);
+
+        int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
+        int idDestino=Integer.parseInt(depDestino.getValue().toString());
+        String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+
+        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+
+        int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+        poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+
         //Con.CerrarConexion();
         return null;
     }
