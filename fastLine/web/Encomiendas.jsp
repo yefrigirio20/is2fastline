@@ -132,6 +132,9 @@
                         <webuijsf:staticText binding="#{Encomiendas.encID}" id="encID" style="color: blue; font-size: 24px; height: 18px; left: 528px; top: 648px; position: absolute"/>
                         <webuijsf:label id="label42" style="height: 22px; left: 48px; top: 576px; position: absolute; text-align: right; width: 120px" text="Monto:"/>
                         <webuijsf:textField binding="#{Encomiendas.montoTotal}" id="montoTotal" style="left: 168px; top: 576px; position: absolute"/>
+                        <webuijsf:staticText binding="#{Encomiendas.nomusuario}" id="nomusuario" style="color: blue; height: 24px; left: 552px; top: 24px; position: absolute; width: 96px"/>
+                        <webuijsf:hyperlink actionExpression="#{Encomiendas.cerrarsesion_action}" id="cerrarsesion"
+                            style="left: 672px; top: 24px; position: absolute" text="Cerrar sesion"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

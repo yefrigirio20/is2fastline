@@ -222,6 +222,9 @@ public class estadoEncomiendas extends AbstractPageBean {
             fecha.setText(getApplicationBean1().getCon().Result.getString("fechsal"));
             fecha.setVisible(true);
 
+            estado.setText(getApplicationBean1().getCon().Result.getString("descestenc"));
+            estado.setVisible(true);
+
         } 
         catch (Exception e) {
         }

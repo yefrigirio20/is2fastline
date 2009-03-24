@@ -23,7 +23,6 @@
                         <webuijsf:image height="72" id="image2" style="left: 0px; top: 0px; position: absolute" url="/resources/utilities.png" width="72"/>
                         <webuijsf:label id="label3"
                             style="color: rgb(204, 204, 0); font-size: 14px; height: 22px; left: 72px; top: 144px; position: absolute; width: 142px" text="Pago de Reserva"/>
-                        <webuijsf:label id="label4" style="left: 408px; top: 504px; position: absolute; text-align: right; width: 67px" text="Ruta:"/>
                         <webuijsf:label id="label6" style="left: 48px; top: 240px; position: absolute; text-align: right; width: 118px" text="Nombre de Usuario:"/>
                         <webuijsf:image height="48" id="image1" style="left: 24px; top: 144px; position: absolute" url="/resources/db_comit.png" width="48"/>
                         <webuijsf:label id="label5" style="left: 48px; top: 312px; position: absolute; text-align: right; width: 118px" text="Reservaciones:"/>
@@ -42,6 +41,9 @@
                             style="height: 24px; left: 167px; top: 264px; position: absolute; width: 144px" text="Consultar Reservaciones"/>
                         <webuijsf:staticText binding="#{pagoBoletos.errorNomUsu}" id="errorNomUsu" style="color: red; left: 336px; top: 240px; position: absolute"/>
                         <webuijsf:textField binding="#{pagoBoletos.idNomUsu}" id="idNomUsu" style="left: 168px; top: 240px; position: absolute"/>
+                        <webuijsf:staticText binding="#{pagoBoletos.nomusuario}" id="nomusuario" style="color: blue; height: 24px; left: 504px; top: 24px; position: absolute; width: 96px"/>
+                        <webuijsf:hyperlink actionExpression="#{pagoBoletos.cerrarsesion_action}" id="cerrarsesion"
+                            style="left: 624px; top: 24px; position: absolute" text="Cerrar sesion"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

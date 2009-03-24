@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Directory list containing valid component libraries which is a workaround for Win32 file deletion problems.-->
 <valid-directory-list>
+  <directory name="dynamicfaces_23322"/>
   <directory name="dynamicfaces_3627099800228261111"/>
 </valid-directory-list>

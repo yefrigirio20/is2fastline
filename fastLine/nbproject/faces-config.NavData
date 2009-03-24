@@ -5,18 +5,18 @@
         <Node id="resources/google/search/component.htm" x="789" y="-32" zoom="true"/>
         <Node id="estadoEncomiendas.jsp" x="16" y="420" zoom="false"/>
         <Node id="resources/dojo/dijit/button/component.htm" x="784" y="-64" zoom="true"/>
-        <Node id="reservaPasajes.jsp" x="292" y="-67" zoom="false"/>
-        <Node id="DatosDepartamentos.jsp" x="884" y="59" zoom="true"/>
         <Node id="redirect.jsp" x="958" y="174" zoom="false"/>
-        <Node id="FastLine.jsp" x="23" y="-126" zoom="false"/>
+        <Node id="reservaPasajes.jsp" x="320" y="-90" zoom="false"/>
+        <Node id="DatosDepartamentos.jsp" x="884" y="59" zoom="true"/>
+        <Node id="FastLine.jsp" x="0" y="-136" zoom="false"/>
         <Node id="googleEarth.jsp" x="936" y="147" zoom="true"/>
-        <Node id="Encomiendas.jsp" x="573" y="276" zoom="false"/>
+        <Node id="Encomiendas.jsp" x="577" y="277" zoom="false"/>
         <Node id="QuienesSomos.jsp" x="292" y="-130" zoom="false"/>
         <Node id="Administracion.jsp" x="290" y="80" zoom="false"/>
         <Node id="welcomeJSF.jsp" x="932" y="119" zoom="true"/>
         <Node id="graficaBuses.jsp" x="930" y="89" zoom="true"/>
-        <Node id="BusesyChoferes.jsp" x="569" y="120" zoom="false"/>
-        <Node id="gestionarRutas.jsp" x="293" y="284" zoom="false"/>
+        <Node id="BusesyChoferes.jsp" x="575" y="111" zoom="false"/>
+        <Node id="gestionarRutas.jsp" x="291" y="277" zoom="false"/>
         <Node id="registrarNuevoUsuario.jsp" x="-15" y="111" zoom="false"/>
         <Node id="FragmentoFastLineGoogle.jsp" x="856" y="28" zoom="true"/>
         <Node id="LogIn.jsp" x="8" y="287" zoom="true"/>
