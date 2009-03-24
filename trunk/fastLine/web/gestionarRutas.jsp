@@ -49,7 +49,7 @@
                             items="#{gestionarRutas.busNuevaSalidaDefaultOptions.options}" style="left: 144px; top: 504px; position: absolute"/>
                         <webuijsf:dropDown binding="#{gestionarRutas.chofer2}" id="chofer2" items="#{gestionarRutas.chofer2DefaultOptions.options}" style="left: 144px; top: 552px; position: absolute"/>
                         <webuijsf:label id="label8" style="height: 24px; left: 72px; top: 480px; position: absolute; text-align: right; width: 72px" text="#{mensajes.gest_Ruta}"/>
-                        <webuijsf:label id="label11" style="left: 96px; top: 504px; position: absolute; text-align: right; width: 51px" text="#{mensajes.gest_Ruta}"/>
+                        <webuijsf:label id="label11" style="left: 72px; top: 504px; position: absolute; text-align: right; width: 70px" text="#{mensajes.gest_Ruta}"/>
                         <webuijsf:dropDown binding="#{gestionarRutas.chofer1}" id="chofer1" items="#{gestionarRutas.chofer1DefaultOptions.options}" style="left: 144px; top: 528px; position: absolute"/>
                         <webuijsf:label id="label12" style="left: 96px; top: 624px; position: absolute; text-align: right; width: 48px" text="#{mensajes.gest_Hora}"/>
                         <webuijsf:calendar binding="#{gestionarRutas.fecha}" dateFormatPatternHelp="MM/dd/yyyy" id="fecha" label="#{mensajes.gest_Fecha_Salida}" style="left: 48px; top: 576px; position: absolute"/>
@@ -84,6 +84,9 @@
                         <webuijsf:staticText binding="#{gestionarRutas.errorPrecio}" id="errorPrecio" style="color: red; height: 24px; left: 144px; top: 672px; position: absolute; width: 96px"/>
                         <webuijsf:staticText binding="#{gestionarRutas.errorFecha}" id="errorFecha" style="color: red; height: 22px; left: 360px; top: 576px; position: absolute; width: 214px"/>
                         <webuijsf:staticText binding="#{gestionarRutas.asisalio}" id="asisalio" style="color: yellow; left: 456px; top: 672px; position: absolute"/>
+                        <webuijsf:staticText binding="#{gestionarRutas.nomusuario}" id="nomusuario" style="color: blue; height: 24px; left: 600px; top: 24px; position: absolute; width: 96px"/>
+                        <webuijsf:hyperlink actionExpression="#{gestionarRutas.cerrarsesion_action}" id="cerrarsesion"
+                            style="left: 720px; top: 24px; position: absolute" text="Cerrar sesion"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

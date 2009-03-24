@@ -37,6 +37,35 @@ public class FastLine extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        //error.setVisible(false);
+           mostrarOcultar();
+    }
+    private void mostrarOcultar(){
+            mensajelogginLabel.setVisible(!getApplicationBean1().getSesion());
+            userLabel.setVisible(!getApplicationBean1().getSesion());
+            passLabel.setVisible(!getApplicationBean1().getSesion());
+            userName1.setVisible(!getApplicationBean1().getSesion());
+            pass1.setVisible(!getApplicationBean1().getSesion());
+            iniciarSesion.setVisible(!getApplicationBean1().getSesion());
+            nuevoUsuarioAqui.setVisible(!getApplicationBean1().getSesion());
+            registrarseClick.setVisible(!getApplicationBean1().getSesion());
+            cerrarsesion.setVisible(!getApplicationBean1().getSesion());
+            userAccount.setText("Bienvenido: "+getApplicationBean1().getNombreusuario());
+            userAccount.setVisible(getApplicationBean1().getSesion());
+            
+            if(getApplicationBean1().getNombreusuario().compareTo("admin")==0){
+                regresarAdm.setVisible(getApplicationBean1().getSesion());
+                regresarAdm.setText("Regresar a la Pagina de Administracion");
+            }
+            else{
+                reservarPasajes.setVisible(getApplicationBean1().getSesion());
+                imageReservar.setVisible(getApplicationBean1().getSesion());
+                reservarPasajes.setText("Reservar Pasajes");
+            }
+
+            cerrarsesion.setText("Cerrar Sesion");
+            cerrarsesion.setVisible(getApplicationBean1().getSesion());
+            reservarPasajes.setVisible(getApplicationBean1().getSesion());
     }
     private TextField userName1 = new TextField();
 
@@ -166,6 +195,24 @@ public class FastLine extends AbstractPageBean {
 
     public void setIdEnc(TextField tf) {
         this.idEnc = tf;
+    }
+    private Hyperlink cerrarsesion = new Hyperlink();
+
+    public Hyperlink getCerrarsesion() {
+        return cerrarsesion;
+    }
+
+    public void setCerrarsesion(Hyperlink h) {
+        this.cerrarsesion = h;
+    }
+    private Hyperlink regresarAdm = new Hyperlink();
+
+    public Hyperlink getRegresarAdm() {
+        return regresarAdm;
+    }
+
+    public void setRegresarAdm(Hyperlink h) {
+        this.regresarAdm = h;
     }
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -326,6 +373,7 @@ public class FastLine extends AbstractPageBean {
 
         if(Con.esUsuario(usuario,pass)){
             getApplicationBean1().setNombreusuario(usuario);
+            getApplicationBean1().setSesion(true);
             if(Con.esAdministrador(usuario)){
                 getApplicationBean1().setCon("postgres","postgres");
                 getApplicationBean1().getCon().IniciarConexion();
@@ -347,6 +395,8 @@ public class FastLine extends AbstractPageBean {
             userAccount.setText("Bienvenido "+ usuario+"@akatsuki.com" );
             reservarPasajes.setText("Reservar Pasajes");
             reservarPasajes.setVisible(true);
+            cerrarsesion.setText("Cerrar Sesion");
+            cerrarsesion.setVisible(true);
             getApplicationBean1().setCon(usuario,pass);
             getApplicationBean1().getCon().IniciarConexion();
         }   
@@ -387,24 +437,46 @@ public class FastLine extends AbstractPageBean {
             return null;
         }
         else{
-            int idenc=Integer.parseInt(idEnc.getText().toString());
-            getApplicationBean1().setCon("postgres", "postgres");
-            //Conector Con=new Conector();
-            //Con.IniciarConexion();
-            getApplicationBean1().getCon().IniciarConexion();
-            if(getApplicationBean1().getCon().existeEncomienda(idenc)){
-                getApplicationBean1().getCon().consultarEncomienda(idenc);
-                return "case8";
+            try{
+                int idenc=Integer.parseInt(idEnc.getText().toString());
+                getApplicationBean1().setCon("postgres", "postgres");
+                //Conector Con=new Conector();
+                //Con.IniciarConexion();
+                getApplicationBean1().getCon().IniciarConexion();
+                if(getApplicationBean1().getCon().existeEncomienda(idenc)){
+                    getApplicationBean1().getCon().consultarEncomienda(idenc);
+                    return "case8";
+                }
+                else{
+                    getApplicationBean1().getCon().CerrarConexion();
+                    errorEnc.setText("El identificador no figura en la Base de Datos");
+                    errorEnc.setVisible(true);
+                    return null;
+                }
             }
-            else{
-                getApplicationBean1().getCon().CerrarConexion();
-                errorEnc.setText("EL identificador no figura en la Base de Datos");
+            catch(Exception e){
+                errorEnc.setText("El identificador no es valido");
                 errorEnc.setVisible(true);
                 return null;
             }
 
         }
         
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
+        mostrarOcultar();
+        return "case9";
+    }
+
+    public String regresarAdm_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "case12";
     }
     
 }

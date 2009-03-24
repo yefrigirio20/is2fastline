@@ -7,6 +7,9 @@
 package fastline;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.Message;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import java.util.ResourceBundle;
@@ -36,27 +39,24 @@ public class BusesyChoferes extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
-        diaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "1"), new com.sun.webui.jsf.model.Option("", "2"), new com.sun.webui.jsf.model.Option("", "3"), new com.sun.webui.jsf.model.Option("", "4"), new com.sun.webui.jsf.model.Option("", "5"), new com.sun.webui.jsf.model.Option("", "6"), new com.sun.webui.jsf.model.Option("", "7"), new com.sun.webui.jsf.model.Option("", "8"), new com.sun.webui.jsf.model.Option("", "9"), new com.sun.webui.jsf.model.Option("", "10"), new com.sun.webui.jsf.model.Option("", "11"), new com.sun.webui.jsf.model.Option("", "12"), new com.sun.webui.jsf.model.Option("", "13"), new com.sun.webui.jsf.model.Option("", "14"), new com.sun.webui.jsf.model.Option("", "15"), new com.sun.webui.jsf.model.Option("", "16"), new com.sun.webui.jsf.model.Option("", "17"), new com.sun.webui.jsf.model.Option("", "18"), new com.sun.webui.jsf.model.Option("", "19"), new com.sun.webui.jsf.model.Option("", "20"), new com.sun.webui.jsf.model.Option("", "21"), new com.sun.webui.jsf.model.Option("", "22"), new com.sun.webui.jsf.model.Option("", "23"), new com.sun.webui.jsf.model.Option("", "24"), new com.sun.webui.jsf.model.Option("", "25"), new com.sun.webui.jsf.model.Option("", "26"), new com.sun.webui.jsf.model.Option("", "27"), new com.sun.webui.jsf.model.Option("", "28"), new com.sun.webui.jsf.model.Option("", "29"), new com.sun.webui.jsf.model.Option("", "30"), new com.sun.webui.jsf.model.Option("", "31")});
-        mesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("item1", "Enero"), new com.sun.webui.jsf.model.Option("item2", "Febrero"), new com.sun.webui.jsf.model.Option("item3", "Marzo"), new com.sun.webui.jsf.model.Option("value", "Abril"), new com.sun.webui.jsf.model.Option("value", "Mayo"), new com.sun.webui.jsf.model.Option("value", "Junio"), new com.sun.webui.jsf.model.Option("value", "Julio"), new com.sun.webui.jsf.model.Option("value", "Agosto"), new com.sun.webui.jsf.model.Option("value", "Septiembre"), new com.sun.webui.jsf.model.Option("value", "Octubre"), new com.sun.webui.jsf.model.Option("value", "Noviembre"), new com.sun.webui.jsf.model.Option("value", "Diciembre")});
+        poblarComboBuses();
+        //diaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "1"), new com.sun.webui.jsf.model.Option("", "2"), new com.sun.webui.jsf.model.Option("", "3"), new com.sun.webui.jsf.model.Option("", "4"), new com.sun.webui.jsf.model.Option("", "5"), new com.sun.webui.jsf.model.Option("", "6"), new com.sun.webui.jsf.model.Option("", "7"), new com.sun.webui.jsf.model.Option("", "8"), new com.sun.webui.jsf.model.Option("", "9"), new com.sun.webui.jsf.model.Option("", "10"), new com.sun.webui.jsf.model.Option("", "11"), new com.sun.webui.jsf.model.Option("", "12"), new com.sun.webui.jsf.model.Option("", "13"), new com.sun.webui.jsf.model.Option("", "14"), new com.sun.webui.jsf.model.Option("", "15"), new com.sun.webui.jsf.model.Option("", "16"), new com.sun.webui.jsf.model.Option("", "17"), new com.sun.webui.jsf.model.Option("", "18"), new com.sun.webui.jsf.model.Option("", "19"), new com.sun.webui.jsf.model.Option("", "20"), new com.sun.webui.jsf.model.Option("", "21"), new com.sun.webui.jsf.model.Option("", "22"), new com.sun.webui.jsf.model.Option("", "23"), new com.sun.webui.jsf.model.Option("", "24"), new com.sun.webui.jsf.model.Option("", "25"), new com.sun.webui.jsf.model.Option("", "26"), new com.sun.webui.jsf.model.Option("", "27"), new com.sun.webui.jsf.model.Option("", "28"), new com.sun.webui.jsf.model.Option("", "29"), new com.sun.webui.jsf.model.Option("", "30"), new com.sun.webui.jsf.model.Option("", "31")});
+        mesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("---", "---"),new com.sun.webui.jsf.model.Option("1", "Enero"), new com.sun.webui.jsf.model.Option("2", "Febrero"), new com.sun.webui.jsf.model.Option("3", "Marzo"), new com.sun.webui.jsf.model.Option("4", "Abril"), new com.sun.webui.jsf.model.Option("5", "Mayo"), new com.sun.webui.jsf.model.Option("6", "Junio"), new com.sun.webui.jsf.model.Option("7", "Julio"), new com.sun.webui.jsf.model.Option("8", "Agosto"), new com.sun.webui.jsf.model.Option("9", "Septiembre"), new com.sun.webui.jsf.model.Option("10", "Octubre"), new com.sun.webui.jsf.model.Option("11", "Noviembre"), new com.sun.webui.jsf.model.Option("12", "Diciembre")});
                
-       com.sun.webui.jsf.model.Option[] años=new com.sun.webui.jsf.model.Option[50];
-        int b;
-        for(int a=0;a<50;a++){
-            b=a+1950;
-            años[a]=new com.sun.webui.jsf.model.Option("",""+b);
-        }
-        añoDefaultOptions.setOptions(años);
+       this.poblarComboDias(31);
+       this.poblarComboAños(1950,2000);
+       nomusuario.setText("Bienvenido: "+getApplicationBean1().getNombreusuario());
         
         //añoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "dos")});
     }
-    private SingleSelectOptionsList dropDown1DefaultOptions = new SingleSelectOptionsList();
+    private SingleSelectOptionsList busesDefaultOptions = new SingleSelectOptionsList();
 
-    public SingleSelectOptionsList getDropDown1DefaultOptions() {
-        return dropDown1DefaultOptions;
+    public SingleSelectOptionsList getBusesDefaultOptions() {
+        return busesDefaultOptions;
     }
 
-    public void setDropDown1DefaultOptions(SingleSelectOptionsList ssol) {
-        this.dropDown1DefaultOptions = ssol;
+    public void setBusesDefaultOptions(SingleSelectOptionsList ssol) {
+        this.busesDefaultOptions = ssol;
     }
     private SingleSelectOptionsList diaDefaultOptions = new SingleSelectOptionsList();
 
@@ -120,6 +120,132 @@ public class BusesyChoferes extends AbstractPageBean {
 
     public void setIntegerConverter2(IntegerConverter ic) {
         this.integerConverter2 = ic;
+    }
+    private Message message5 = new Message();
+
+    public Message getMessage5() {
+        return message5;
+    }
+
+    public void setMessage5(Message m) {
+        this.message5 = m;
+    }
+    private Message message4 = new Message();
+
+    public Message getMessage4() {
+        return message4;
+    }
+
+    public void setMessage4(Message m) {
+        this.message4 = m;
+    }
+    private StaticText estado = new StaticText();
+
+    public StaticText getEstado() {
+        return estado;
+    }
+
+    public void setEstado(StaticText st) {
+        this.estado = st;
+    }
+    private DropDown buses = new DropDown();
+
+    public DropDown getBuses() {
+        return buses;
+    }
+
+    public void setBuses(DropDown dd) {
+        this.buses = dd;
+    }
+    private StaticText errorEliminarBus = new StaticText();
+
+    public StaticText getErrorEliminarBus() {
+        return errorEliminarBus;
+    }
+
+    public void setErrorEliminarBus(StaticText st) {
+        this.errorEliminarBus = st;
+    }
+    private DropDown dia = new DropDown();
+
+    public DropDown getDia() {
+        return dia;
+    }
+
+    public void setDia(DropDown dd) {
+        this.dia = dd;
+    }
+    private DropDown mes = new DropDown();
+
+    public DropDown getMes() {
+        return mes;
+    }
+
+    public void setMes(DropDown dd) {
+        this.mes = dd;
+    }
+    private DropDown año = new DropDown();
+
+    public DropDown getAño() {
+        return año;
+    }
+
+    public void setAño(DropDown dd) {
+        this.año = dd;
+    }
+    private TextField apellPaterno = new TextField();
+
+    public TextField getApellPaterno() {
+        return apellPaterno;
+    }
+
+    public void setApellPaterno(TextField tf) {
+        this.apellPaterno = tf;
+    }
+    private TextField apellMaterno = new TextField();
+
+    public TextField getApellMaterno() {
+        return apellMaterno;
+    }
+
+    public void setApellMaterno(TextField tf) {
+        this.apellMaterno = tf;
+    }
+    private TextField nombres = new TextField();
+
+    public TextField getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(TextField tf) {
+        this.nombres = tf;
+    }
+    private TextField DNI = new TextField();
+
+    public TextField getDNI() {
+        return DNI;
+    }
+
+    public void setDNI(TextField tf) {
+        this.DNI = tf;
+    }
+    private StaticText errorFecha = new StaticText();
+
+    public StaticText getErrorFecha() {
+        return errorFecha;
+    }
+
+    public void setErrorFecha(StaticText st) {
+        this.errorFecha = st;
+    }
+    private StaticText nomusuario = new StaticText();
+
+    public StaticText getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(StaticText st) {
+        this.nomusuario = st;
     }
 
     // </editor-fold>
@@ -237,18 +363,53 @@ public class BusesyChoferes extends AbstractPageBean {
     public String agregarBus_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        estado.setVisible(false);
+        String mat="";
+        if(matricula.getText()!=null){
+            mat=matricula.getText().toString();
+            try {
+                int cap=Integer.parseInt(capacidad.getText().toString());
+                getApplicationBean1().getCon().insertarNuevoBus(mat, cap);
+                estado.setText(getApplicationBean1().getCon().Estado);
+                estado.setVisible(true);
+                poblarComboBuses();
+            } catch (Exception e) {
+            }
+
+        }
         return null;
     }
 
     public String eliminarBus_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        errorEliminarBus.setVisible(false);
+        String mat=buses.getValue().toString();
+        if(mat.length()>3){
+            getApplicationBean1().getCon().eliminarBus(mat);
+            poblarComboBuses();
+        }
+        else{
+            errorEliminarBus.setText("Debe seleccionar el bus a eliminar");
+            errorEliminarBus.setVisible(true);
+        }
         return null;
     }
 
     public String agregarChofer_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        String diaNacUsu=dia.getValue().toString();
+        String mesNacUsu=mes.getValue().toString();
+        String añoNacUsu=año.getValue().toString();
+        String fecNacUsu=mesNacUsu+"/"+diaNacUsu+"/"+añoNacUsu;
+        errorFecha.setVisible(false);
+        if(diaNacUsu.length()>2||mesNacUsu.length()>2||añoNacUsu.length()>4){
+            errorFecha.setText("Debe especificar una fecha completa");
+            errorFecha.setVisible(true);
+        }
+        else
+            getApplicationBean1().getCon().insertarNuevoChofer(apellPaterno.getText().toString(),apellMaterno.getText().toString(),nombres.getText().toString(),fecNacUsu,DNI.getText().toString());
         return null;
     }
 
@@ -292,7 +453,7 @@ public class BusesyChoferes extends AbstractPageBean {
 
     public void matricula_validate(FacesContext context, UIComponent component, Object value) {
         String strValue = String.valueOf(value);
-        if (!strValue.matches("\\w{2}-{1}\\d{4}")) {
+        if (!strValue.matches("\\w{2}{1}\\d{4}")) {
         ResourceBundle resourceBundle = ResourceBundle.getBundle(
                              "errores.erroresBundle",
                              context.getViewRoot().getLocale());
@@ -301,6 +462,80 @@ public class BusesyChoferes extends AbstractPageBean {
   }
 
     }
-    
+private void poblarComboBuses(){
+        com.sun.webui.jsf.model.Option[] buses;
+        //Conector Con=new Conector();
+        //Con.IniciarConexion();
+        try{
+            int numbuses=getApplicationBean1().getCon().obtenerBuses();
+            if(numbuses>0){
+                buses=new com.sun.webui.jsf.model.Option[numbuses+1];
+                String matBus;
+                int Capacidad;
+                buses[0]=new com.sun.webui.jsf.model.Option("---","Seleccione el bus");
+                int b=1;
+                while(getApplicationBean1().getCon().getResultSet().next()){
+                    matBus=getApplicationBean1().getCon().getResultSet().getString("matbus");
+                    Capacidad=getApplicationBean1().getCon().getResultSet().getInt("capbus");
+                    buses[b]=new com.sun.webui.jsf.model.Option(matBus,matBus+" Capacidad:"+Capacidad);
+                    b++;
+                }
+            }
+            else{
+                buses=new com.sun.webui.jsf.model.Option[1];
+                buses[0]=new com.sun.webui.jsf.model.Option("---","No hay buses en la base de datos");
+            }
+        }
+        catch(Exception e){
+            buses=new com.sun.webui.jsf.model.Option[1];
+            buses[0]=new com.sun.webui.jsf.model.Option("---","Ocurrio un error con la base de datos");
+        }
+        //Con.CerrarConexion();
+        busesDefaultOptions.setOptions(buses);
+    }
+
+    public void matricula_processValueChange(ValueChangeEvent event) {
+    }
+    public void poblarComboAños(int inicio,int fin){
+
+        com.sun.webui.jsf.model.Option[] años=new com.sun.webui.jsf.model.Option[fin-inicio+2];
+        int i=1;
+        años[0]=new com.sun.webui.jsf.model.Option("-----","-----");
+        for(int a=inicio;a<=fin;a++){
+            años[i]=new com.sun.webui.jsf.model.Option(""+a,""+a);
+            i++;
+        }
+        añoDefaultOptions.setOptions(años);
+    }
+    public void poblarComboDias(int numDias){
+
+        com.sun.webui.jsf.model.Option[] dias=new com.sun.webui.jsf.model.Option[numDias+1];
+        dias[0]=new com.sun.webui.jsf.model.Option("---","---");
+        for(int d=1;d<=numDias;d++){
+            dias[d]=new com.sun.webui.jsf.model.Option(""+d,""+d);
+
+        }
+        diaDefaultOptions.setOptions(dias);
+    }
+
+    public void mes_processValueChange(ValueChangeEvent event) {
+        int nromes=Integer.parseInt(mes.getValue().toString());
+        if(nromes==1||nromes==3||nromes==5||nromes==7||nromes==8||nromes==9||nromes==10)
+            poblarComboDias(31);
+        else if(nromes==2)
+            poblarComboDias(28);
+        else if(nromes==0)
+            diaDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("---", "---")});
+        else
+            poblarComboDias(30);
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
+        return "case3";
+    }
 }
 

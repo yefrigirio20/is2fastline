@@ -33,6 +33,7 @@ public class pagoBoletos extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        nomusuario.setText("Bienvenido: "+getApplicationBean1().getNombreusuario());
         reservacionesDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("----", "Consulte reservaciones primero")});
     }
     private SingleSelectOptionsList reservacionesDefaultOptions = new SingleSelectOptionsList();
@@ -70,6 +71,15 @@ public class pagoBoletos extends AbstractPageBean {
 
     public void setIdNomUsu(TextField tf) {
         this.idNomUsu = tf;
+    }
+    private StaticText nomusuario = new StaticText();
+
+    public StaticText getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(StaticText st) {
+        this.nomusuario = st;
     }
 
     // </editor-fold>
@@ -274,7 +284,7 @@ public class pagoBoletos extends AbstractPageBean {
             }
             else{
                 reservas=new com.sun.webui.jsf.model.Option[1];
-                reservas[0]=new com.sun.webui.jsf.model.Option("-----","No hay salidas programadas para esta ruta y fecha");
+                reservas[0]=new com.sun.webui.jsf.model.Option("-----","El usuario no registra ninguna reservacion");
             }
         }
         catch(Exception e){
@@ -299,6 +309,14 @@ public class pagoBoletos extends AbstractPageBean {
     }
 
     public void reservaciones_processValueChange(ValueChangeEvent event) {
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
+        return "case3";
     }
 }
 

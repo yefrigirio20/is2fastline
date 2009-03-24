@@ -26,9 +26,9 @@
                         <webuijsf:hyperlink actionExpression="#{FastLine.quienSomos_action}" id="quienSomos" style="left: 24px; top: 48px; position: absolute" text="#{mensajes.index_Quienes}"/>
                         <webuijsf:staticText id="staticText1"
                             style="color: #000000; font-family: serif; font-size: 18px; height: 94px; left: 0px; top: 408px; position: absolute; width: 406px" text="#{mensajes.index_Mensaje_Final}"/>
-                        <webuijsf:hyperlink actionExpression="#{FastLine.reservarPasajes_action}" binding="#{FastLine.reservarPasajes}" id="reservarPasajes" style="left: 24px; top: 144px; position: absolute"/>
+                        <webuijsf:hyperlink actionExpression="#{FastLine.reservarPasajes_action}" binding="#{FastLine.reservarPasajes}" id="reservarPasajes" style="left: 48px; top: 144px; position: absolute"/>
                         <webuijsf:image height="24" id="image2" style="left: 0px; top: 576px; position: absolute" url="/resources/utilities.png" visible="false" width="24"/>
-                        <webuijsf:image binding="#{FastLine.imageReservar}" height="24" id="imageReservar" style="left: 0px; top: 144px; position: absolute"
+                        <webuijsf:image binding="#{FastLine.imageReservar}" height="24" id="imageReservar" style="left: 24px; top: 144px; position: absolute"
                             url="/resources/lassists.png" width="24"/>
                         <webuijsf:image height="24" id="image5" style="left: 0px; top: 48px; position: absolute" url="/resources/xeyes.png" width="24"/>
                         <webuijsf:label binding="#{FastLine.userLabel}" id="userLabel"
@@ -48,15 +48,18 @@
                         <webuijsf:hyperlink actionExpression="#{FastLine.nuevoUsuario_action}" binding="#{FastLine.nuevoUsuarioAqui}" id="nuevoUsuarioAqui"
                             style="left: 168px; top: 192px; position: absolute" text="#{mensajes.index_AquiLink}"/>
                         <webuijsf:staticText binding="#{FastLine.error}" id="error" style="color: red; font-size: 14px; height: 24px; left: 216px; top: 168px; position: absolute; width: 168px"/>
-                        <webuijsf:staticText binding="#{FastLine.userAccount}" id="userAccount" style="color: blue; font-size: 14px; height: 24px; left: 408px; top: 24px; position: absolute; width: 288px"/>
+                        <webuijsf:staticText binding="#{FastLine.userAccount}" id="userAccount" style="color: blue; font-size: 14px; height: 24px; left: 408px; top: 24px; position: absolute; width: 166px"/>
                         <div style="height: 478px; left: 408px; top: 72px; position: absolute; width: 574px">
                             <jsp:directive.include file="FragmentoFastLine.jspf"/>
                         </div>
                         <webuijsf:label id="label2" style="left: 24px; top: 552px; position: absolute" text="#{mensajes.index_Verifique}"/>
                         <webuijsf:textField binding="#{FastLine.idEnc}" id="idEnc" style="left: 216px; top: 576px; position: absolute"/>
                         <webuijsf:button actionExpression="#{FastLine.verificarEncomienda_action}" id="verificarEncomienda"
-                        style="height: 24px; left: 215px; top: 600px; position: absolute; width: 120px" text="#{mensajes.index_Verificar}"/>
-                        <webuijsf:label id="label3" style="left: 24px; top: 576px; position: absolute; text-align: right; width: 190px" text="#{mensajes.index_Identificador_Enc}"/>                        <webuijsf:staticText binding="#{FastLine.errorEnc}" id="errorEnc" style="color: red; left: 360px; top: 576px; position: absolute"/>
+                            style="height: 24px; left: 215px; top: 600px; position: absolute; width: 120px" text="#{mensajes.index_Verificar}"/>
+                        <webuijsf:label id="label3" style="left: 24px; top: 576px; position: absolute; text-align: right; width: 190px" text="#{mensajes.index_Identificador_Enc}"/>
+                        <webuijsf:staticText binding="#{FastLine.errorEnc}" id="errorEnc" style="color: red; left: 360px; top: 576px; position: absolute"/>
+                        <webuijsf:hyperlink actionExpression="#{FastLine.cerrarsesion_action}" binding="#{FastLine.cerrarsesion}" id="cerrarsesion" style="height: 24px; left: 648px; top: 24px; position: absolute; width: 72px"/>
+                        <webuijsf:hyperlink actionExpression="#{FastLine.regresarAdm_action}" binding="#{FastLine.regresarAdm}" id="regresarAdm" style="position: absolute; left: 24px; top: 168px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

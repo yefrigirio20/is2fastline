@@ -186,6 +186,7 @@ public class Administracion extends AbstractPageBean {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
         return "case6";
     }
 

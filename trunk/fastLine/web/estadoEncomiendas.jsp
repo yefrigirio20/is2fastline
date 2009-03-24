@@ -41,7 +41,7 @@
                         <webuijsf:staticText binding="#{estadoEncomiendas.recAM}" id="recAM" style="color: blue; height: 24px; left: 456px; top: 264px; position: absolute; width: 72px"/>
                         <webuijsf:staticText binding="#{estadoEncomiendas.recN}" id="recN" style="color: blue; height: 24px; left: 456px; top: 288px; position: absolute; width: 72px"/>
                         <webuijsf:staticText binding="#{estadoEncomiendas.recDNI}" id="recDNI" style="color: blue; height: 24px; left: 456px; top: 312px; position: absolute; width: 72px"/>
-                        <webuijsf:staticText binding="#{estadoEncomiendas.estado}" id="estado" style="color: blue; height: 24px; left: 144px; top: 384px; position: absolute; width: 72px"/>
+                        <webuijsf:staticText binding="#{estadoEncomiendas.estado}" id="estado" style="color: blue; height: 24px; left: 144px; top: 384px; position: absolute; width: 190px"/>
                         <webuijsf:label id="label15" style="left: 72px; top: 384px; position: absolute; text-align: right; width: 70px" text="Estado:"/>
                         <webuijsf:staticText binding="#{estadoEncomiendas.fecha}" id="fecha" style="color: blue; height: 24px; left: 144px; top: 360px; position: absolute; width: 72px"/>
                         <webuijsf:label id="label16" style="left: 72px; top: 360px; position: absolute; text-align: right; width: 70px" text="Fecha:"/>

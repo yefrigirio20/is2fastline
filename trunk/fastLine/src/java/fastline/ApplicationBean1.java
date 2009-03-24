@@ -29,12 +29,15 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     private int estadoAsientos[];
     private Conector Con;
     private ResultSet respaldo1,respaldo2;
+    private boolean sesion;
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+        setNombreusuario("");
+        setSesion(false);
     }
     // </editor-fold>
 
@@ -175,5 +178,19 @@ public class ApplicationBean1 extends AbstractApplicationBean {
      */
     public void setRespaldo2(ResultSet respaldo2) {
         this.respaldo2 = respaldo2;
+    }
+
+    /**
+     * @return the sesion
+     */
+    public boolean getSesion() {
+        return sesion;
+    }
+
+    /**
+     * @param sesion the sesion to set
+     */
+    public void setSesion(boolean sesion) {
+        this.sesion = sesion;
     }
 }

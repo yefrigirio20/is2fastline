@@ -35,17 +35,19 @@
                         <webuijsf:label for="nombres" id="lblNombres" style="left: 72px; top: 528px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Nombres}"/>
                         <webuijsf:label for="DNI" id="lblDNI" style="left: 120px; top: 576px; position: absolute; text-align: right; width: 24px" text="#{mensajes.literal_DNI}"/>
                         <webuijsf:label id="label14" style="left: 0px; top: 552px; position: absolute; text-align: right; width: 142px" text="#{mensajes.literal_Fecha_Nacimiento}"/>
-                        <webuijsf:dropDown id="dia" items="#{BusesyChoferes.diaDefaultOptions.options}" onChange=""
-                            style="left: 192px; top: 552px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.dia_processValueChange}"/>
-                        <webuijsf:staticText id="staticText1" style="left: 168px; top: 552px; position: absolute" text="#{mensajes.literal_Dia}"/>
-                        <webuijsf:staticText id="staticText2" style="left: 240px; top: 552px; position: absolute" text="#{mensajes.literal_Mes}"/>
-                        <webuijsf:staticText id="staticText3" style="left: 384px; top: 552px; position: absolute" text="#{mensajes.literal_Ano}"/>
-                        <webuijsf:dropDown id="mes" items="#{BusesyChoferes.mesDefaultOptions.options}" style="left: 288px; top: 552px; position: absolute"/>
-                        <webuijsf:dropDown id="año" items="#{BusesyChoferes.añoDefaultOptions.options}" style="left: 408px; top: 552px; position: absolute"/>
-                        <webuijsf:textField id="apellPaterno" required="true" style="left: 144px; top: 480px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.apellPaterno_processValueChange}"/>
-                        <webuijsf:textField id="apellMaterno" required="true" style="left: 144px; top: 504px; position: absolute"/>
-                        <webuijsf:textField id="nombres" required="true" style="position: absolute; left: 144px; top: 528px"/>
-                        <webuijsf:textField converter="#{BusesyChoferes.integerConverter1}" id="DNI" required="true"
+                        <webuijsf:dropDown binding="#{BusesyChoferes.dia}" id="dia" items="#{BusesyChoferes.diaDefaultOptions.options}" onChange=""
+                            style="left: 288px; top: 552px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.dia_processValueChange}"/>
+                        <webuijsf:staticText id="staticText1" style="left: 264px; top: 552px; position: absolute" text="#{mensajes.literal_Dia}"/>
+                        <webuijsf:staticText id="staticText2" style="left: 144px; top: 552px; position: absolute" text="#{mensajes.literal_Mes}"/>
+                        <webuijsf:staticText id="staticText3" style="left: 360px; top: 552px; position: absolute" text="#{mensajes.literal_Ano}"/>
+                        <webuijsf:dropDown binding="#{BusesyChoferes.mes}" id="mes" items="#{BusesyChoferes.mesDefaultOptions.options}"
+                            onChange="webui.suntheme4_2.common.timeoutSubmitForm(this.form, 'mes');" style="left: 168px; top: 552px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.mes_processValueChange}"/>
+                        <webuijsf:dropDown binding="#{BusesyChoferes.año}" id="año" items="#{BusesyChoferes.añoDefaultOptions.options}" style="left: 384px; top: 552px; position: absolute"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.apellPaterno}" id="apellPaterno" required="true"
+                            style="left: 144px; top: 480px; position: absolute" valueChangeListenerExpression="#{BusesyChoferes.apellPaterno_processValueChange}"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.apellMaterno}" id="apellMaterno" required="true" style="left: 144px; top: 504px; position: absolute"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.nombres}" id="nombres" required="true" style="position: absolute; left: 144px; top: 528px"/>
+                        <webuijsf:textField binding="#{BusesyChoferes.DNI}" converter="#{BusesyChoferes.integerConverter1}" id="DNI" required="true"
                             style="left: 144px; top: 576px; position: absolute" validatorExpression="#{BusesyChoferes.DNI_validate}"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.agregarChofer_action}" id="agregarChofer"
                             style="height: 24px; left: 143px; top: 600px; position: absolute; width: 96px" text="#{mensajes.literal_Agregar_Choferes}"/>
@@ -53,15 +55,18 @@
                         <webuijsf:image height="48" id="image6" style="left: 24px; top: 144px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image7" style="left: 24px; top: 432px; position: absolute" url="/resources/db_add.png" width="48"/>
                         <webuijsf:image height="48" id="image8" style="left: 24px; top: 312px; position: absolute" url="/resources/db_remove.png" width="48"/>
-
                         <webuijsf:message for="apellPaterno" id="msgApellidoPaterno" showDetail="false" showSummary="true" style="height: 24px; left: 288px; top: 480px; position: absolute; width: 190px"/>
                         <webuijsf:message for="apellMaterno" id="message1" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 504px; width: 192px; height: 24px"/>
                         <webuijsf:message for="nombres" id="message2" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 528px; width: 192px; height: 24px"/>
-                        <webuijsf:message for="DNI" id="message3" showDetail="false" showSummary="true" style="position: absolute; left: 288px; top: 576px; width: 192px; height: 24px"/>
+                        <webuijsf:message for="DNI" id="message3" showDetail="false" showSummary="true" style="height: 24px; left: 288px; top: 576px; position: absolute; width: 192px"/>
+                        <webuijsf:staticText binding="#{BusesyChoferes.errorFecha}" id="errorFecha" style="color: red; height: 24px; left: 480px; top: 552px; position: absolute; width: 72px"/>
+                        <webuijsf:staticText binding="#{BusesyChoferes.nomusuario}" id="nomusuario" style="color: blue; height: 24px; left: 552px; top: 24px; position: absolute; width: 96px"/>
+                        <webuijsf:hyperlink actionExpression="#{BusesyChoferes.cerrarsesion_action}" id="cerrarsesion"
+                            style="left: 672px; top: 24px; position: absolute" text="Cerrar sesion"/>
                     </webuijsf:form>
                     <webuijsf:form id="form2" style="height: 96px; left: 0px; top: 624px; position: absolute; width: 240px">
                         <webuijsf:image height="24" id="image4" style="left: 24px; top: 24px; position: absolute" url="/resources/back.png" width="24"/>
-                        <webuijsf:image height="24" id="image5" style="left: 120px; top: 24px; position: absolute" url="/resources/folder_home.png" width="24"/>
+                        <webuijsf:image height="24" id="image5" style="left: 144px; top: 24px; position: absolute" url="/resources/folder_home.png" width="24"/>
                         <webuijsf:hyperlink actionExpression="#{BusesyChoferes.home1_action}" id="home1"
                             style="height: 24px; left: 168px; top: 24px; position: absolute" text="Home"/>
                         <webuijsf:hyperlink actionExpression="#{BusesyChoferes.regresar1_action}" id="regresar1"
@@ -71,21 +76,23 @@
                         <webuijsf:label for="matricula" id="lblMatricula" style="left: 24px; top: 48px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Matricula}"/>
                         <webuijsf:label for="capacidad" id="lblCapacidad" style="left: 24px; top: 72px; position: absolute; text-align: right; width: 72px" text="#{mensajes.literal_Capacidad}"/>
                         <webuijsf:textField binding="#{BusesyChoferes.matricula}" id="matricula" required="true"
-                            style="left: 120px; top: 48px; position: absolute" validatorExpression="#{BusesyChoferes.matricula_validate}"/>
+                            style="left: 120px; top: 48px; position: absolute" validatorExpression="#{BusesyChoferes.matricula_validate}" valueChangeListenerExpression="#{BusesyChoferes.matricula_processValueChange}"/>
                         <webuijsf:textField binding="#{BusesyChoferes.capacidad}" converter="#{BusesyChoferes.integerConverter2}" id="capacidad" required="true"
                             style="left: 120px; top: 72px; position: absolute" validatorExpression="#{BusesyChoferes.capacidad_validate}"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.agregarBus_action}" id="agregarBus"
                             style="height: 24px; left: 95px; top: 120px; position: absolute; width: 72px" text="#{mensajes.literal_Agregar_Buses}"/>
-                        <webuijsf:message for="capacidad" id="message4" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 96px; position: absolute; width: 120px"/>
-                        <webuijsf:message for="matricula" id="message5" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 48px; position: absolute; width: 120px"/>
-                        <webuijsf:image height="24" id="image2" style="left: 192px; top: 120px; position: absolute" url="/resources/apply.png" width="24"/>
+                        <webuijsf:message binding="#{BusesyChoferes.message4}" for="capacidad" id="message4" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 72px; position: absolute; width: 166px"/>
+                        <webuijsf:message binding="#{BusesyChoferes.message5}" for="matricula" id="message5" showDetail="false" showSummary="true" style="height: 24px; left: 264px; top: 48px; position: absolute; width: 166px"/>
+                        <webuijsf:image height="24" id="image2" style="left: 168px; top: 120px; position: absolute" url="/resources/apply.png" width="24"/>
+                        <webuijsf:staticText binding="#{BusesyChoferes.estado}" id="estado" style="color: blue; height: 24px; left: 216px; top: 120px; position: absolute; width: 96px"/>
                     </webuijsf:form>
                     <webuijsf:form id="form4" style="height: 96px; left: 216px; top: 312px; position: absolute; width: 240px">
                         <webuijsf:label id="label7" style="left: 0px; top: 24px; position: absolute; text-align: right; width: 96px" text="#{mensajes.literal_Matricula}"/>
-                        <webuijsf:dropDown id="dropDown1" items="#{BusesyChoferes.dropDown1DefaultOptions.options}" style="left: 120px; top: 24px; position: absolute"/>
+                        <webuijsf:dropDown binding="#{BusesyChoferes.buses}" id="buses" items="#{BusesyChoferes.busesDefaultOptions.options}" style="left: 120px; top: 24px; position: absolute"/>
                         <webuijsf:image height="24" id="image9" style="left: 120px; top: 72px; position: absolute" url="/resources/button_cancel.png" width="24"/>
                         <webuijsf:button actionExpression="#{BusesyChoferes.eliminarBus_action}" id="eliminarBus"
                             style="height: 24px; left: 47px; top: 72px; position: absolute; width: 71px" text="#{mensajes.literal_Eliminar_Bus}"/>
+                        <webuijsf:staticText binding="#{BusesyChoferes.errorEliminarBus}" id="errorEliminarBus" style="color: red; left: 168px; top: 72px; position: absolute"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

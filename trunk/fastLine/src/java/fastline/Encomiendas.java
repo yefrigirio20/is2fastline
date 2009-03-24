@@ -41,7 +41,7 @@ public class Encomiendas extends AbstractPageBean {
         categoriaEncDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("-", "--Seleccione--"), new com.sun.webui.jsf.model.Option("s", "Sobre"), new com.sun.webui.jsf.model.Option("p", "Paquete")});
         dropDown2DefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("", "Esperando Embarque"), new com.sun.webui.jsf.model.Option("", "Embarcado"), new com.sun.webui.jsf.model.Option("", "Esperando Entrega"), new com.sun.webui.jsf.model.Option("", "Entregado")});
         opcPagoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("--", "Seleccione una opcion de pago"), new com.sun.webui.jsf.model.Option("1", "Paga quien envía"), new com.sun.webui.jsf.model.Option("2", "Ambos pagan una parte"),new com.sun.webui.jsf.model.Option("3", "Paga quien recibe")});
-        
+        nomusuario.setText("Bienvenido:"+getApplicationBean1().getNombreusuario());
     }
     private SingleSelectOptionsList depOrigenDefaultOptions = new SingleSelectOptionsList();
 
@@ -330,6 +330,15 @@ public class Encomiendas extends AbstractPageBean {
 
     public void setMontoTotal(TextField tf) {
         this.montoTotal = tf;
+    }
+    private StaticText nomusuario = new StaticText();
+
+    public StaticText getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(StaticText st) {
+        this.nomusuario = st;
     }
 
     // </editor-fold>
@@ -636,6 +645,8 @@ public class Encomiendas extends AbstractPageBean {
             try {
                 fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
                 fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+                //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+
                 int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
             poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
             }
@@ -643,19 +654,7 @@ public class Encomiendas extends AbstractPageBean {
                 errorFecha.setText("Debe indicar la fecha");
                 errorFecha.setVisible(true);
 
-            }
-
-
-            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-            //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
-
-            //errorFecha.setText("fecha: "+fec);
-            
-
-            //Conector Con=new Conector();
-            //Con.IniciarConexion();
-            
-            //precio.setVisible(false);
+            }       
         }
         return null;
     }
@@ -686,6 +685,14 @@ public class Encomiendas extends AbstractPageBean {
             horarios[0]=new com.sun.webui.jsf.model.Option("-----","Ocurrio un error en la consulta");
         }
         horariosDefaultOptions.setOptions(horarios);
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
+        return "case5";
     }
     
 }

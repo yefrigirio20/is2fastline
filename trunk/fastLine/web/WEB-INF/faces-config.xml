@@ -149,6 +149,22 @@
             <from-outcome>case8</from-outcome>
             <to-view-id>/estadoEncomiendas.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case9</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case10</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case11</from-outcome>
+            <to-view-id>/registrarNuevoUsuario.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case12</from-outcome>
+            <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/Encomiendas.jsp</from-view-id>
@@ -168,6 +184,10 @@
             <from-outcome>case4</from-outcome>
             <to-view-id>/Administracion.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case5</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/gestionarRutas.jsp</from-view-id>
@@ -178,6 +198,10 @@
         <navigation-case>
             <from-outcome>case2</from-outcome>
             <to-view-id>/Administracion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -209,11 +233,27 @@
             <from-outcome>case2</from-outcome>
             <to-view-id>/Administracion.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/reservaPasajes.jsp</from-view-id>
         <navigation-case>
             <from-outcome>case1</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case2</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case4</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
@@ -230,6 +270,10 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>case2</from-outcome>
+            <to-view-id>/FastLine.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>case3</from-outcome>
             <to-view-id>/FastLine.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>

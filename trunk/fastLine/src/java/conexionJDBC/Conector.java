@@ -161,7 +161,19 @@ public class Conector {
             statement.executeUpdate("create user "+idNomUsu+" in GROUP users;alter user "+idNomUsu+" with PASSWORD '"+passUsu+"';");
         }
         catch (Exception e) {
-            Estado="No se pudo insertar el dato";
+            Estado="No se pudo insertar el nuevo usuario";
+        }
+
+    }
+
+    public void insertarNuevoChofer(String AP,String AM,String Nom,String fecnac,String DNI){
+        String insert="insert into choferes(apelpatchof,apelmatchof,nomchof,fecnacchof,dnichof) values('"+AP+"','"+AM+"','"+Nom+"','"+fecnac+"',"+DNI+");";
+        try{
+            //statement=Conexion.prepareStatement(insert);
+            statement.executeUpdate(insert);
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar el nuevo chofer";
         }
 
     }
@@ -260,7 +272,7 @@ public class Conector {
         try{
             getResultSet().next();
             numRutas=getResultSet().getInt("count");
-            consultar("select r.idrut,d1.name as origen,d2.name as destino from rutas r,departamentos d1, departamentos d2 where d1.gid=r.idini and d2.gid=r.idfin");
+            consultar("select r.idrut,d1.name as origen,d2.name as destino from rutas r,departamentos d1, departamentos d2 where d1.gid=r.idini and d2.gid=r.idfin order by d1.name,d2.name");
         }
         catch(Exception e){
             Estado="Error en obtenerRutas";
@@ -328,7 +340,17 @@ public class Conector {
             statement.executeUpdate(delete);
         }
         catch (Exception e) {
-            Estado="No se pudo insertar la ruta";
+            Estado="No se pudo eliminar la ruta";
+        }
+    }
+
+    public void eliminarBus(String mat){
+        String delete="delete from buses where idrut="+mat;
+        try{
+            statement.executeUpdate(delete);
+        }
+        catch (Exception e) {
+            Estado="No se pudo eliminar el bus";
         }
     }
     
@@ -402,8 +424,8 @@ public class Conector {
     }
 
     public void consultarEncomienda(int idEnc){
-        consultar("select d1.name as origen,d2.name as destino , s.fechsal ,e.* from encomiendas e,salidas s,rutas r, departamentos d1,departamentos d2 " +
-                "where e.idenc="+idEnc+" and e.idsal=s.idsal and d1.gid=r.idini and d2.gid=r.idfin and r.idrut=s.idrutsal");
+        consultar("select d1.name as origen,d2.name as destino , s.fechsal ,e.* ,est.descestenc from encomiendas e,salidas s,rutas r, departamentos d1,departamentos d2,estadoencomienda est " +
+                "where e.idenc="+idEnc+" and e.idsal=s.idsal and d1.gid=r.idini and d2.gid=r.idfin and r.idrut=s.idrutsal and e.estado=est.idest");
     }
 
     public boolean existeEncomienda(int idEnc){
@@ -435,6 +457,16 @@ public class Conector {
             return "Ha ocurrido un error";
         }
         
+    }
+    public void insertarNuevoBus(String mat,int cap){
+        String insert="insert into buses values('"+mat+"',"+cap+")";
+        try{
+            statement.executeUpdate(insert);
+            Estado="Nuevo Bus insertado";
+        }
+        catch (Exception e) {
+            Estado="No se pudo insertar el nuevo Bus";
+        }
     }
 
     public int[] estadoAsientos(int idSal){

@@ -41,6 +41,7 @@ public class reservaPasajes extends AbstractPageBean {
         depOrigenDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
         depDestinoDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("0", "-----"),new com.sun.webui.jsf.model.Option("8", "Amazonas"), new com.sun.webui.jsf.model.Option("24", "Ancash"), new com.sun.webui.jsf.model.Option("15", "Apurimac"),new com.sun.webui.jsf.model.Option("16", "Arequipa"), new com.sun.webui.jsf.model.Option("23", "Ayacucho"), new com.sun.webui.jsf.model.Option("6", "Cajamarca"), new com.sun.webui.jsf.model.Option("17", "Cusco"), new com.sun.webui.jsf.model.Option("22", "Huancavelica"), new com.sun.webui.jsf.model.Option("25", "Huanuco"), new com.sun.webui.jsf.model.Option("14", "Ica"), new com.sun.webui.jsf.model.Option("7", "Iquitos"), new com.sun.webui.jsf.model.Option("12", "Junin"), new com.sun.webui.jsf.model.Option("10", "La Libertad"), new com.sun.webui.jsf.model.Option("5", "Lambayeque"), new com.sun.webui.jsf.model.Option("13", "Lima"), new com.sun.webui.jsf.model.Option("1", "Madre de Dios"), new com.sun.webui.jsf.model.Option("18", "Moquegua"), new com.sun.webui.jsf.model.Option("11", "Pasco"), new com.sun.webui.jsf.model.Option("4", "Piura"), new com.sun.webui.jsf.model.Option("20", "Puno"), new com.sun.webui.jsf.model.Option("9", "San Martin"), new com.sun.webui.jsf.model.Option("19", "Tacna"), new com.sun.webui.jsf.model.Option("3", "Tumbes"), new com.sun.webui.jsf.model.Option("21", "Ucayali")});
         horariosDefaultOptions.setOptions(new com.sun.webui.jsf.model.Option[]{new com.sun.webui.jsf.model.Option("-----", "Consulte los horarios primero")});
+        nomusuario.setText("Bienvenido: "+getApplicationBean1().getNombreusuario());
     }
     private SingleSelectOptionsList depOrigenDefaultOptions = new SingleSelectOptionsList();
 
@@ -149,6 +150,33 @@ public class reservaPasajes extends AbstractPageBean {
 
     public void setPruebaFecha(StaticText st) {
         this.pruebaFecha = st;
+    }
+    private StaticText errorGnrl = new StaticText();
+
+    public StaticText getErrorGnrl() {
+        return errorGnrl;
+    }
+
+    public void setErrorGnrl(StaticText st) {
+        this.errorGnrl = st;
+    }
+    private StaticText nomusuario = new StaticText();
+
+    public StaticText getNomusuario() {
+        return nomusuario;
+    }
+
+    public void setNomusuario(StaticText st) {
+        this.nomusuario = st;
+    }
+    private StaticText errorFecha = new StaticText();
+
+    public StaticText getErrorFecha() {
+        return errorFecha;
+    }
+
+    public void setErrorFecha(StaticText st) {
+        this.errorFecha = st;
     }
 
     // </editor-fold>
@@ -280,27 +308,43 @@ public class reservaPasajes extends AbstractPageBean {
     public String reservar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        int idSal=Integer.parseInt(horarios.getValue().toString());        
-        int idAsi=Integer.parseInt(asiento.getText().toString());
-        
-        String idusu=getApplicationBean1().getNombreusuario();
-        //Conector Con=new Conector();
-        //Con.IniciarConexion();
-        getApplicationBean1().getCon().reservarPasaje(idusu, idSal, idAsi);
+        try{
+            int idSal=Integer.parseInt(horarios.getValue().toString());
+            try{
+                int idAsi=Integer.parseInt(asiento.getText().toString());
 
-        int asientos[]=getApplicationBean1().getCon().estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
-        getApplicationBean1().setEstadoAsientos(asientos);
+                String idusu=getApplicationBean1().getNombreusuario();
 
-        int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
-        int idDestino=Integer.parseInt(depDestino.getValue().toString());
-        String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+                if(getApplicationBean1().getEstadoAsientos()[idAsi]!=0){
+                    errorGnrl.setText("El asiento proporcionado ya esta reservado");
+                    errorGnrl.setVisible(true);
+                }
+                else
+                    getApplicationBean1().getCon().reservarPasaje(idusu, idSal, idAsi);
 
-        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-        fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
-        int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
-        poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+                int asientos[]=getApplicationBean1().getCon().estadoAsientos(Integer.parseInt(horarios.getValue().toString()));
+                getApplicationBean1().setEstadoAsientos(asientos);
 
+                int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
+                int idDestino=Integer.parseInt(depDestino.getValue().toString());
+                String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+
+                //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+                fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+
+                int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+                poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+            }
+            catch(Exception e){
+                errorGnrl.setText("El asiento proporcionado no es válido");
+                errorGnrl.setVisible(true);
+            }
+        }
+        catch(Exception e){
+            errorGnrl.setText("Proporcione Origen, Destino y fecha para consultar horarios. Seleccione un horario antes de reservar el pasaje");
+            errorGnrl.setVisible(true);
+        }
         //Con.CerrarConexion();
         return null;
     }
@@ -334,6 +378,8 @@ public class reservaPasajes extends AbstractPageBean {
         //precio.setVisible(false);
         errorRuta.setVisible(false);
         pruebaFecha.setVisible(false);
+        errorFecha.setVisible(false);
+        errorGnrl.setVisible(false);
         //errorGnrl.setVisible(false);
         int idOrigen=Integer.parseInt(depOrigen.getValue().toString());
         int idDestino=Integer.parseInt(depDestino.getValue().toString());      
@@ -343,19 +389,25 @@ public class reservaPasajes extends AbstractPageBean {
             errorRuta.setVisible(true);
         }
         else{
-            String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
+            try{
+                String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
 
-            //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
-            fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
+                fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
+                //fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
 
-            pruebaFecha.setText("fecha: "+fec);
-            pruebaFecha.setVisible(true);
+                pruebaFecha.setText("fecha: "+fec);
+                pruebaFecha.setVisible(true);
 
-            //Conector Con=new Conector();
-            //Con.IniciarConexion();
-            int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
-            poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
-            precio.setVisible(false);
+                //Conector Con=new Conector();
+                //Con.IniciarConexion();
+                int numH=getApplicationBean1().getCon().obtenerHorarios(idOrigen,idDestino,fec);
+                poblarComboHorarios(getApplicationBean1().getCon().Result, numH);
+                precio.setVisible(false);
+            }
+            catch(Exception e){
+                errorFecha.setText("Especifique la fecha");
+                errorFecha.setVisible(true);
+            }
         }
         return null;
     }
@@ -393,7 +445,7 @@ public class reservaPasajes extends AbstractPageBean {
         int idDestino=Integer.parseInt(depDestino.getValue().toString());       
        
         String fec=(String)DateFormat.getDateInstance(DateFormat.MEDIUM).format(startCalendar.getSelectedDate());
-       
+        //fec=(String)(fec.subSequence(3,6)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(7,11));
         fec=(String)(fec.subSequence(3,5)+"/"+fec.subSequence(0,2)+"/"+fec.subSequence(6,10));
         //Conector Con=new Conector();
         //Con.IniciarConexion();
@@ -439,6 +491,14 @@ public class reservaPasajes extends AbstractPageBean {
         //int asientos=Con.estadoAsientos(horarios.getValue().toString());
 
         //Con.CerrarConexion();
+    }
+
+    public String cerrarsesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getApplicationBean1().getCon().CerrarConexion();
+        getApplicationBean1().setSesion(false);
+        return "case4";
     }
 
     
